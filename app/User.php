@@ -34,12 +34,12 @@ class User extends Authenticatable
      *
      * @var bool
      */
-    protected $incrementing = false;
+    public $incrementing = false;
 
     /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
-    protected $timestamps   = false;
+    public $timestamps   = false;
 }
