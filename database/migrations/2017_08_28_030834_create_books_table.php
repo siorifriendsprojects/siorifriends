@@ -16,6 +16,7 @@ class CreateBooksTable extends Migration
         Schema::create('books', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('title');
             $table->string('description');
             $table->boolean('is_publishing');
