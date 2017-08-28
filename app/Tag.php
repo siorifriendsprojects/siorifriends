@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class Book extends Model
+class Tag extends Model
 {
     use Uuid32ModelTrait;
 
