@@ -16,7 +16,9 @@ class CreateFavoritesTable extends Migration
         Schema::create('favorites', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
+            $table->foreign('user_id')->references('id')->on('users');
             $table->char('book_id', 32);
+            $table->foreign('book_id')->references('id')->on('books');
 //            $table->timestamps();
         });
     }
