@@ -1,0 +1,33 @@
+.hum-btn {
+  position: absolute;
+  background-color: inherit;
+  cursor: pointer;
+  z-index: 200;
+}
+.peke {
+  background-position: 35px 0;
+}
+.drawr {
+  display: none;
+  background-color: rgba(0,0,0,0.6);
+  position: absolute;
+  top: 0px;
+  left: 0;
+  width: 260px;
+  padding: 60px 0 20px 20px;
+  z-index: 100;
+}
+#menu,
+#menu li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#menu li {
+  width: 260px;
+}
+#menu li a {
+  color: #fff;
+  display: block;
+  padding: 15px;
+}
