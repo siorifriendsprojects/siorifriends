@@ -17,6 +17,7 @@ class CreateProfilesTable extends Migration
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
             $table->foreign('user_id')->references('id')->on('users');
+            $table->string('icon_path');
             $table->string('intro');
             $table->date('birthday');
             $table->string('sex');
