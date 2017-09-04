@@ -16,7 +16,7 @@
                             <div class="col-md-6">
                                 <input id="account" type="text" class="form-control" name="account" value="{{ old('account') }}" required autofocus>
 
-                                @if ($errors->has('name'))
+                                @if ($errors->has('account'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('account') }}</strong>
                                     </span>
