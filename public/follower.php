@@ -22,26 +22,26 @@
                     <span class="glyphicon glyphicon-remove" style="display:none;color:white;"></span>
                 </button>
                 <nav class="drawr">
-                <div class="row">
-                    <div class="col-xs-offset-5">
-                        <img src="img/四葉栞_顔.png" alt="しおり" class="img-circle img-responsive img-icon" />
-                    </div>
-                    <div class="col-xs-12" style="color:white;text-align:center;">
-                        User name<br>
-                        account ID
-                    </div>
-                </div>   
-                <ul id="menu">
-                    <li><a href="#">本棚</a></li>
-                    <li><a href="#">お気に入り</a></li>
-                    <li><a href="#">設定</a></li>
-                    <li><a href="#">ヘルプ</a></li>
-                    <li><a href="#">ログアウト</a></li>
-                </ul>
-            </nav>
+                    <div class="row">
+                        <div class="col-xs-offset-5">
+                            <img src="img/siori_face.png" alt="しおり" class="img-circle img-responsive img-icon" />
+                        </div>
+                        <div class="col-xs-12" style="color:white;text-align:center;">
+                            User name<br>
+                            account ID
+                        </div>
+                    </div>   
+                    <ul id="menu">
+                        <li><a href="#">本棚</a></li>
+                        <li><a href="#">お気に入り</a></li>
+                        <li><a href="#">設定</a></li>
+                        <li><a href="#">ヘルプ</a></li>
+                        <li><a href="#">ログアウト</a></li>
+                    </ul>
+                </nav>
             </div>
             <div class="col-xs-6 logo-btn">
-                <button class="btn bg-white"><img src="img/栞ふれんず。ロゴ02.png" alt="タイトルロゴ" class="img-responsive"></img></button>
+                <button class="btn bg-white"><img src="img/logo01.png" alt="タイトルロゴ" class="img-responsive"></img></button>
             </div>
             <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
                 <div class="row">
@@ -64,7 +64,7 @@
         </button>
         <div class="row list-padding-border">
             <div class="col-xs-3 col-xs-offset-1 list-padding">
-                <img src="img/四葉栞_顔.png" alt="しおり" class="img-circle img-responsive img-icon" />
+                <img src="img/siori_face.png" alt="しおり" class="img-circle img-responsive img-icon" />
             </div>
             <div class="col-xs-3 list-padding"><span>ユーザー名</span>
                 <div class="row">
@@ -77,7 +77,7 @@
         </div>
         <div class="row list-padding-border">
             <div class="col-xs-3 col-xs-offset-1 list-padding">
-                <img src="img/本田守_顔.png" alt="まもる" class="img-circle img-responsive img-icon" />
+                <img src="img/mamoru_face.png" alt="まもる" class="img-circle img-responsive img-icon" />
             </div>
             <div class="col-xs-3 list-padding"><span>ユーザー名</span>
                 <div class="row">
