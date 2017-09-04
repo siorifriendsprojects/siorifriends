@@ -3,13 +3,25 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\User;
-use \App\Follow;
-use Alsofronie\Uuid\Uuid32ModelTrait;
+use App\Repository\UserRepositoryInterface;
 
 class UserController extends Controller
 {
+   use \App\User;
+   use \App\Follow;
+  
+    private $user_repository;
 
+    public function __construct(UserRepositoryInterface $repository)
+    {
+        $this->user_repository = $repository;
+    }
+
+    public function index()
+    {
+        return $this->user_repository->findAll()->toJson();
+    }
+  
     /**
      * Display the specified resource.
      *
