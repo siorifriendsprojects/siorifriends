@@ -101,7 +101,7 @@
         </div>
     </form>
     
-        <div class="col-xs-12 container">
+        <div class="col-xs-12">
             <div class="col-xs-3 obj">
                 <div class="col-xs-12">
                     <div class="book_shadow">
