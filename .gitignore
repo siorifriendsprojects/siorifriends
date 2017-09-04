@@ -10,4 +10,4 @@ Homestead.yaml
 npm-debug.log
 .env
 /.laradock
-
+.DS_Store
