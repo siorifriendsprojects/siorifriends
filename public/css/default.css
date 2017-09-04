@@ -13,6 +13,11 @@
 .row-50 >div{ padding-right:25px;  padding-left:25px}
 
 
+body
+{
+    background-color : #1ABC9C;
+}
+
 
 .bg-white{
     background-color: white;
@@ -71,7 +76,7 @@ header.container-fluid{
     background: #eee;
   }
 
-
+/* ここから門地が作成したcss */
 
 
   div.obj
