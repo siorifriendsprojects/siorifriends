@@ -65,7 +65,9 @@
         </div>
     </div>
     </header>
-    <main></main>
+    <main>
+    @yield('content')
+    </main>
     <footer></footer>
 
     <!-- Scripts -->
