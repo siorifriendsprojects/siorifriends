@@ -46,6 +46,10 @@ Route::get('/privacy',function(){
 */
 Route::get('/{id}','UserController@show');
 
+Route::get('/{id}/bookshelf',function(){
+    return view("bookshelf");
+});
+
 Route::get('/{id}/follow','UserController@showFollow');
 
 Route::get('/{id}/follower','UserController@showFollower');
