@@ -12,7 +12,6 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <!-- Styles -->
-     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/default.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hamburger.css') }}" rel="stylesheet">
     <style>
@@ -32,8 +31,13 @@
                         <img src="{{ asset('img/siori_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
                     </div>
                     <div class="col-xs-12" style="color:white;text-align:center;">
+                    @if(Auth::guest())
                         User name<br>
                         account ID
+                    @else
+                        {{Auth::user()->name}}<br>
+                        {{"@".Auth::user()->account}}
+                    @endif
                     </div>
                 </div>   
                 <ul id="menu">
