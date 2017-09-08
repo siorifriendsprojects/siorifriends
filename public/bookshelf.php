@@ -34,18 +34,39 @@
 
 <header class="container-fluid">
         <div class="row">
-            <div class="col-xs-3">
-                <button class="btn bg-white"><span class="glyphicon glyphicon-align-justify"></span></button>
-            </div>
-            <div class="col-xs-6">
-                <button class="btn bg-white"><img src="img/栞ふれんず。ロゴ02.png" alt="タイトルロゴ" class="img-responsive"></img></button>
-            </div>
-            <div class="col-xs-3" style="padding-left:0px;">
+            <div class="col-xs-3 icon-btn">
+                <button class="btn bg-white hum-btn">
+                    <span class="glyphicon glyphicon-align-justify"></span>
+                    <span class="glyphicon glyphicon-remove" style="display:none;color:white;"></span>
+                </button>
+                <nav class="drawr">
                 <div class="row">
-                    <div class="col-xs-4" style="padding-left:0px;">
+                    <div class="col-xs-offset-5">
+                        <img src="img/siori_face.png" alt="しおり" class="img-circle img-responsive img-icon" />
+                    </div>
+                    <div class="col-xs-12" style="color:white;text-align:center;">
+                        User name<br>
+                        account ID
+                    </div>
+                </div>   
+                <ul id="menu">
+                    <li><a href="#">本棚</a></li>
+                    <li><a href="#">お気に入り</a></li>
+                    <li><a href="#">設定</a></li>
+                    <li><a href="#">ヘルプ</a></li>
+                    <li><a href="#">ログアウト</a></li>
+                </ul>
+            </nav>
+            </div>
+            <div class="col-xs-6 logo-btn">
+                <button><img src="img/logo01.png" alt="タイトルロゴ" class="img-responsive"></img></button>
+            </div>
+            <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
+                <div class="row">
+                    <div class="col-xs-4 icon-btn" style="">
                         <button class="btn bg-white"><span class="glyphicon glyphicon-search"></span></button>
                     </div>  
-                    <div class="col-xs-4">
+                    <div class="col-xs-4 col-xs-offset-1 icon-btn">
                         <button class="btn bg-white"><span class="glyphicon glyphicon-bell"></span></button>
                     </div>
                     <div class="col-xs-4">
@@ -53,7 +74,7 @@
                 </div>
             </div>
         </div>
-</header>  
+    </header>
 
 
 <body>
@@ -161,12 +182,7 @@
                 </div>     
             </div>
         </div>
-
-
-<script>
-
-</script>
-
+<script src="js/drawr.js"></script>
 </body>
 <footer>
         

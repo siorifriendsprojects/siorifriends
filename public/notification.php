@@ -51,7 +51,7 @@
                     <div class="col-xs-4 col-xs-offset-1 icon-btn">
                         <button class="btn bg-white"><span class="glyphicon glyphicon-bell"></span></button>
                     </div>
-                    <div class="col-xs-4">
+                    <div class="col-xs-3">
                     </div>
                 </div>
             </div>
@@ -60,36 +60,33 @@
     <main>
         <button class="btn btn-link btn-lg btn-block back-btn">
             <span class="glyphicon glyphicon-arrow-left"></span>
-            フォロー
+            通知ページ
         </button>
         <div class="row list-padding-border">
-            <div class="col-xs-3 col-xs-offset-1 list-padding">
+            <div class="col-xs-2 col-xs-offset-1 list-padding">
                 <img src="img/siori_face.png" alt="しおり" class="img-circle img-responsive img-icon" />
             </div>
-            <div class="col-xs-3 list-padding"><span>ユーザー名</span>
-                <div class="row">
-                    <div class="col-xs-12"><span>@UserID</span></div>
-                </div>
+            <div class="list-padding-right textOverflow">
+                <span>四葉栞さんにフォローされました。</span>
             </div>
-            <div class="col-xs-5 list-padding">
-                <button class="btn btn-success center-block">フォロー中</button>
-            </div>
+            <div class="list-padding-date">
+                2017/07/31
+            </div>        
         </div>
         <div class="row list-padding-border">
-            <div class="col-xs-3 col-xs-offset-1 list-padding">
+            <div class="col-xs-2 col-xs-offset-1 list-padding">
                 <img src="img/mamoru_face.png" alt="まもる" class="img-circle img-responsive img-icon" />
             </div>
-            <div class="col-xs-3 list-padding"><span>ユーザー名</span>
-                <div class="row">
-                    <div class="col-xs-12"><span>@UserID</span></div>
-                </div>
+            <div class="list-padding-right textOverflow">
+                <span>本田守さんに～がお気に入りされました。</span>
             </div>
-            <div class="col-xs-5 list-padding">
-                <button class="btn btn-danger center-block">フォロー解除</button>
+            <div class="list-padding-date">
+               n時間前
             </div>
         </div>
     </main>
     <footer></footer>
     <script src="js/drawr.js"></script>
+    <script src="js/textOverflowEllipsis.js"></script>
 </body>
 </html>
