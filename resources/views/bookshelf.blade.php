@@ -1,4 +1,4 @@
-@extend('layout.template')
+@extends('layouts.template')
 
 @section('content')
    <form class="form-inline">

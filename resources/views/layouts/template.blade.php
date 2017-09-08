@@ -13,8 +13,8 @@
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
      <!-- Styles -->
      <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="css/default.css" rel="stylesheet">
-    <link href="css/hamburger.css" rel="stylesheet">
+    <link href="{{ asset('css/default.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/hamburger.css') }}" rel="stylesheet">
     <style>
     </style>
 </head>
@@ -29,7 +29,7 @@
             <nav class="drawr">
                 <div class="row">
                     <div class="col-xs-offset-5">
-                        <img src="img/siori_face.png" alt="しおり" class="img-circle img-responsive img-icon" />
+                        <img src="{{ asset('img/siori_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
                     </div>
                     <div class="col-xs-12" style="color:white;text-align:center;">
                         User name<br>
@@ -46,10 +46,10 @@
             </nav>
         </div>
         <div class="col-xs-2" style="height:50px;padding-right:0px;">
-            <img src="img/doraemon_face.jpg" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
+            <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
         </div>
         <div class="col-xs-6 logo-btn" style="padding-left:0px;">
-            <button class="btn" style="padding-left:0px;"><img src="img/logo01.png" alt="タイトルロゴ" class="img-responsive"></img></button>
+            <button class="btn" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
         </div>
         <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
             <div class="row">
@@ -72,6 +72,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="js/drawr.js"></script>
+    <script src="{{ asset('js/drawr.js') }}"></script>
 </body>
 </html>
