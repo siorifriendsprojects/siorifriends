@@ -27,8 +27,8 @@
                         <img src="/img/四葉栞_顔.png" alt="しおり" class="img-circle img-responsive img-icon" />
                     </div>
                     <div class="col-xs-12" style="color:white;text-align:center;">
-                        {{$user->name}}<br>
-                        {{"@".$user->account}}
+                        {{Auth::user()->name}}<br>
+                        {{"@".Auth::user()->account}}
                     </div>
                 </div>   
                 <ul id="menu">

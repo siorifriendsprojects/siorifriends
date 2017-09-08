@@ -23,12 +23,36 @@ Route::get('/template',function(){
     return view('layouts.template');
 });
 
+Route::get('/settings',function(){
+    return view('settings');
+});
+
+Route::get('/terms',function(){
+    return view('terms');
+});
+
+Route::get('/privacy',function(){
+    return view('privacy');
+});
+
+Route::get('/help',function(){
+    return view('help');
+});
+
+Route::get('/privacy',function(){
+    return view('privacy');
+});
+
 
 /*
 ここのまとまりより下には/{id}/から始まらないルーティングを追加しないでください。
 理由->/{id}/のルーティングが優先されて機能しないため
 */
 Route::get('/{id}','UserController@show');
+
+Route::get('/{id}/bookshelf',function(){
+    return view("bookshelf");
+});
 
 Route::get('/{id}/follow','UserController@showFollow');
 
