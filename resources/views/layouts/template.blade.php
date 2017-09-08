@@ -21,8 +21,8 @@
 <body>
     <header class="container-fluid">
     <div class="row">
-        <div class="col-xs-3 icon-btn">
-            <button class="btn bg-white hum-btn">
+        <div class="col-xs-1 icon-btn">
+            <button class="btn hum-btn">
                 <span class="glyphicon glyphicon-align-justify"></span>
                 <span class="glyphicon glyphicon-remove" style="display:none;color:white;"></span>
             </button>
@@ -54,10 +54,10 @@
         <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
             <div class="row">
                 <div class="col-xs-4 icon-btn" style="">
-                    <button class="btn bg-white"><span class="glyphicon glyphicon-search"></span></button>
+                    <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
                 </div>  
                 <div class="col-xs-4 col-xs-offset-1 icon-btn">
-                    <button class="btn bg-white"><span class="glyphicon glyphicon-bell"></span></button>
+                    <button class="btn"><span class="glyphicon glyphicon-bell"></span></button>
                 </div>
                 <div class="col-xs-4">
                 </div>
