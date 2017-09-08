@@ -59,7 +59,7 @@
             </nav>
             </div>
             <div class="col-xs-6 logo-btn">
-                <button class="btn bg-white"><img src="img/logo01.png" alt="タイトルロゴ" class="img-responsive"></img></button>
+                <button><img src="img/logo01.png" alt="タイトルロゴ" class="img-responsive"></img></button>
             </div>
             <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
                 <div class="row">

@@ -42,7 +42,7 @@
                 <nav class="drawr">
                 <div class="row">
                     <div class="col-xs-offset-5">
-                        <img src="img/四葉栞_顔.png" alt="しおり" class="img-circle img-responsive img-icon" />
+                        <img src="img/siori_face.png" alt="しおり" class="img-circle img-responsive img-icon" />
                     </div>
                     <div class="col-xs-12" style="color:white;text-align:center;">
                         User name<br>
@@ -59,7 +59,7 @@
             </nav>
             </div>
             <div class="col-xs-6 logo-btn">
-                <button class="btn bg-white"><img src="img/栞ふれんず。ロゴ02.png" alt="タイトルロゴ" class="img-responsive"></img></button>
+                <button class="btn"><img src="img/logo01.png" alt="タイトルロゴ" class="img-responsive"></img></button>
             </div>
             <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
                 <div class="row">
@@ -102,13 +102,13 @@
                 <br />
 
                 <div class="page text-left">
-                    <ul>
+                    <ul class="list-group">
                         <h3>
-                            <li><a href="#">公式HP</a></li>
-                            <li><a href="#">THE IDOLM@STER</a></li>
-                            <li><a href="#">ドカベン</a></li>
-                            <li><a href="#">BBEMYBABY</a></li>
-                            <li><a href="#">COBRA</a></ll>
+                            <li class="list-group-item"><a href="#">公式HP</a></li>
+                            <li class="list-group-item"><a href="#">THE IDOLM@STER</a></li>
+                            <li class="list-group-item"><a href="#">ドカベン</a></li>
+                            <li class="list-group-item"><a href="#">BBEMYBABY</a></li>
+                            <li class="list-group-item"><a href="#">COBRA</a></ll>
                         </h3>
                     </ul>
                 </div>

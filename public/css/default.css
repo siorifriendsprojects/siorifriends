@@ -15,7 +15,7 @@
 
 body
 {
-    background-color : #1ABC9C;
+    background-color : #f0ffe8;
 }
 
 
@@ -133,7 +133,7 @@ div.userback
     left : -2em;
     height : 3em;
     width : 120px;
-    background-color : #34578e;
+    background-color : #ddffcc;
 }
 
 body span.bookuserID
@@ -141,7 +141,7 @@ body span.bookuserID
         position : relative;
         top : 10px;
         left : 1.5em;
-        background-color : #fff1ff;
+        background-color : #fff;
         padding : 0.3em 0.7em 0.3em 0.7em;
         border-radius : 1em;
 }
