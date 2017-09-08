@@ -1,4 +1,4 @@
-@extend('layout.template')
+@extends('layouts.template')
 
 @section('content')
 <div id="fb-root"></div>
