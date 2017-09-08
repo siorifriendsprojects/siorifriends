@@ -19,6 +19,25 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/settings',function(){
+    return view('settings');
+});
+
+Route::get('/terms',function(){
+    return view('terms');
+});
+
+Route::get('/privacy',function(){
+    return view('privacy');
+});
+
+Route::get('/help',function(){
+    return view('help');
+});
+
+Route::get('/privacy',function(){
+    return view('privacy');
+});
 
 
 /*
