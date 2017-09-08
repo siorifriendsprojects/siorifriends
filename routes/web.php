@@ -39,11 +39,6 @@ Route::get('/help',function(){
     return view('help');
 });
 
-Route::get('/privacy',function(){
-    return view('privacy');
-});
-
-
 /*
 ここのまとまりより下には/{id}/から始まらないルーティングを追加しないでください。
 理由->/{id}/のルーティングが優先されて機能しないため
@@ -52,6 +47,10 @@ Route::get('/{id}','UserController@show');
 
 Route::get('/{id}/bookshelf',function(){
     return view("bookshelf");
+});
+
+Route::get('/{id}/books/{bookid}',function(){
+    return view("book");
 });
 
 Route::get('/{id}/follow','UserController@showFollow');
