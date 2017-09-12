@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Infrastructure\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class Comment extends Model
+class Favorite extends Model
 {
     use Uuid32ModelTrait;
 
@@ -15,4 +15,11 @@ class Comment extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * Indicates if the model should be timestamped.
+     *
+     * @var bool
+     */
+    public $timestamps   = false;
 }

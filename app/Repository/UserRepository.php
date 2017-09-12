@@ -8,7 +8,7 @@
 
 namespace App\Repository;
 
-use App\User;
+use App\Infrastructure\Eloquent\User;
 
 class UserRepository implements UserRepositoryInterface
 {

@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Infrastructure\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class BookTags extends Model
+class Comment extends Model
 {
     use Uuid32ModelTrait;
 
@@ -15,11 +15,4 @@ class BookTags extends Model
      * @var bool
      */
     public $incrementing = false;
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps   = false;
 }
