@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Eloquent;
+namespace App\Infrastructure\Eloquents;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
