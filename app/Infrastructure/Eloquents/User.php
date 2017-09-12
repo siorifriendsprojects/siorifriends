@@ -42,4 +42,42 @@ class User extends Authenticatable
      * @var bool
      */
     public $timestamps   = false;
+
+    /**
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
+    {
+        return $this->hasOne('App\Infrastructure\Eloquents\Profile');
+    }
+
+    /**
+     * このユーザと本の一対多の関連を定義
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function books()
+    {
+        return $this->hasMany('App\Infrastructure\Eloquents\Book');
+    }
+
+    /**
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function follow()
+    {
+        return $this->hasMany('App\Infrastructure\Eloquents\Follow');
+    }
+
+    /**
+     * @return mixed
+     */
+    public function follower()
+    {
+        return Follow::where('follow_id', '=', $this->id)->all();
+    }
 }
