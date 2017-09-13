@@ -16,10 +16,12 @@ class CreateFollowsTable extends Migration
         Schema::create('follows', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('users');
             $table->char('follow_id', 32);
-            $table->foreign('follow_id')->references('id')->on('users');
 //            $table->timestamps();
+
+            // constraint
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('follow_id')->references('id')->on('users');
         });
     }
 

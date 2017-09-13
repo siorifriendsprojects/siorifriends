@@ -16,10 +16,12 @@ class CreateBookTagsTable extends Migration
         Schema::create('book_tags', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('book_id', 32);
-            $table->foreign('book_id')->references('id')->on('books');
             $table->char('tag_id', 32);
-            $table->foreign('tag_id')->references('id')->on('tags');
 //            $table->timestamps();
+
+            // constraint
+            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('tag_id')->references('id')->on('tags');
         });
     }
 
