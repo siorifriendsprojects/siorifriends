@@ -50,7 +50,7 @@ class User extends Authenticatable
      */
     public function profile()
     {
-        return $this->hasOne('App\Infrastructure\Eloquents\Profile');
+        return $this->hasOne(Profile::class);
     }
 
     /**
@@ -70,7 +70,7 @@ class User extends Authenticatable
      */
     public function follow()
     {
-        return $this->hasMany('App\Infrastructure\Eloquents\Follow');
+        return $this->hasMany(Follow::class);
     }
 
     /**
@@ -83,8 +83,13 @@ class User extends Authenticatable
         return Follow::where('follow_id', '=', $this->id)->all();
     }
 
+    /**
+     *
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function favorites()
     {
-        return $this->hasMany('App\Infrastructure\Eloquents\Favorite');
+        return $this->hasMany(Favorite::class);
     }
 }
