@@ -11,6 +11,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        collect(range(1, 10))->each(function($number) {
+            $this->call(UsersTableSeeder::class);
+        });
+
+        $this->call(BooksTableSeeder::class);
     }
 }
