@@ -60,7 +60,7 @@ class User extends Authenticatable
      */
     public function books()
     {
-        return $this->hasMany('App\Infrastructure\Eloquents\Book');
+        return $this->hasMany(Book::class);
     }
 
     /**
@@ -74,10 +74,17 @@ class User extends Authenticatable
     }
 
     /**
-     * @return mixed
+     *
+     *
+     * @return \Illuminate\Support\Collection
      */
     public function follower()
     {
         return Follow::where('follow_id', '=', $this->id)->all();
+    }
+
+    public function favorites()
+    {
+        return $this->hasMany('App\Infrastructure\Eloquents\Favorite');
     }
 }
