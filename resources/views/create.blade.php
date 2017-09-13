@@ -19,7 +19,7 @@
         </div>
         <div class="form-group">
             <label for="R18"></label>
-            <input type="checkbox" data-toggle="toggle" data-on="Enabled" data-off="Disabled">
+            <input type="checkbox"  data-toggle="toggle" data-on="Enabled" data-off="Disabled">
         </div>
 
     </form>
