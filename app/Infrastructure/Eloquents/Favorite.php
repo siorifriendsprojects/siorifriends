@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Infrastructure\Eloquents;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class Follow extends Model
+class Favorite extends Model
 {
     use Uuid32ModelTrait;
 

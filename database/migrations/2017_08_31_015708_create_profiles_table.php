@@ -16,7 +16,6 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('icon_path');
             $table->string('intro');
             $table->date('birthday');
@@ -25,6 +24,9 @@ class CreateProfilesTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
 //            $table->timestamps();
+
+            // constraint
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

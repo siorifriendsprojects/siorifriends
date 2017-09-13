@@ -1,11 +1,11 @@
 <?php
 
-namespace App;
+namespace App\Infrastructure\Eloquents;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class Anchor extends Model
+class Tag extends Model
 {
     use Uuid32ModelTrait;
 

@@ -16,10 +16,12 @@ class CreateBookAnchorsTable extends Migration
         Schema::create('book_anchors', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('book_id', 32);
-            $table->foreign('book_id')->references('id')->on('books');
             $table->char('anchor_id', 32);
-            $table->foreign('anchor_id')->references('id')->on('anchors');
 //            $table->timestamps();
+
+            // constraint
+            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('anchor_id')->references('id')->on('anchors');
         });
     }
 

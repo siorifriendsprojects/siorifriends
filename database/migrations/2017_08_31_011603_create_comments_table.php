@@ -16,12 +16,14 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('book_id', 32);
-            $table->foreign('book_id')->references('id')->on('books');
             $table->char('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('body');
             $table->dateTime('created_at');
 //            $table->timestamps();
+
+            // constraint
+            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 
