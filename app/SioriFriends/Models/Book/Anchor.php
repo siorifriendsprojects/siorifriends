@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Eloquents;
+namespace App\Siorifriends\Models\Book;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;

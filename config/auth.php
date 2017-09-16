@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Infrastructure\Eloquent\User::class,
+            'model' => App\Siorifriends\Models\User\User::class,
         ],
 
         // 'users' => [

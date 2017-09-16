@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Repository\UserRepositoryInterface;
-use App\Infrastructure\Eloquent\User;
+use App\Siorifriends\Models\User\User;
 use App\Follow;
 
 class UserController extends Controller

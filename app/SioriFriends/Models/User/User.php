@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Infrastructure\Eloquents;
+namespace App\Siorifriends\Models\User;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

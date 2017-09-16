@@ -8,7 +8,7 @@
 
 namespace App\Repository;
 
-use App\Infrastructure\Eloquent\User;
+use App\Siorifriends\Models\User\User;
 
 class UserRepository implements UserRepositoryInterface
 {
