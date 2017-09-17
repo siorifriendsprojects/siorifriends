@@ -2,21 +2,7 @@
 
 namespace App\Siorifriends\Models\User;
 
-use Illuminate\Database\Eloquent\Model;
 
-class Follow extends Model
-{
-    /**
-     * Indicates if the IDs are auto-incrementing.
-     *
-     * @var bool
-     */
-    public $incrementing = false;
+use Illuminate\Database\Eloquent\Relations\Pivot;
 
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps   = false;
-}
+class Follow extends Pivot {}
