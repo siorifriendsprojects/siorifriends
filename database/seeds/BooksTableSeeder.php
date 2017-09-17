@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 use App\Siorifriends\Models\User\User;
-use App\Infrastructure\Eloquents\Book;
+use App\SioriFriends\Models\Book\Book;
 
 class BooksTableSeeder extends Seeder
 {
