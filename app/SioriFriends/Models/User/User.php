@@ -45,7 +45,7 @@ class User extends Authenticatable
     public $timestamps   = false;
 
     /**
-     *
+     * ユーザのプロフィールを取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
@@ -55,7 +55,7 @@ class User extends Authenticatable
     }
 
     /**
-     * このユーザと本の一対多の関連を定義
+     * ユーザが作成した本の一覧を取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -66,6 +66,8 @@ class User extends Authenticatable
 
 
     /**
+     * フォローしているユーザの一覧を取得する。
+     *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function followUsers()
@@ -74,18 +76,23 @@ class User extends Authenticatable
     }
 
 
+    /**
+     * フォロワーの一覧を取得する。
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function followers()
     {
         return $this->belongsToMany(self::class, 'follows', 'follow_id', 'user_id');
     }
 
     /**
+     * お気に入りしている本の一覧を取得する。
      *
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function favorites()
     {
-        return $this->hasMany(Favorite::class);
+        return $this->belongsToMany(Book::class);
     }
 }
