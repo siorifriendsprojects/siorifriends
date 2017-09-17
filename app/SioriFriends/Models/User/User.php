@@ -2,6 +2,7 @@
 
 namespace App\Siorifriends\Models\User;
 
+use App\Siorifriends\Models\Book\Book;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Alsofronie\Uuid\Uuid32ModelTrait;
@@ -63,24 +64,19 @@ class User extends Authenticatable
         return $this->hasMany(Book::class);
     }
 
-    /**
-     *
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function follow()
-    {
-        return $this->hasMany(Follow::class);
-    }
 
     /**
-     *
-     *
-     * @return \Illuminate\Support\Collection
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function follower()
+    public function followUsers()
     {
-        return Follow::where('follow_id', '=', $this->id)->all();
+        return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_id');
+    }
+
+
+    public function followers()
+    {
+        return $this->belongsToMany(self::class, 'follows', 'follow_id', 'user_id');
     }
 
     /**

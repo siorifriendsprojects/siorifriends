@@ -2,6 +2,7 @@
 
 namespace App\Siorifriends\Models\Book;
 
+use App\Siorifriends\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
