@@ -3,12 +3,9 @@
 namespace App\Siorifriends\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
-use Alsofronie\Uuid\Uuid32ModelTrait;
 
 class Follow extends Model
 {
-    use Uuid32ModelTrait;
-
     /**
      * Indicates if the IDs are auto-incrementing.
      *

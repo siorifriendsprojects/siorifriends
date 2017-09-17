@@ -3,11 +3,9 @@
 namespace App\Siorifriends\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
-use Alsofronie\Uuid\Uuid32ModelTrait;
 
 class Favorite extends Model
 {
-    use Uuid32ModelTrait;
 
     /**
      * Indicates if the IDs are auto-incrementing.

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateBookTagsTable extends Migration
+class CreateBookTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateBookTagsTable extends Migration
      */
     public function up()
     {
-        Schema::create('book_tags', function (Blueprint $table) {
-            $table->char('id', 32)->primary();
+        Schema::create('book_tag', function (Blueprint $table) {
             $table->char('book_id', 32);
             $table->char('tag_id', 32);
 //            $table->timestamps();
 
-            // constraint
+            // constraints
+            $table->primary(['book_id', 'tag_id']);
             $table->foreign('book_id')->references('id')->on('books');
             $table->foreign('tag_id')->references('id')->on('tags');
         });
@@ -32,6 +32,6 @@ class CreateBookTagsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('book_tags');
+        Schema::dropIfExists('book_tag');
     }
 }

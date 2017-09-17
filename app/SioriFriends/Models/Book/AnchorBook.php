@@ -3,11 +3,15 @@
 namespace App\Siorifriends\Models\Book;
 
 use Illuminate\Database\Eloquent\Model;
-use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class BookAnchors extends Model
+class AnchorBook extends Model
 {
-    use Uuid32ModelTrait;
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'anchor_book';
 
     /**
      * Indicates if the IDs are auto-incrementing.
