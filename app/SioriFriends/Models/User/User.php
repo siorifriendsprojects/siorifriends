@@ -100,4 +100,14 @@ class User extends Authenticatable
             ->belongsToMany(Book::class)
             ->using(Favorite::class);
     }
+
+    /**
+     * 引数で渡されたユーザをフォローする。
+     *
+     * @param User $user
+     */
+    public function followFor(User $user): void
+    {
+        $this->followUsers()->save($user);
+    }
 }
