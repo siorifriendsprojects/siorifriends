@@ -105,6 +105,7 @@ class User extends Authenticatable
      * 引数で渡されたユーザをフォローする。
      *
      * @param User $user
+     * @return void
      */
     public function followFor(User $user): void
     {
