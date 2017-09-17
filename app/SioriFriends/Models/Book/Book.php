@@ -41,7 +41,9 @@ class Book extends Model
      */
     public function tags()
     {
-        return $this->belongsToMany(Tag::class);
+        return $this
+            ->belongsToMany(Tag::class)
+            ->using(BookTag::class);
     }
 
     /**
@@ -50,6 +52,8 @@ class Book extends Model
      */
     public function anchors()
     {
-        return $this->belongsToMany(Anchor::class);
+        return $this
+            ->belongsToMany(Anchor::class)
+            ->using(AnchorBook::class);
     }
 }

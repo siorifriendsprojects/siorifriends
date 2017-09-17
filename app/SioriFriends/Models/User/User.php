@@ -72,7 +72,9 @@ class User extends Authenticatable
      */
     public function followUsers()
     {
-        return $this->belongsToMany(User::class, 'follows', 'user_id', 'follow_id');
+        return $this
+            ->belongsToMany(User::class, 'follows', 'user_id', 'follow_id')
+            ->using(Follow::class);
     }
 
 
@@ -83,7 +85,9 @@ class User extends Authenticatable
      */
     public function followers()
     {
-        return $this->belongsToMany(self::class, 'follows', 'follow_id', 'user_id');
+        return $this
+            ->belongsToMany(self::class, 'follows', 'follow_id', 'user_id')
+            ->using(Follow::class);
     }
 
     /**
@@ -93,6 +97,8 @@ class User extends Authenticatable
      */
     public function favorites()
     {
-        return $this->belongsToMany(Book::class);
+        return $this
+            ->belongsToMany(Book::class)
+            ->using(Favorite::class);
     }
 }
