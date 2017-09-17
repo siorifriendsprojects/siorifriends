@@ -102,13 +102,24 @@ class User extends Authenticatable
     }
 
     /**
-     * 引数で渡されたユーザをフォローする。
+     * 引数で渡されたユーザIdのユーザをフォローする。
      *
-     * @param User $user
+     * @param string|array $userId id を一つ、または配列で複数指定する。
      * @return void
      */
-    public function followFor(User $user): void
+    public function followFor($userId): void
     {
-        $this->followUsers()->save($user);
+        $this->followUsers()->attach($userId);
+    }
+
+    /**
+     * 引数で渡されたユーザIdのユーザをフォローを解除する。
+     *
+     * @param string|array $userId
+     * @void
+     */
+    public function unFollowFor($userId): void
+    {
+        $this->followUsers()->detach($userId);
     }
 }
