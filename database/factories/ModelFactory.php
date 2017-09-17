@@ -16,6 +16,7 @@ $factory->define(App\Siorifriends\Models\User\User::class, function (Faker\Gener
     static $password;
 
     return [
+        'account' => $faker->unique()->name,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
