@@ -55,17 +55,6 @@ class User extends Authenticatable
     }
 
     /**
-     * ユーザが作成した本の一覧を取得する。
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function books()
-    {
-        return $this->hasMany(Book::class);
-    }
-
-
-    /**
      * フォローしているユーザの一覧を取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -88,6 +77,16 @@ class User extends Authenticatable
         return $this
             ->belongsToMany(self::class, 'follows', 'follow_id', 'user_id')
             ->using(Follow::class);
+    }
+
+    /**
+     * ユーザが作成した本の一覧を取得する。
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function books()
+    {
+        return $this->hasMany(Book::class);
     }
 
     /**
