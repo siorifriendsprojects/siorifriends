@@ -51,7 +51,7 @@ class UserController extends Controller
      {
         try{
             $user = User::where('account','=',$id)->firstOrFail();
-            return view('follow',['user' => $user,'followers' => $user->followers()->get()]);
+            return view('follower',['user' => $user,'followers' => $user->followers()->get()]);
         }catch(Exception $e) {
             return $e->getMessage();
         }
