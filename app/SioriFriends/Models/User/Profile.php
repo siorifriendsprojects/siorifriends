@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Infrastructure\Eloquents;
+namespace App\Siorifriends\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class BookAnchors extends Model
+class Profile extends Model
 {
     use Uuid32ModelTrait;
 
