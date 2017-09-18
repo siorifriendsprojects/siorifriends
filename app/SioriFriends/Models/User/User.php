@@ -3,9 +3,11 @@
 namespace App\Siorifriends\Models\User;
 
 use App\Siorifriends\Models\Book\Book;
+use App\Siorifriends\Models\User\Follow;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Alsofronie\Uuid\Uuid32ModelTrait;
+use Illuminate\Support\Facades\Auth;
 
 class User extends Authenticatable
 {
@@ -121,5 +123,20 @@ class User extends Authenticatable
     public function unFollowFor($userId): void
     {
         $this->followUsers()->detach($userId);
+    }
+
+    /**
+     * そのインスタンスが表すユーザを現在ログイン中のユーザがフォローしているかを返す
+     * なお、ログインしていない場合は必ずfalseを返す。
+     *
+     * @return bool フォロー状態。 フォローしていればtrue
+     */
+    public function isFollow(): bool
+    {
+        if(Auth::guest()){
+            return false;
+        }else{
+            return $this->followers()->where('id','=',Auth::id())->exists();
+        }
     }
 }
