@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Infrastructure\Eloquents;
+namespace App\Siorifriends\Models\Book;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
-class BookTags extends Model
+class Tag extends Model
 {
     use Uuid32ModelTrait;
 

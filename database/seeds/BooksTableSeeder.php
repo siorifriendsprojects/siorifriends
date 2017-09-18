@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Infrastructure\Eloquents\User;
-use App\Infrastructure\Eloquents\Book;
+use App\Siorifriends\Models\User\User;
+use App\SioriFriends\Models\Book\Book;
 
 class BooksTableSeeder extends Seeder
 {
