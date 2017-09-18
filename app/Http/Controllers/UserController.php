@@ -3,23 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Repository\UserRepositoryInterface;
 use App\Siorifriends\Models\User\User;
-use App\Follow;
+use App\Siorifriends\Models\User\Follow;
 
 class UserController extends Controller
 {
   
-    private $user_repository;
-
-    public function __construct(UserRepositoryInterface $repository)
-    {
-        $this->user_repository = $repository;
-    }
-
     public function index()
     {
-        return $this->user_repository->findAll()->toJson();
+        return User::all()->toJson();
     }
   
     /**
@@ -43,13 +35,10 @@ class UserController extends Controller
      {
         try{
             $user = User::where('account','=',$id)->firstOrFail();
-            $followUser = User::whereIn('id', Follow::select('follow_id')->where('user_id','=',$user->id)->get()->toArray() );
-
-            return view('follow',['user' => $user,'followUsers' => $followUser->get()]);            
+            return view('follow',['user' => $user,'followUsers' => $user->followUsers()->get()]);
         }catch(Exception $e) {
             return $e->getMessage();
         }
-//        return $followUser->get()->toArray();
      }
 
      /**
@@ -60,7 +49,12 @@ class UserController extends Controller
      */
      public function showFollower($id)
      {
-        return view('follower');        
+        try{
+            $user = User::where('account','=',$id)->firstOrFail();
+            return view('follow',['user' => $user,'followers' => $user->followers()->get()]);
+        }catch(Exception $e) {
+            return $e->getMessage();
+        }
      }
 
 }
