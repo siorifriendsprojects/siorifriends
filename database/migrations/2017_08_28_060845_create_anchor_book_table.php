@@ -17,7 +17,7 @@ class CreateAnchorBookTable extends Migration
             $table->char('book_id', 32);
             $table->char('anchor_id', 32);
             $table->string('name')->default('');
-//            $table->timestamps();
+            $table->timestampsTz();
 
             // constraints
             $table->primary(['book_id', 'anchor_id']);

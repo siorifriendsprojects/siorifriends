@@ -19,7 +19,7 @@ class CreateBooksTable extends Migration
             $table->string('title');
             $table->string('description');
             $table->boolean('is_publishing');
-//            $table->timestamps();
+            $table->timestampsTz();
 
             // constraint
             $table->foreign('user_id')->references('id')->on('users');
