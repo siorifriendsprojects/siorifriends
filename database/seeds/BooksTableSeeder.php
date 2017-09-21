@@ -14,14 +14,9 @@ class BooksTableSeeder extends Seeder
     public function run()
     {
         User::all()->each(function($user) {
-            collect(range(1, 10))->each(function($num) use ($user) {
-                Book::create([
-                    'user_id' => $user->id,
-                    'title'   => str_random(),
-                    'description' => str_random(),
-                    'is_publishing' => true,
-                ]);
-            });
+            factory(Book::class, 3)->create([
+                'user_id' => $user->id,
+            ]);
         });
     }
 }
