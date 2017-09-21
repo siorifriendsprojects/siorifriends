@@ -130,17 +130,13 @@ class User extends Authenticatable
     }
 
     /**
-     * そのインスタンスが表すユーザを現在ログイン中のユーザがフォローしているかを返す
-     * なお、ログインしていない場合は必ずfalseを返す。
+     * 引数で渡されたidのユーザをフォローしているかどうか
      *
+     * @param string $userId
      * @return bool フォロー状態。 フォローしていればtrue
      */
-    public function isFollow(): bool
+    public function isFollow(string $userId): bool
     {
-        if(Auth::guest()){
-            return false;
-        }else{
-            return $this->followers()->where('id','=',Auth::id())->exists();
-        }
+        return $this->followUsers()->where('id', $userId)->exists();
     }
 }

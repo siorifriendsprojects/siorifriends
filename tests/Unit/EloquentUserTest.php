@@ -50,4 +50,12 @@ class EloquentUserTest extends TestCase
             'follow_id' => $this->user->id,
         ]);
     }
+
+    public function testIsFollow()
+    {
+        $this->target->followFor($this->user->id);
+        $this->assertTrue($this->target->isFollow($this->user->id));
+        $this->target->unFollowFor($this->user->id);
+        $this->assertFalse($this->target->isFollow($this->user->id));
+    }
 }
