@@ -19,8 +19,46 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/template',function(){
-    return view('layouts.template');
+Route::get('/users',function(){
+    return view('users');
+});
+
+Route::get('/tags',function(){
+    return view('tags');
+});
+
+Route::get('/books',function(){
+    return view('books');
+});
+
+Route::get('/books/new',function(){
+    return view('create');
+});
+
+Route::get('/users/{id}','UserController@show');
+
+Route::get('/users/{id}/follow','UserController@showFollow');
+
+Route::get('/users/{id}/follower','UserController@showFollower');
+
+Route::get('/users/{id}/bookshelf',function(){
+    return view("bookshelf");
+});
+
+Route::get('/users/{id}/favorite',function(){
+    return view('favorite');
+});
+
+Route::get('/users/{id}/{bookid}',function(){
+    return view('book');
+});
+
+Route::get('/notifications',function(){
+    return view('notify');
+});
+
+Route::get('/search',function(){
+    return view('search');
 });
 
 Route::get('/settings',function(){
@@ -38,21 +76,3 @@ Route::get('/privacy',function(){
 Route::get('/help',function(){
     return view('help');
 });
-
-/*
-ここのまとまりより下には/{id}/から始まらないルーティングを追加しないでください。
-理由->/{id}/のルーティングが優先されて機能しないため
-*/
-Route::get('/{id}','UserController@show');
-
-Route::get('/{id}/bookshelf',function(){
-    return view("bookshelf");
-});
-
-Route::get('/{id}/books/{bookid}',function(){
-    return view("book");
-});
-
-Route::get('/{id}/follow','UserController@showFollow');
-
-Route::get('/{id}/follower','UserController@showFollower');
