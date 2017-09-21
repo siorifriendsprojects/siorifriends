@@ -18,8 +18,11 @@
             <input type="text" id="tag" class="form-control">
         </div>
         <div class="form-group">
-            <label for="R18"></label>
+            <label for="R18">Adults Only:</label>
             <input type="checkbox"  data-toggle="toggle" data-on="Enabled" data-off="Disabled">
+        </div>
+        <div class="form-group">
+            <label for=""></label>
         </div>
 
     </form>
