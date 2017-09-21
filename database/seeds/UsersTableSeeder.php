@@ -12,11 +12,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        User::create([
-            'account' => str_random(10),
-            'name'    => str_random(10),
-            'email'   => str_random(10) . '@gmail.com',
-            'password' => bcrypt('4423'),
-        ]);
+        factory(User::class)->create();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Siorifriends\Models\User;
 
 use App\Siorifriends\Models\Book\Book;
 use App\Siorifriends\Models\User\Follow;
+use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Alsofronie\Uuid\Uuid32ModelTrait;
@@ -44,7 +45,7 @@ class User extends Authenticatable
      *
      * @var bool
      */
-    public $timestamps   = false;
+//    public $timestamps   = false;
 
     /**
      * ユーザのプロフィールを取得する。
@@ -65,7 +66,8 @@ class User extends Authenticatable
     {
         return $this
             ->belongsToMany(User::class, 'follows', 'user_id', 'follow_id')
-            ->using(Follow::class);
+            ->using(Follow::class)
+            ->withPivot('created_at');
     }
 
 
@@ -78,7 +80,8 @@ class User extends Authenticatable
     {
         return $this
             ->belongsToMany(self::class, 'follows', 'follow_id', 'user_id')
-            ->using(Follow::class);
+            ->using(Follow::class)
+            ->withPivot('created_at');
     }
 
     /**
@@ -100,7 +103,8 @@ class User extends Authenticatable
     {
         return $this
             ->belongsToMany(Book::class)
-            ->using(Favorite::class);
+            ->using(Favorite::class)
+            ->withPivot('created_at');
     }
 
     /**

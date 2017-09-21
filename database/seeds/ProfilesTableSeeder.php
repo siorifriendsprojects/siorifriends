@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\Siorifriends\Models\User\User;
-use App\SioriFriends\Models\Book\Book;
+use App\Siorifriends\Models\User\Profile;
 
-class BooksTableSeeder extends Seeder
+class ProfilesTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,7 +14,7 @@ class BooksTableSeeder extends Seeder
     public function run()
     {
         User::all()->each(function($user) {
-            factory(Book::class, 3)->create([
+            factory(Profile::class)->create([
                 'user_id' => $user->id,
             ]);
         });

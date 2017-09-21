@@ -18,8 +18,7 @@ class CreateCommentsTable extends Migration
             $table->char('book_id', 32);
             $table->char('user_id', 32);
             $table->string('body');
-            $table->dateTime('created_at');
-//            $table->timestamps();
+            $table->timestampsTz();
 
             // constraint
             $table->foreign('book_id')->references('id')->on('books');

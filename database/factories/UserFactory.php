@@ -14,7 +14,7 @@ $factory->define(App\Siorifriends\Models\User\User::class, function (Faker\Gener
     $uuid = preg_replace('/-/', '', $faker->unique()->uuid);
     return [
         'id' => $uuid,
-        'account' => $faker->unique()->name,
+        'account' => $faker->unique()->firstName,
         'name' => $faker->name,
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),

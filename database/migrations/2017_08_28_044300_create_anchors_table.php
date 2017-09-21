@@ -18,7 +18,7 @@ class CreateAnchorsTable extends Migration
             $table->string('url')->unique();
             $table->string('default_name');
             $table->boolean('is_broken')->default(false);
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 
