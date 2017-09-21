@@ -20,9 +20,9 @@ class CreateProfilesTable extends Migration
             $table->string('intro');
             $table->date('birthday');
             $table->string('sex');
-            $table->string('twitter')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('instagram')->nullable();
+            $table->string('twitter')->default('');
+            $table->string('facebook')->default('');
+            $table->string('instagram')->default('');
 //            $table->timestamps();
 
             // constraint
