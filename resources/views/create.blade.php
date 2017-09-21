@@ -17,27 +17,17 @@
             <label for="tag">タグ:</label>
             <input type="text" id="tag" class="form-control">
         </div>
-        <div class="form-group">
-            <label for="Adults">１８歳未満への公開:</label>
-            <input type="checkbox"  data-toggle="toggle" data-on="Enabled" data-off="Disabled">
-        </div>
-        <div class="form-group">
-            <label for=""></label>
+        <label for="Adults">１８歳未満への公開設定:</label>
+        <div class="btn-group" data-toggle="buttons">
+            <label class="btn btn-default active">
+                <input type="radio" autocomplete="off" checked> 公開する
+            </label>
+            <label class="btn btn-default">
+                <input type="radio" autocomplete="off"> 公開しない
+            </label>
         </div>
 
     </form>
 </div>
-
-<script>
-  $(function() 
-  {
-    $('#toggle-two').bootstrapToggle(
-    {
-      on: 'Enabled',
-      off: 'Disabled'
-    });
-  })
-</script>
-
 
 @endsection
