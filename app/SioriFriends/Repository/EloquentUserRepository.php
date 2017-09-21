@@ -46,7 +46,7 @@ class EloquentUserRepository implements UserRepository
      */
     public function findById(string $userId): User
     {
-        return User::find($userId);
+        return User::findOrFail($userId);
     }
 
     /**
@@ -58,7 +58,7 @@ class EloquentUserRepository implements UserRepository
      */
     public function findByAccount(string $account): User
     {
-        return User::where('account', $account);
+        return User::where('account', $account)->firstOrFail();
     }
 
     /**
