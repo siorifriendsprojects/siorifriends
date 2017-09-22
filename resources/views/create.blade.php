@@ -4,20 +4,23 @@
 
 <div class="container">
     <form class="form-horizontal">
-
-        <div class="form-group">
+             <!-- タイトルのグループ -->
+        <div class="form-group">   
             <label for="title">タイトル:</label>
             <input type="text" id="title" class="form-control">
         </div>
-        <div class="form-group">
+            <!-- 概要のグループ -->
+        <div class="form-group">    
             <label for="description">概要:</label>
             <textarea id="description" class="form-control"></textarea>
         </div>
-        <div class="form-group">
+             <!-- タグのグループ -->
+        <div class="form-group">   
             <label for="tag">タグ:</label>
             <input type="text" id="tag" class="form-control">
         </div>
-        <label for="Adults">１８歳未満への公開設定:</label>
+              <!-- １８歳未満の公開設定 -->
+        <label for="Adults">１８歳未満への公開設定:</label> 
         <div class="btn-group" data-toggle="buttons">
             <label class="btn btn-default active">
                 <input type="radio" autocomplete="off" checked> 公開する
