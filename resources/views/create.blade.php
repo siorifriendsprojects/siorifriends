@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="container">
-    <form class="form-horizontal">
-             <!-- タイトルのグループ -->
+    <form class="form-horizontal col-xs-offset-1 col-xs-10">
+            <!-- タイトルのグループ -->
         <div class="form-group">   
             <label for="title">タイトル:</label>
             <input type="text" id="title" class="form-control">
@@ -14,12 +14,24 @@
             <label for="description">概要:</label>
             <textarea id="description" class="form-control"></textarea>
         </div>
-             <!-- タグのグループ -->
+            <!-- URL追加ページのグループ  -->
+        <div class="form-group">
+            <label for="addURL">内容の追加:</label>
+            <div class="">
+                <label for="title" class="h6">URL:</label>
+                <input type="text" id="cnt_url" class="form-control">
+                <label for="title" class="h6">タイトル:</label>
+                <input type="text" id="cnt_title" class="form-control">
+                
+            </div>
+        </div>
+
+            <!-- タグのグループ -->
         <div class="form-group">   
             <label for="tag">タグ:</label>
             <input type="text" id="tag" class="form-control">
         </div>
-              <!-- １８歳未満の公開設定 -->
+            <!-- １８歳未満の公開設定 -->
         <label for="Adults">１８歳未満への公開設定:</label> 
         <div class="btn-group" data-toggle="buttons">
             <label class="btn btn-default active">
