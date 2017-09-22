@@ -18,9 +18,9 @@
         <div class="form-group">
             <label for="addURL">内容の追加:</label>
             <div class="">
-                <label for="title" class="h6">URL:</label>
+                <label for="title" class="h6">URL</label>
                 <input type="text" id="cnt_url" class="form-control">
-                <label for="title" class="h6">タイトル:</label>
+                <label for="title" class="h6">タイトル</label>
                 <input type="text" id="cnt_title" class="form-control">
                 
             </div>
