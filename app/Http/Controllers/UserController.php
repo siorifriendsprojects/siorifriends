@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Siorifriends\Models\User\User;
-use App\Siorifriends\Models\User\Follow;
+use App\SioriFriends\Models\User\User;
+use App\SioriFriends\Models\User\Follow;
 
 class UserController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Siorifriends\Models\Book;
+namespace App\SioriFriends\Models\Book;
 
 use Illuminate\Database\Eloquent\Relations\Pivot;
 

@@ -6,7 +6,7 @@
  * Time: 0:07
  */
 
-namespace App\Siorifriends\Models\User;
+namespace App\SioriFriends\Models\User;
 
 
 class UserFactory

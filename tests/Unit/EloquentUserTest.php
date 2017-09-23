@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Siorifriends\Models\User\Follow;
-use App\Siorifriends\Models\User\User;
+use App\SioriFriends\Models\User\Follow;
+use App\SioriFriends\Models\User\User;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;

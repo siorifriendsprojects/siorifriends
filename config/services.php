@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => App\Siorifriends\Models\User\User::class,
+        'model' => App\SioriFriends\Models\User\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

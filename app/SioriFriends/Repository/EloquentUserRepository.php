@@ -6,10 +6,10 @@
  * Time: 11:42
  */
 
-namespace App\Siorifriends\Repository;
+namespace App\SioriFriends\Repository;
 
-use App\Siorifriends\Models\User\User;
-use App\Siorifriends\Models\User\UserRepository;
+use App\SioriFriends\Models\User\User;
+use App\SioriFriends\Models\User\UserRepository;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 

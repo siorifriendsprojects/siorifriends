@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Siorifriends\Models\User;
+namespace App\SioriFriends\Models\User;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;

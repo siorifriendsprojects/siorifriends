@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Siorifriends\Models\Book;
+namespace App\SioriFriends\Models\Book;
 
-use App\Siorifriends\Models\User\User;
+use App\SioriFriends\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
 
@@ -22,7 +22,7 @@ class Book extends Model
      *
      * @var bool
      */
-    public $timestamps   = false;
+//    public $timestamps   = false;
 
     /**
      *

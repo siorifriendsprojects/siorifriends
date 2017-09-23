@@ -38,7 +38,7 @@ Route::prefix('/users')->group(function() {
 
     Route::get('/{account}', 'UserController@show');
 
-    Route::get('/{account}/follow','UserController@showFollow');
+    Route::get('/{account}/follow','User.FollowController@showFollows');
 
     Route::get('/{account}/follower','UserController@showFollower');
 
