@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Siorifriends\Models\User;
+namespace App\SioriFriends\Models\User;
 
-use App\Siorifriends\Models\Book\Book;
-use App\Siorifriends\Models\User\Follow;
+use App\SioriFriends\Models\Book\Book;
+use App\SioriFriends\Models\User\Follow;
 use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

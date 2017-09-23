@@ -7,14 +7,14 @@
  */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-$factory->define(App\Siorifriends\Models\User\Profile::class, function (Faker\Generator $faker) {
+$factory->define(App\SioriFriends\Models\User\Profile::class, function (Faker\Generator $faker) {
 
     // 生成した uuid から, '-' を除去する。
     $uuid = preg_replace('/-/', '', $faker->unique()->uuid);
     return [
         'id' => $uuid,
         'user_id' => function() {
-            return factory(\App\Siorifriends\Models\User\User::class)->create()->id;
+            return factory(\App\SioriFriends\Models\User\User::class)->create()->id;
         },
         'icon_path' => $faker->file(),
         'birthday' => $faker->date(),

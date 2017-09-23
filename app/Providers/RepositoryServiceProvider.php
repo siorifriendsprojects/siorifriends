@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Siorifriends\Models\User\UserRepository;
-use App\Siorifriends\Repository\EloquentUserRepository;
+use App\SioriFriends\Models\User\UserRepository;
+use App\SioriFriends\Repository\EloquentUserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
