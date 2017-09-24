@@ -22,24 +22,29 @@
                 <input type="text" id="cnt_url" class="form-control">
                 <label for="title" class="h6">タイトル</label>
                 <input type="text" id="cnt_title" class="form-control">
-                
+                <button type="button" class="btn btn-default btn-circle pull-right"><i class="glyphicon glyphicon-triangle-bottom"></i></button>
             </div>
         </div>
-
             <!-- タグのグループ -->
         <div class="form-group">   
             <label for="tag">タグ:</label>
             <input type="text" id="tag" class="form-control">
         </div>
             <!-- １８歳未満の公開設定 -->
-        <label for="Adults">１８歳未満への公開設定:</label> 
-        <div class="btn-group" data-toggle="buttons">
-            <label class="btn btn-default active">
-                <input type="radio" autocomplete="off" checked> 公開する
-            </label>
-            <label class="btn btn-default">
-                <input type="radio" autocomplete="off"> 公開しない
-            </label>
+        <div class="form-group text-center">
+            <p class="pull-left"><label for="Adults">１８歳未満への公開設定:</label> </p>
+            <div class="btn-group text-center" data-toggle="buttons">
+                <label class="btn btn-default active">
+                    <input type="radio" autocomplete="off" checked> 公開する
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" autocomplete="off"> 公開しない
+                </label>
+            </div>
+        </div>
+            <!-- 確定ボタン -->
+        <div class="text-center">
+            <button class="btn btn-default">確定</button>
         </div>
 
     </form>
