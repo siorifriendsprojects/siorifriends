@@ -16,7 +16,9 @@ $factory->define(App\SioriFriends\Models\User\Profile::class, function (Faker\Ge
         'user_id' => function() {
             return factory(\App\SioriFriends\Models\User\User::class)->create()->id;
         },
-        'icon_path' => $faker->file('/img/icons', '/img/icons'),
+        'icon_path' => function(array $profile) {
+            return '/img/icons/' . $profile['user_id'] . '.jpg';
+        },
         'intro' => $faker->text(),
         'birthday' => $faker->date(),
         'gender' => $faker->randomElement(['男', '女', '鳥', '猫']),
