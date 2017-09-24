@@ -17,9 +17,9 @@ class CreateProfilesTable extends Migration
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
             $table->string('icon_path');
-            $table->string('intro');
+            $table->text('intro');
             $table->date('birthday');
-            $table->string('sex');
+            $table->string('gender');
             $table->string('twitter')->default('');
             $table->string('facebook')->default('');
             $table->string('instagram')->default('');
