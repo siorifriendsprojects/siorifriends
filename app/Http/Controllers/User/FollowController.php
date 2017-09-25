@@ -29,7 +29,7 @@ class FollowController extends Controller
     {
         try {
             $user = $this->users->findByAccount($account);
-            return view('follow', $func($user));
+            return view('user.follow', $func($user));
 
         } catch (ModelNotFoundException $exception) {
             abort(404, 'User not found.');
