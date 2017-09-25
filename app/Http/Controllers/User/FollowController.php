@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Exceptions\Handler;
 use App\Http\Controllers\Controller;
 use App\SioriFriends\Models\User\UserRepository;
+use App\SioriFriends\Models\User\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class FollowController extends Controller
@@ -15,31 +17,51 @@ class FollowController extends Controller
         $this->users = $userRepository;
     }
 
+
     /**
-     * @param string $account
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View|string
+     * follow page を返すメソッド。
+     *
+     * @param string $account ユーザのアカウント
+     * @param callable $func viewに渡すパラメータを返すcallback関数。
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showFollows(string $account)
+    private function showUsers(string $account, callable $func)
     {
         try {
             $user = $this->users->findByAccount($account);
-            return view('follow', [
-                'users' => $user->followUsers,
-            ]);
+            return view('follow', $func($user));
+
         } catch (ModelNotFoundException $exception) {
-            return $exception->getMessage();
+            abort(404, 'User not found.');
         }
     }
 
+
+    /**
+     * @param string $account
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showFollows(string $account)
+    {
+        return $this->showUsers($account, function(User $user) {
+            // follow.blade に渡すパラメータ
+            return [
+                'users' => $user->follows
+            ];
+        });
+    }
+
+    /**
+     * @param string $account
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function showFollowers(string $account)
     {
-        try {
-            $user = $this->users->findByAccount($account);
-            return view('follow', [
-                'users' => $user->followers,
-            ]);
-        } catch (ModelNotFoundException $exception) {
-            return $exception->getMessage();
-        }
+        return $this->showUsers($account, function(User $user) {
+            // follow.blade に渡すパラメータ
+            return [
+                'users' => $user->followers
+            ];
+        });
     }
 }
