@@ -62,7 +62,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function followUsers()
+    public function follows()
     {
         return $this
             ->belongsToMany(User::class, 'follows', 'user_id', 'follow_id')
@@ -115,7 +115,7 @@ class User extends Authenticatable
      */
     public function followFor($userId): void
     {
-        $this->followUsers()->attach($userId);
+        $this->follows()->attach($userId);
     }
 
     /**
@@ -126,7 +126,7 @@ class User extends Authenticatable
      */
     public function unFollowFor($userId): void
     {
-        $this->followUsers()->detach($userId);
+        $this->follows()->detach($userId);
     }
 
     /**
@@ -137,6 +137,6 @@ class User extends Authenticatable
      */
     public function isFollow(string $userId): bool
     {
-        return $this->followUsers()->where('id', $userId)->exists();
+        return $this->follows()->where('id', $userId)->exists();
     }
 }
