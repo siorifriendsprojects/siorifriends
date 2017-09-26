@@ -79,7 +79,7 @@ class User extends Authenticatable
     public function followers()
     {
         return $this
-            ->belongsToMany(self::class, 'follows', 'follow_id', 'user_id')
+            ->belongsToMany(User::class, 'follows', 'follow_id', 'user_id')
             ->using(Follow::class)
             ->withPivot('created_at');
     }
