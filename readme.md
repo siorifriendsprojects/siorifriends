@@ -29,25 +29,31 @@ $ docker exec -it laradock_workspace_1 /bin/bash
 ブラウザで`localhost` にアクセスする
 
 
-## database 関連
+## laradock.sh
 
-laradockの起動
-
-```
-cd .laradock
-docker-compose -d nginx phpmyadmin
-```
-
-### migration
-
-migration 実行
+### prepare
 
 ```
-$ docker exec -it laradock_workspace_1 php artisan migrate
+$ chmod 774 laradock.sh
 ```
 
-rollback 実行
+### how to use
+
+#### laradock の起動
 
 ```
-$ docker exec -it laradock_workspace_1 php artisan migrate:rollback
+$ ./laradock.sh up
+```
+
+#### laradock の終了
+
+```
+$ ./laradock.sh down
+```
+
+#### その他
+
+```
+$ ./laradock php artisan migrate
+$ ./laradock vendor/bin/phpunit
 ```
