@@ -6,7 +6,7 @@
  * Time: 11:42
  */
 
-namespace App\SioriFriends\Repository;
+namespace App\SioriFriends\Repositories;
 
 use App\SioriFriends\Models\User\User;
 use App\SioriFriends\Models\User\UserRepository;
