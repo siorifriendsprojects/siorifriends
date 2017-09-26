@@ -9,11 +9,15 @@
     @foreach ($users as $user)
         <div class="row list-padding-border">
             <div class="col-xs-3 col-xs-offset-1 list-padding">
-                <img src="/img/四葉栞_顔.png" alt="しおり" class="img-circle img-responsive img-icon" />
+                <img src="{{ asset($user->profile->icon_path) }}" alt="icon" class="img-circle img-responsive img-icon" />
             </div>
             <div class="col-xs-3 list-padding"><span>{{ $user->name }}</span>
                 <div class="row">
-                    <div class="col-xs-12"><span><a href="/{{ $user->account }}">{{ '@' . $user->account }}</a></span></div>
+                    <div class="col-xs-12">
+                        <span>
+                            <a href="{{ route('overview', ['account' => $user->account]) }}">{{ '@' }}{{ $user->account }}</a>
+                        </span>
+                    </div>
                 </div>
             </div>
 
