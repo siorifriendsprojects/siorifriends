@@ -18,6 +18,10 @@ body
     background-color : #f0ffe8;
 }
 
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
 
 .bg-white{
     background-color: white;
@@ -144,4 +148,15 @@ body span.bookuserID
         background-color : #fff;
         padding : 0.3em 0.7em 0.3em 0.7em;
         border-radius : 1em;
+}
+
+.sign
+{
+    position: absolute;
+    padding-right: 0px;
+}
+
+.ranking-list
+{
+    margin-top: 15px;
 }
