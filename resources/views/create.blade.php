@@ -45,6 +45,18 @@
                 </label>
             </div>
         </div>
+            <!-- コメントの許可設定 -->
+        <div class="form-group text-center">
+            <p class="pull-left"><label for="Adults">コメントの許可設定:</label></p>
+            <div class="btn-group text-center" data-toggle="buttons">
+                <label class="btn btn-default active">
+                    <input type="radio" autocomplete="off" checked> 許可する
+                </label>
+                <label class="btn btn-default">
+                    <input type="radio" autocomplete="off"> 許可しない
+                </label>
+            </div>
+        </div>
             <!-- 確定ボタン -->
         <div class="text-center">
             <button class="btn btn-default">確定</button>
