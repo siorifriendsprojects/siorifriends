@@ -12,7 +12,7 @@
             <!-- 概要のグループ -->
         <div class="form-group">    
             <label for="description">概要:</label>
-            <textarea id="description" class="form-control"></textarea>
+            <textarea id="description" class="form-control" style="resize : none;"></textarea>
         </div>
             <!-- URL追加ページのグループ  -->
         <div class="form-group" >
