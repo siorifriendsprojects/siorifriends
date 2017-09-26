@@ -36,7 +36,7 @@ Route::prefix('/users')->group(function() {
         return view('users');
     });
 
-    Route::get('/{account}', 'UserController@show')->name('overview');
+    Route::get('/{account}', 'User\ProfileController@show')->name('overview');
 
     Route::get('/{account}/follow','User\FollowController@showFollows');
 
