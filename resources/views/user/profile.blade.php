@@ -11,8 +11,11 @@
 	<div class="row">
 		<div class="col-xs-12"><img src="{{asset('img/doraemon_face.jpg')}}" width="80" height="80" alt="アイコン" class="img-circle center-block"></div>
 	</div>
-		<div class="col-xs-12  text-nowrap"><div class="col-xs-5 ">フォロー:121212</div> <div class="col-xs-5 ">フォロワー:2454545</div></div>
-	
+		<div class="col-xs-12  text-nowrap">
+            <div class="col-xs-5 ">フォロー:121212</div>
+            <div class="col-xs-5 ">フォロワー:2454545</div>
+        </div>
+
 	<div class="row">
 	</div>
 	
