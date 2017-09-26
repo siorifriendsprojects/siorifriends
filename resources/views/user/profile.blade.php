@@ -9,18 +9,19 @@
 	</div>
 	
 	<div class="row">
-		<div class="col-xs-12"><img src="{{asset('img/doraemon_face.jpg')}}" width="80" height="80" alt="アイコン" class="img-circle center-block"></div>
+		<div class="col-xs-12"><img src="{{ asset($user->profile->icon_path) }}" width="80" height="80" alt="icon" class="img-circle center-block"></div>
 	</div>
 		<div class="col-xs-12  text-nowrap">
-            <div class="col-xs-5 ">フォロー:121212</div>
-            <div class="col-xs-5 ">フォロワー:2454545</div>
+            <div class="col-xs-5 ">フォロー:{{ $user->follows()->count() }}</div>
+            <div class="col-xs-5 ">フォロワー:{{ $user->followers()->count() }}</div>
         </div>
 
 	<div class="row">
 	</div>
 	
 	<div class="row">
-		<div class="pr   col-xs-	col-xs-offset-3  " text align="left" >うわーーー！　うぇひひひひ　いひひひ　あははは　あははは　うぃひひひひ　あーはー！　うぉー！うわああああああああ！　しゃべったああああああああ！
+		<div class="pr col-xs- col-xs-offset-3" text-align="left">
+            {{ $user->profile->intro }}
 		</div>
 	</div>
   </div>
@@ -28,95 +29,38 @@
   <hr/>
   "本棚"
   <div class="col-xs-12 container">
-            <div class="col-xs-3 obj">
-                <div class="col-xs-12">
-                    <div class="book_shadow">
-                        <div class="book">
-                            <div class="booktitle_space">
-                            <span class="booktitle">世界の作り方</span>
-                            </div>
+      @foreach($user->books as $book)
+        <div class="col-xs-3 obj">
+            <div class="col-xs-12">
+                <div class="book_shadow">
+                    <div class="book">
+                        <div class="booktitle_space">
+                        <span class="booktitle">{{ $book->title }}</span>
                         </div>
                     </div>
                 </div>
-
-                <div class="col-xs-12">
-                    <div class="userback">
-                        <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
-                        </div>
-                    </div>
-                </div>     
             </div>
 
-            <div class="col-xs-3 obj">
-                <div class="col-xs-12">
-                    <div class="book_shadow">
-                        <div class="book">
-                            <div class="booktitle_space">
-                            <span class="booktitle">世界の作り方</span>
-                            </div>
-                        </div>
+            <div class="col-xs-12">
+                <div class="userback">
+                    <div class="bookuserID">
+                        <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->user->account }}</span>
                     </div>
                 </div>
-
-                <div class="col-xs-12">
-                    <div class="userback">
-                        <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
-                        </div>
-                    </div>
-                </div>     
-            </div>
-
-            <div class="col-xs-3 obj">
-                <div class="col-xs-12">
-                    <div class="book_shadow">
-                        <div class="book">
-                            <div class="booktitle_space">
-                            <span class="booktitle">世界の作り方</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12">
-                    <div class="userback">
-                        <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
-                        </div>
-                    </div>
-                </div>     
-            </div>
-
-            <div class="col-xs-3 obj">
-                <div class="col-xs-12">
-                    <div class="book_shadow">
-                        <div class="book">
-                            <div class="booktitle_space">
-                            <span class="booktitle">世界の作り方</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-xs-12">
-                    <div class="userback">
-                        <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
-                        </div>
-                    </div>
-                </div>     
             </div>
         </div>
+      @endforeach
+
   <hr/>
   "お気に入り"
   <div class="col-xs-12 container">
+      @foreach($user->favorites as $favoriteBook)
             <div class="col-xs-3 obj">
                 <div class="col-xs-12">
                     <div class="book_shadow">
                         <div class="book">
                             <div class="booktitle_space">
-                            <span class="booktitle">世界の作り方</span>
+                            <span class="booktitle">{{ $favoriteBook->title }}</span>
                             </div>
                         </div>
                     </div>
@@ -125,11 +69,12 @@
                 <div class="col-xs-12">
                     <div class="userback">
                         <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
+                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $favoriteBook->user->account }}</span>
                         </div>
                     </div>
-                </div>     
+                </div>
             </div>
+      @endforeach
         </div>
     </div>
 @endsection
