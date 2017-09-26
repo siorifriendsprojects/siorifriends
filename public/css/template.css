@@ -1,7 +1,6 @@
 body
 {
     width: 100%;
-
 }
 
 div.obj
@@ -43,7 +42,6 @@ div.booktitle_space
 
 body span.booktitle
 {
-
     text-align : justify;
     writing-mode : vertical-rl ;
     -webkit-writing-mode : vertical-rl ; 
@@ -71,7 +69,6 @@ body span.bookuserID
         border-radius : 1em;
 }
 
-
 /*
             <div class="col-xs-3 obj">
                 <div class="col-xs-12">
@@ -86,6 +83,4 @@ body span.bookuserID
                     </div>
                 </div>     
             </div>
-
-
 */
