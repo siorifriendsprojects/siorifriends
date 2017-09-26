@@ -22,4 +22,15 @@ class Profile extends Model
      * @var bool
      */
     public $timestamps   = false;
+
+
+    /**
+     * このプロファイルを持つユーザを返す。
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
