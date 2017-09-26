@@ -15,15 +15,17 @@
             <textarea id="description" class="form-control"></textarea>
         </div>
             <!-- URL追加ページのグループ  -->
-        <div class="form-group" id="url-group">
+        <div class="form-group" >
             <label for="addURL">内容の追加:</label>
-                <button type="button" class="btn btn-default btn-circle pull-right"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
-            <div class="lines-empty" id="cnt" >
-                <label for="title" class="h6">URL</label>
-                <input type="text" id="cnt_url" class="form-control">
-                <label for="title" class="h6">タイトル</label>
-                <input type="text" id="cnt_title" class="form-control">
+            <div id="url-group">
+                <div class="lines-empty" id="cnt" >
+                    <label for="title" class="h6">URL</label>
+                    <input type="text" id="cnt_url" class="form-control">
+                    <label for="title" class="h6">タイトル</label>
+                    <input type="text" id="cnt_title" class="form-control">
+                </div>
             </div>
+                <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
         </div>
 
             <!-- タグのグループ -->
