@@ -16,7 +16,7 @@
         </div>
             <!-- URL追加ページのグループ  -->
         <div class="form-group" >
-            <label for="addURL">内容の追加:</label>
+            <label for="addURL">リンクの追加:</label>
             <div id="url-group">
                 <div class="lines-empty" id="cnt" >
                     <label for="title" class="h6">URL</label>
