@@ -102,7 +102,7 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this
-            ->belongsToMany(Book::class)
+            ->belongsToMany(Book::class, 'favorites')
             ->using(Favorite::class)
             ->withPivot('created_at');
     }
