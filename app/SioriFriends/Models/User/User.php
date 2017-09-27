@@ -113,7 +113,7 @@ class User extends Authenticatable
      * @param string|array $userId id を一つ、または配列で複数指定する。
      * @return void
      */
-    public function following($userId): void
+    public function follow($userId): void
     {
         $this->follows()->attach($userId);
     }
