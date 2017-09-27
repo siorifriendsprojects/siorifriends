@@ -6,7 +6,7 @@
  * Time: 11:32
  */
 
-namespace App\Siorifriends\Models\User;
+namespace App\SioriFriends\Models\User;
 
 
 

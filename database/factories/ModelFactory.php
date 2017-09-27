@@ -12,7 +12,7 @@
 */
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
-//$factory->define(App\Siorifriends\Models\User\User::class, function (Faker\Generator $faker) {
+//$factory->define(App\SioriFriends\Models\User\User::class, function (Faker\Generator $faker) {
 //    static $password;
 //
 //    return [

@@ -1,9 +1,9 @@
 <?php
 
-namespace App\Siorifriends\Models\User;
+namespace App\SioriFriends\Models\User;
 
-use App\Siorifriends\Models\Book\Book;
-use App\Siorifriends\Models\User\Follow;
+use App\SioriFriends\Models\Book\Book;
+use App\SioriFriends\Models\User\Follow;
 use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -62,7 +62,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function followUsers()
+    public function follows()
     {
         return $this
             ->belongsToMany(User::class, 'follows', 'user_id', 'follow_id')
@@ -79,7 +79,7 @@ class User extends Authenticatable
     public function followers()
     {
         return $this
-            ->belongsToMany(self::class, 'follows', 'follow_id', 'user_id')
+            ->belongsToMany(User::class, 'follows', 'follow_id', 'user_id')
             ->using(Follow::class)
             ->withPivot('created_at');
     }
@@ -102,7 +102,7 @@ class User extends Authenticatable
     public function favorites()
     {
         return $this
-            ->belongsToMany(Book::class)
+            ->belongsToMany(Book::class, 'favorites')
             ->using(Favorite::class)
             ->withPivot('created_at');
     }
@@ -115,7 +115,7 @@ class User extends Authenticatable
      */
     public function followFor($userId): void
     {
-        $this->followUsers()->attach($userId);
+        $this->follows()->attach($userId);
     }
 
     /**
@@ -126,21 +126,17 @@ class User extends Authenticatable
      */
     public function unFollowFor($userId): void
     {
-        $this->followUsers()->detach($userId);
+        $this->follows()->detach($userId);
     }
 
     /**
-     * そのインスタンスが表すユーザを現在ログイン中のユーザがフォローしているかを返す
-     * なお、ログインしていない場合は必ずfalseを返す。
+     * 引数で渡されたidのユーザをフォローしているかどうか
      *
+     * @param string $userId
      * @return bool フォロー状態。 フォローしていればtrue
      */
-    public function isFollow(): bool
+    public function isFollow(string $userId): bool
     {
-        if(Auth::guest()){
-            return false;
-        }else{
-            return $this->followers()->where('id','=',Auth::id())->exists();
-        }
+        return $this->follows()->where('id', $userId)->exists();
     }
 }

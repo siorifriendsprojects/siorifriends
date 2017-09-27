@@ -2,8 +2,8 @@
 
 namespace Tests\Unit;
 
-use App\Siorifriends\Models\User\Follow;
-use App\Siorifriends\Models\User\User;
+use App\SioriFriends\Models\User\Follow;
+use App\SioriFriends\Models\User\User;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
@@ -49,5 +49,13 @@ class EloquentUserTest extends TestCase
             'user_id'   => $this->target->id,
             'follow_id' => $this->user->id,
         ]);
+    }
+
+    public function testIsFollow()
+    {
+        $this->target->followFor($this->user->id);
+        $this->assertTrue($this->target->isFollow($this->user->id));
+        $this->target->unFollowFor($this->user->id);
+        $this->assertFalse($this->target->isFollow($this->user->id));
     }
 }
