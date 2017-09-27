@@ -30,9 +30,9 @@ class EloquentUserTest extends TestCase
     /**
      * ユーザをフォローできるか
      */
-    public function testFollowFor()
+    public function testFollowing()
     {
-        $this->target->followFor($this->user->id);
+        $this->target->following($this->user->id);
 
         $this->assertDatabaseHas('follows', [
             'user_id'   => $this->target->id,
@@ -40,10 +40,10 @@ class EloquentUserTest extends TestCase
         ]);
     }
 
-    public function testUnFollowFor()
+    public function testUnFollow()
     {
-        $this->testFollowFor();
-        $this->target->unFollowFor($this->user->id);
+        $this->testFollowing();
+        $this->target->unFollow($this->user->id);
 
         $this->assertDatabaseMissing('follows', [
             'user_id'   => $this->target->id,
@@ -53,9 +53,9 @@ class EloquentUserTest extends TestCase
 
     public function testIsFollow()
     {
-        $this->target->followFor($this->user->id);
+        $this->target->following($this->user->id);
         $this->assertTrue($this->target->isFollow($this->user->id));
-        $this->target->unFollowFor($this->user->id);
+        $this->target->unFollow($this->user->id);
         $this->assertFalse($this->target->isFollow($this->user->id));
     }
 }

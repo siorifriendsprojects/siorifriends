@@ -16,7 +16,7 @@ class FollowsTableSeeder extends Seeder
         $users->each(function(User $user) use ($users) {
             foreach($users as $followedUser) {
                 if ($user->id !== $followedUser->id) {
-                    $user->followFor($followedUser);
+                    $user->following($followedUser);
                 }
             }
         });
