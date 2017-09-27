@@ -16,7 +16,7 @@ class CreateAnchorBookTable extends Migration
         Schema::create('anchor_book', function (Blueprint $table) {
             $table->char('book_id', 32);
             $table->char('anchor_id', 32);
-            $table->string('name')->default('');
+            $table->string('name');
             $table->timestampsTz();
 
             // constraints
