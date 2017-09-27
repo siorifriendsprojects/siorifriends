@@ -62,6 +62,26 @@ class Book extends Model
     }
 
     /**
+     * この本にタグを追加する。
+     *
+     * @param Tag $tag
+     */
+    public function addTag(Tag $tag): void
+    {
+        $this->tags()->attach($tag->id);
+    }
+
+    /**
+     * この本からタグを除去する。
+     *
+     * @param Tag $tag
+     */
+    public function removeTag(Tag $tag): void
+    {
+        $this->tags()->detach($tag->id);
+    }
+
+    /**
      * この本の link の一覧を取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
@@ -75,6 +95,26 @@ class Book extends Model
     }
 
     /**
+     * アンカーを追加する。
+     *
+     * @param Anchor $anchor
+     */
+    public function addAnchor(Anchor $anchor)
+    {
+        $this->anchors()->attach($anchor->id);
+    }
+
+    /**
+     * アンカーを除去する。
+     *
+     * @param Anchor $anchor
+     */
+    public function removeAnchor(Anchor $anchor)
+    {
+        $this->anchors()->detach($anchor->id);
+    }
+
+    /**
      * この本のコメントの一覧を取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -82,5 +122,21 @@ class Book extends Model
     public function comments()
     {
         return $this->hasMany(Comment::class);
+    }
+
+    /**
+     * この本にコメントを追加する。
+     *
+     * @param User $user
+     * @param string $comment
+     * @return Model 追加したコメントオブジェクト。
+     */
+    public function addComment(User $user, string $comment)
+    {
+        return $this->comments()->create([
+            'user_id' => $user->id,
+            'book_id' => $this->id,
+            'body' => $comment,
+        ]);
     }
 }
