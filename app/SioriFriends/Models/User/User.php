@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this
             ->belongsToMany(User::class, 'follows', 'user_id', 'follow_id')
             ->using(Follow::class)
-            ->withPivot('created_at');
+            ->withPivot(Follow::CREATED_AT);
     }
 
 
@@ -81,7 +81,7 @@ class User extends Authenticatable
         return $this
             ->belongsToMany(User::class, 'follows', 'follow_id', 'user_id')
             ->using(Follow::class)
-            ->withPivot('created_at');
+            ->withPivot(Follow::CREATED_AT);
     }
 
     /**
@@ -104,39 +104,41 @@ class User extends Authenticatable
         return $this
             ->belongsToMany(Book::class, 'favorites')
             ->using(Favorite::class)
-            ->withPivot('created_at');
+            ->withPivot(Favorite::CREATED_AT);
     }
 
     /**
-     * 引数で渡されたユーザIdのユーザをフォローする。
+     * ユーザをフォローする。
      *
-     * @param string|array $userId id を一つ、または配列で複数指定する。
+     * @param User $user
      * @return void
      */
-    public function followFor($userId): void
+    public function follow(User $user): void
     {
-        $this->follows()->attach($userId);
+        $this->follows()->attach($user->id);
     }
 
     /**
-     * 引数で渡されたユーザIdのユーザをフォローを解除する。
+     * ユーザのフォローを解除する。
      *
-     * @param string|array $userId
+     * @param User $user
      * @void
      */
-    public function unFollowFor($userId): void
+    public function unFollow(User $user): void
     {
-        $this->follows()->detach($userId);
+        $this->follows()->detach($user->id);
     }
 
     /**
-     * 引数で渡されたidのユーザをフォローしているかどうか
+     * ユーザをフォローしているかどうか
      *
-     * @param string $userId
-     * @return bool フォロー状態。 フォローしていればtrue
+     * @param User $user
+     * @return bool フォローしていればtrueを返す。
      */
-    public function isFollow(string $userId): bool
+    public function isFollow(User $user): bool
     {
-        return $this->follows()->where('id', $userId)->exists();
+        return $this->follows()
+            ->where('id', $user->id)
+            ->exists();
     }
 }

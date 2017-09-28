@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\SioriFriends\Models\User\User;
+use App\SioriFriends\Models\Book\Tag;
 
-class UsersTableSeeder extends Seeder
+class TagsTableSeeder extends Seeder
 {
     /** @var int どれだけ生成するか */
-    private const AMOUNT = 10;
+    private const AMOUNT = 15;
 
     /**
      * Run the database seeds.
@@ -15,6 +15,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class, self::AMOUNT)->create();
+        factory(Tag::class, self::AMOUNT)->create();
     }
 }
