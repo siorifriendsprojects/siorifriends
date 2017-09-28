@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this
             ->belongsToMany(User::class, 'follows', 'user_id', 'follow_id')
             ->using(Follow::class)
-            ->withPivot('created_at');
+            ->withPivot(Follow::CREATED_AT);
     }
 
 
@@ -81,7 +81,7 @@ class User extends Authenticatable
         return $this
             ->belongsToMany(User::class, 'follows', 'follow_id', 'user_id')
             ->using(Follow::class)
-            ->withPivot('created_at');
+            ->withPivot(Follow::CREATED_AT);
     }
 
     /**
@@ -104,7 +104,7 @@ class User extends Authenticatable
         return $this
             ->belongsToMany(Book::class, 'favorites')
             ->using(Favorite::class)
-            ->withPivot('created_at');
+            ->withPivot(Favorite::CREATED_AT);
     }
 
     /**

@@ -45,7 +45,7 @@ class Book extends Model
         return $this
             ->belongsToMany(User::class, 'favorites')
             ->using(Favorite::class)
-            ->withPivot('created_at');
+            ->withPivot(Favorite::CREATED_AT);
     }
 
     /**
@@ -58,7 +58,7 @@ class Book extends Model
         return $this
             ->belongsToMany(Tag::class)
             ->using(BookTag::class)
-            ->withPivot('created_at');
+            ->withPivot(BookTag::CREATED_AT);
     }
 
     /**
