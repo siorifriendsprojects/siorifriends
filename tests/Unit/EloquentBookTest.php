@@ -90,4 +90,10 @@ class EloquentBookTest extends TestCase
             'body' => $comment,
         ]);
     }
+
+    public function testAuthor()
+    {
+        $author = $this->target->author;
+        $this->assertNotNull($author);
+    }
 }
