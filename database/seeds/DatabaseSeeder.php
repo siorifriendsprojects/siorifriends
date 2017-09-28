@@ -16,7 +16,17 @@ class DatabaseSeeder extends Seeder
         });
 
         $this->call(ProfilesTableSeeder::class);
+
         $this->call(FollowsTableSeeder::class);
+
+        collect(range(1, 15))->each(function($number) {
+            $this->call(TagsTableSeeder::class);
+        });
+
+        collect(range(1, 100))->each(function($number) {
+            $this->call(AnchorsTableSeeder::class);
+        });
+
         $this->call(BooksTableSeeder::class);
     }
 }
