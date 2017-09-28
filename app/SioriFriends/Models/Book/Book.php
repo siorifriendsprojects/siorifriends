@@ -102,10 +102,13 @@ class Book extends Model
      * アンカーを追加する。
      *
      * @param Anchor $anchor
+     * @param string $name ユーザが任意で付けることができるアンカーの名前。
      */
-    public function addAnchor(Anchor $anchor)
+    public function addAnchor(Anchor $anchor, string $name = '')
     {
-        $this->anchors()->attach($anchor->id);
+        $this->anchors()->attach($anchor->id, [
+            'name' => $name,
+        ]);
     }
 
     /**
