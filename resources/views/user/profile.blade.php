@@ -44,7 +44,7 @@
             <div class="col-xs-12">
                 <div class="userback">
                     <div class="bookuserID">
-                        <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->user->account }}</span>
+                        <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->author->account }}</span>
                     </div>
                 </div>
             </div>
@@ -69,7 +69,7 @@
                 <div class="col-xs-12">
                     <div class="userback">
                         <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $favoriteBook->user->account }}</span>
+                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $favoriteBook->author->account }}</span>
                         </div>
                     </div>
                 </div>
