@@ -16,7 +16,7 @@ $factory->define(App\SioriFriends\Models\Book\Book::class, function (Faker\Gener
         'user_id' => function() {
             return factory(\App\SioriFriends\Models\User\User::class)->create()->id;
         },
-        'title' => $faker->title,
+        'title' => $faker->sentence,
         'description' => $faker->text,
         'is_publishing' => $faker->boolean(),
     ];
