@@ -15,4 +15,13 @@ class Comment extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id', 'book_id', 'body',
+    ];
 }
