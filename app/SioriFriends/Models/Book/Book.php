@@ -91,7 +91,11 @@ class Book extends Model
         return $this
             ->belongsToMany(Anchor::class)
             ->using(AnchorBook::class)
-            ->withPivot('created_at');
+            ->withPivot([
+                'name',
+                AnchorBook::CREATED_AT,
+                AnchorBook::UPDATED_AT,
+            ])->withTimestamps();
     }
 
     /**
