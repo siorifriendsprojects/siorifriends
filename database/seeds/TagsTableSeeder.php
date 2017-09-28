@@ -5,6 +5,9 @@ use App\SioriFriends\Models\Book\Tag;
 
 class TagsTableSeeder extends Seeder
 {
+    /** @var int どれだけ生成するか */
+    private const AMOUNT = 15;
+
     /**
      * Run the database seeds.
      *
@@ -12,6 +15,6 @@ class TagsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Tag::class)->create();
+        factory(Tag::class, self::AMOUNT)->create();
     }
 }

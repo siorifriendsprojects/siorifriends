@@ -5,6 +5,9 @@ use App\SioriFriends\Models\User\User;
 
 class UsersTableSeeder extends Seeder
 {
+    /** @var int どれだけ生成するか */
+    private const AMOUNT = 10;
+
     /**
      * Run the database seeds.
      *
@@ -12,6 +15,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(User::class)->create();
+        factory(User::class, self::AMOUNT)->create();
     }
 }

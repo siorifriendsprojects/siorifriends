@@ -11,22 +11,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        collect(range(1, 10))->each(function($number) {
-            $this->call(UsersTableSeeder::class);
-        });
-
+        $this->call(UsersTableSeeder::class);
         $this->call(ProfilesTableSeeder::class);
-
         $this->call(FollowsTableSeeder::class);
 
-        collect(range(1, 15))->each(function($number) {
-            $this->call(TagsTableSeeder::class);
-        });
-
-        collect(range(1, 100))->each(function($number) {
-            $this->call(AnchorsTableSeeder::class);
-        });
-
+        $this->call(TagsTableSeeder::class);
         $this->call(BooksTableSeeder::class);
+        $this->call(AnchorsTableSeeder::class);
+        $this->call(CommentsTableSeeder::class);
     }
 }
