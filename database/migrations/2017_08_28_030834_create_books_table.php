@@ -18,8 +18,8 @@ class CreateBooksTable extends Migration
             $table->char('user_id', 32);
             $table->string('title');
             $table->text('description');
-            $table->boolean('is_publishing');
-            $table->boolean('is_commentable');  
+            $table->boolean('is_publishing')->default(true);
+            $table->boolean('is_commentable')->default(true);
             $table->timestampsTz();
 
             // constraint
