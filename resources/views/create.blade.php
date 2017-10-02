@@ -3,12 +3,12 @@
 @section('content')
 
 <div class="container">
-    <div class="input-item col-xs-12">
+    <div class='col-xs-offset-1 col-xs-10' id='input-item'>
         <form class="form-horizontal col-xs-offset-1 col-xs-10">
                 <!-- タイトルのグループ -->
             <div class="form-group">   
                 <label for="title">タイトル:</label>
-                <input type="text" id="title" class="form-control" >
+                <input type="text" id="title" class="form-control">
             </div>
                 <!-- 概要のグループ -->
             <div class="form-group">    
@@ -58,27 +58,32 @@
                     </label>
                 </div>
             </div>
-                <!-- 確定ボタン -->
-            <div class="text-center">
-                <button class="btn btn-default">確定</button>
-            </div>
         </form>
+                <!-- 確認ボタン -->
+            <div class="text-center">
+                <button class="btn btn-default" id="confirmation">確認</button>
+            </div>
     </div>
     <!-- style="display: none;"  -->
-    <div class="check col-xs-offset-1 col-xs-10">
-        <p class="h6">タイトル</p>
-        <p class="h3" id ="check-title"></p>
-        <p class="h6">概要</p>
-        <p class="h3" id ="check-description"></p>
-        <div class="check-link">
-            
-        </div>
-        <p class="h6">タグ</p>
+    <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
+        <label class="check-h6">タイトル</label>
+        <div class="check-h3" id="check-title"></div>
+        <label class="check-h6">概要</label>
+        <p class="check-h3" id="check-description"></p>
+        <p class="check-h6">リンク</p>
+        <table class="table third" id=" check-link">
+             <tr>
+                <th>ABC</th>
+                <td>td01-01</td>
+            </tr>
+        </table>
+
+        <label class="check-h6">タグ</label>
         <div class="check-tag">
-            
+
         </div>
-        <p class="h6"></p>
-        <p class="h3"></p>
+        <label class="check-h6">公開設定</label>
+        <p class="check-h3"></p>
         <p></p>
     </div>
 </div>
@@ -90,6 +95,15 @@
         {
             $('#cnt').clone().appendTo('#url-group');
         });
+
+        $('#confirmation').on('click',function()
+        {
+            $('#check-title').text($('#title').val());
+            $('#check-description').text($('#description').val());
+            $('#input-item').toggle();
+            $('#check').toggle();
+        });
+
     });
 
 </script>

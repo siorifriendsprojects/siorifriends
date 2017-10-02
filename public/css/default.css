@@ -177,3 +177,56 @@ border-radius: 35px;
 {
     margin-top : 20px;
 }
+
+/* font-size  */
+.check-h3
+{
+    font-size : 1.5em;
+    margin-top : 0;
+    margin-bottom : 0; 
+}
+
+.check-h6
+{
+    font-size : 0.5em;
+    margin-top : 0;
+    margin-bottom : 0; 
+}
+
+    /* table設定 */
+
+table.third {
+  width: 100%;
+}
+@media only screen and (max-width: 640px) {
+  table.third tr {
+    display: block;
+    margin-bottom: 2em;
+    list-style:none;
+  }
+}
+table.third tr th {
+  padding: 7px,0,0,0;
+  background: #b4e09d;
+  color: #fff;
+  box-sizing: border-box;
+  
+}
+@media only screen and (max-width: 640px) {
+  table.third tr th {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+table.third tr td {
+  padding: 3px;
+  border: 1px solid #777;
+}
+@media only screen and (max-width: 640px) {
+  table.third tr td {
+    display: list-item;
+    border: 0;
+    margin-left: 2.5em;
+  }
+}
