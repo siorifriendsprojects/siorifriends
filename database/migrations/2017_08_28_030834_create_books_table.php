@@ -17,7 +17,7 @@ class CreateBooksTable extends Migration
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
             $table->string('title');
-            $table->string('description');
+            $table->text('description');
             $table->boolean('is_publishing');
             $table->timestampsTz();
 

@@ -19,10 +19,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/users',function(){
-    return view('users');
-});
-
 Route::get('/tags',function(){
     return view('tags');
 });
@@ -35,23 +31,30 @@ Route::get('/books/new',function(){
     return view('create');
 });
 
-Route::get('/users/{id}','UserController@show');
+Route::prefix('/users')->group(function() {
+    Route::get('/',function(){
+        return view('users');
+    });
 
-Route::get('/users/{id}/follow','UserController@showFollow');
+    Route::get('/{account}', 'User\ProfileController@show')->name('overview');
 
-Route::get('/users/{id}/follower','UserController@showFollower');
+    Route::get('/{account}/follow','User\FollowController@showFollows');
 
-Route::get('/users/{id}/bookshelf',function(){
-    return view("bookshelf");
+    Route::get('/{account}/follower','UserController@showFollower');
+
+    Route::get('/{account}/bookshelf',function(){
+        return view("bookshelf");
+    });
+
+    Route::get('/{account}/favorite',function(){
+        return view('favorite');
+    });
+
+    Route::get('/{account}/{bookId}',function(){
+        return view('book');
+    });
 });
 
-Route::get('/users/{id}/favorite',function(){
-    return view('favorite');
-});
-
-Route::get('/users/{id}/{bookid}',function(){
-    return view('book');
-});
 
 Route::get('/notifications',function(){
     return view('notify');

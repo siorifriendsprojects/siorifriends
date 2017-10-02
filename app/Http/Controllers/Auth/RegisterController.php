@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Siorifriends\Models\User\User;
+use App\SioriFriends\Models\User\User;
 use App\Http\Controllers\Controller;
-use App\Siorifriends\Models\User\UserFactory;
+use App\SioriFriends\Models\User\UserFactory;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 

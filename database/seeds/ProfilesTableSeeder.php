@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Siorifriends\Models\User\User;
-use App\Siorifriends\Models\User\Profile;
+use App\SioriFriends\Models\User\User;
+use App\SioriFriends\Models\User\Profile;
 
 class ProfilesTableSeeder extends Seeder
 {

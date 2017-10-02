@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Siorifriends\Models\Book;
+namespace App\SioriFriends\Models\Book;
 
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
@@ -15,4 +15,13 @@ class Comment extends Model
      * @var bool
      */
     public $incrementing = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'user_id', 'book_id', 'body',
+    ];
 }

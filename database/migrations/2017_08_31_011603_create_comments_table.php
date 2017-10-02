@@ -17,7 +17,7 @@ class CreateCommentsTable extends Migration
             $table->char('id', 32)->primary();
             $table->char('book_id', 32);
             $table->char('user_id', 32);
-            $table->string('body');
+            $table->text('body');
             $table->timestampsTz();
 
             // constraint

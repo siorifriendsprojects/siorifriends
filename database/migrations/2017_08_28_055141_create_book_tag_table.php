@@ -16,6 +16,7 @@ class CreateBookTagTable extends Migration
         Schema::create('book_tag', function (Blueprint $table) {
             $table->char('book_id', 32);
             $table->char('tag_id', 32);
+            $table->timestampTz('created_at');
 //            $table->timestamps();
 
             // constraints
