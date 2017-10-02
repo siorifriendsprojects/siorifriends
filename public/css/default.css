@@ -18,6 +18,11 @@ body
     background-color : #f0ffe8;
 }
 
+
+.bg-white{
+    background-color: white;
+}
+
 header.container-fluid{
     padding-left: 0px;
     padding-right: 0px;
