@@ -21,7 +21,7 @@ class EloquentBookRepository implements BookRepository
      *
      * @param Model $book
      */
-    public function add(Model $book)
+    public function add(Book $book)
     {
         $book->save();
     }
@@ -53,7 +53,7 @@ class EloquentBookRepository implements BookRepository
      *
      * @param Model $book
      */
-    public function save(Model $book)
+    public function save(Book $book)
     {
         $book->save();
     }
@@ -63,7 +63,7 @@ class EloquentBookRepository implements BookRepository
      *
      * @param Model $book
      */
-    public function remove(Model $book)
+    public function remove(Book $book)
     {
         $book->delete();
     }

@@ -17,9 +17,9 @@ interface BookRepository
 
     public function findById(string $bookId);
 
-    public function add(Model $book);
+    public function add(Book $book);
 
-    public function save(Model $book);
+    public function save(Book $book);
 
-    public function remove(Model $book);
+    public function remove(Book $book);
 }
