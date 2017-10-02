@@ -18,11 +18,6 @@ body
     background-color : #f0ffe8;
 }
 
-
-.bg-white{
-    background-color: white;
-}
-
 header.container-fluid{
     padding-left: 0px;
     padding-right: 0px;
@@ -79,8 +74,7 @@ header.container-fluid{
 /* ここから門地が作成したcss */
 
 
-  div.obj
-{
+  div.obj{
     position : relative;
     height : 300px;
     width : 110px;
@@ -88,8 +82,7 @@ header.container-fluid{
     margin-bottom : 15px;
 }
 
-div.book
-{
+div.book{
     position : relative;
     left : -1em;
     height : 250px;
@@ -100,8 +93,7 @@ div.book
     border-bottom-color : #000;
 }
 
-div.shadow
-{
+div.shadow{
     position : relative;
     top : 50em;
     height : 4px;
@@ -110,14 +102,12 @@ div.shadow
     opacity : 0.55;
 }
 
-div.booktitle_space
-{
+div.booktitle_space{
     position : relative;
     top : 1em;
 }
 
-body span.booktitle
-{
+body span.booktitle{
 
     text-align : justify;
     writing-mode : vertical-rl ;
@@ -126,8 +116,7 @@ body span.booktitle
     color : #000;
 }
 
-div.userback
-{
+div.userback{
     position :relative;
     top : 0.1em;
     left : -2em;
@@ -136,12 +125,93 @@ div.userback
     background-color : #ddffcc;
 }
 
-body span.bookuserID
-{
+body span.bookuserID{
         position : relative;
         top : 10px;
         left : 1.5em;
         background-color : #fff;
         padding : 0.3em 0.7em 0.3em 0.7em;
         border-radius : 1em;
+}
+
+/* 丸いボタンの追加 */
+.btn-circle {
+width: 30px;
+height: 30px;
+text-align: center;
+padding: 6px 0;
+font-size: 12px;
+line-height: 1.428571429;
+border-radius: 15px;
+}
+.btn-circle.btn-lg {
+width: 50px;
+height: 50px;
+padding: 10px 16px;
+font-size: 18px;
+line-height: 1.33;
+border-radius: 25px;
+}
+.btn-circle.btn-xl {
+width: 70px;
+height: 70px;
+padding: 10px 16px;
+font-size: 24px;
+line-height: 1.33;
+border-radius: 35px;
+}
+
+.lines-empty {
+    margin-top : 20px;
+}
+
+/* font-size  */
+.check-h3 {
+    font-size : 1.5em;
+    margin-top : 0;
+    margin-bottom : 0; 
+}
+
+.check-h6 {
+    font-size : 0.5em;
+    margin-top : 0;
+    margin-bottom : 0; 
+}
+
+    /* table設定 */
+
+table.third {
+  width: 100%;
+}
+@media only screen and (max-width: 640px) {
+  table.third tr {
+    display: block;
+    margin-bottom: 2em;
+    list-style:none;
+  }
+}
+table.third tr th {
+  padding: 7px,0,0,0;
+  background: #b4e09d;
+  color: #fff;
+  box-sizing: border-box;
+
+}
+@media only screen and (max-width: 640px) {
+  table.third tr th {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+table.third tr td {
+  padding: 3px;
+  border: 1px solid #777;
+}
+@media only screen and (max-width: 640px) {
+  table.third tr td {
+    display: list-item;
+    border: 0;
+    margin-left: 2.5em;
+  }
 }
