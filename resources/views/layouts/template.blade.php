@@ -77,5 +77,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/drawr.js') }}"></script>
+    <script src="{{ asset('js/moretext.js') }}"></script>
 </body>
 </html>

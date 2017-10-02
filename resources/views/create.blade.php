@@ -18,14 +18,23 @@
                 <!-- URL追加ページのグループ  -->
             <div class="form-group" >
                 <label for="addURL">リンクの追加:</label>
-                <div id="url-group">
-                    <div class="lines-empty" id="cnt" >
+                <div class="url-group">
+                    <div class="lines-empty cnt" >
                         <label for="title" class="h6">URL</label>
                         <input type="text" id="cnt_url" class="form-control">
                         <label for="title" class="h6">タイトル</label>
                         <input type="text" id="cnt_title" class="form-control">
                     </div>
                 </div>
+                <div hidden>
+                    <div class="lines-empty cnt">
+                        <label for="title" class="h6">URL</label>
+                        <input type="text" id="cnt_url" class="form-control">
+                        <label for="title" class="h6">タイトル</label>
+                        <input type="text" id="cnt_title" class="form-control">
+                    </div>
+                </div>
+
                     <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
             </div>
 
@@ -59,6 +68,7 @@
                 </div>
             </div>
         </form>
+      
                 <!-- 確認ボタン -->
             <div class="text-center">
                 <button class="btn btn-default" id="confirmation">確認</button>
@@ -69,10 +79,12 @@
         <label class="check-h6">タイトル</label>
         <div class="check-h3" id="check-title"></div>
         <label class="check-h6">概要</label>
-        <p class="check-h3" id="check-description"></p>
+        <div class="check-h3" id="check-description"></div>
         <p class="check-h6">リンク</p>
         <table class="table third" id=" check-link">
              <tr>
+                <th>ABC</th>
+                <td>td01-01</td>
                 <th>ABC</th>
                 <td>td01-01</td>
             </tr>
@@ -80,7 +92,7 @@
 
         <label class="check-h6">タグ</label>
         <div class="check-tag">
-
+            
         </div>
         <label class="check-h6">公開設定</label>
         <p class="check-h3"></p>
@@ -90,11 +102,13 @@
 
 <script>
     $(function()
-    {
+    {   
+
         $('#addcnt').on('click',function()
         {
-            $('#cnt').clone().appendTo('#url-group');
+            $('.cnt').last().clone().appendTo('.url-group');
         });
+
 
         $('#confirmation').on('click',function()
         {
@@ -102,8 +116,20 @@
             $('#check-description').text($('#description').val());
             $('#input-item').toggle();
             $('#check').toggle();
-        });
+            
+            $('#check-description').jTruncSubstr(
+            {
+            length: 30,            // 表示させる文字数
+            minTrail: 0,            // 省略文字の最低文字数
+            moreText: "もっと読む",  // 非表示部分を表示するリンクの文字列
+            lessText: "閉じる",       // 表示した後、再び非表示にするリンクの文字列
+            ellipsisText: "...",    // 続きがあることを表示するための文字列
+            moreAni: "fast",        // 表示時のアニメーション速度
+            lessAni: "fast"         // 非表示時のアニメーション速度
+            });  
+        }); 
 
+       
     });
 
 </script>
