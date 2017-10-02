@@ -5,6 +5,7 @@
 <div class="container">
     <div class='col-xs-offset-1 col-xs-10' id='input-item'>
         <form class="form-horizontal col-xs-offset-1 col-xs-10">
+            {{ csrf_field() }}
                 <!-- タイトルのグループ -->
             <div class="form-group">   
                 <label for="title">タイトル:</label>
@@ -41,7 +42,7 @@
                 <!-- タグのグループ -->
             <div class="form-group">   
                 <label for="tag">タグ:</label>
-                <input type="text" id="tag" class="form-control">
+                <input name="tags" id="tags" class="form-control" />
             </div>
                 <!-- １８歳未満の公開設定 -->
             <div class="form-group text-center">
@@ -101,9 +102,13 @@
 </div>
 
 <script>
+    $('#tags').tagsInput({
+        height : '40px',
+        width : '100%'
+    });
+    
     $(function()
     {   
-
         $('#addcnt').on('click',function()
         {
             $('.cnt').last().clone().appendTo('.url-group');
