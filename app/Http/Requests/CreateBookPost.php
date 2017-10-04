@@ -24,14 +24,15 @@ class CreateBookPost extends FormRequest
     public function rules()
     {
         return [
-            "book.title" => "string",
-            "book.description" => "string",
-            "book.is_publishing" => "sometimes|boolean",
-            "book.is_commentable" => "sometimes|boolean",
-            "book.tags" => "string",
-            "book.anchors" => "string",
-            "book.anchors.*.url" => "url",
-            "book.anchors.*.name" => "string"
+            'title' => 'required|string',
+            'description' => 'required|string',
+            'is_publishing' => 'sometimes|required|boolean',
+            'is_commentable' => 'sometimes|required|boolean',
+            'tags' => 'required|array',
+            'tags.*' => 'required|string',
+            'anchors' => 'required|array',
+            'anchors.*.url' => 'required|url',
+            'anchors.*.name' => 'required|string'
         ];
     }
 }
