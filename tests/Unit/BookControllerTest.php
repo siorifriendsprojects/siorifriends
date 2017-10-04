@@ -21,12 +21,11 @@ class BookControllerTest extends TestCase
     /**
      *
      *
-     */
     public function testCreate()
     {
         $user = \App\SioriFriends\Models\User\User::firstOrCreate(['account' => 'test','name' => 'test', 'email' => 'test@test.jp','password' => 'test']);
 
-        $response = $this->actingAs($user)->call('POST','/books/new',['book' => 
+        $response = $this->actingAs($user)->call('POST','/books/new',['book' =>
         '
         {
             title: "title",
@@ -43,4 +42,5 @@ class BookControllerTest extends TestCase
         $this->assertEquals("",$response->content());
 
     }
+    */
 }
