@@ -33,19 +33,19 @@ class BookController extends Controller
         $book->user_id = Auth::id();
         $book->title = $request->title;
         $book->description = $request->description;
-        $book->is_publishing = $request->input('book.is_publishing',true);
-        $book->is_commentable = $request->input('book.is_commentable',true);
+        $book->is_publishing = $request->input('is_publishing',true);
+        $book->is_commentable = $request->input('is_commentable',true);
         $book->save();
 
-        collect($request->input('book.anchors'))->each(function($item,$key){
-            $book->addAnchor(Anchor::firstOrCreate(['url' => $item->url]),$item->name);
+        collect($request->input('anchors'))->each(function($item) use ($book) {
+            $book->addAnchor(Anchor::firstOrCreate(['url' => $item->url]), $item->name);
         });
 
-        collect($request->input("book.tags"))->each(function($item,$key){
+        collect($request->input("tags"))->each(function($item) use ($book) {
             $book->addTag(Tag::firstOrCreate(['name' => $item]));
         });
 
-        return redirect('books/'+$book->id);
+        return redirect('books/' . $book->id);
     }
 
 }
