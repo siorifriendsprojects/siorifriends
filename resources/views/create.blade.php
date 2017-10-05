@@ -37,24 +37,24 @@
                 <!-- １８歳未満の公開設定 -->
             <div class="form-group text-center">
                 <p class="pull-left"><label for="Adults">１８歳未満への公開設定:</label> </p>
-                <div class="btn-group text-center" data-toggle="buttons">
+                <div class="btn-group text-center adult" data-toggle="buttons">
                     <label class="btn btn-default active">
-                        <input type="radio" autocomplete="off" checked> 公開する
+                        <input type="radio" name="is_adult" autocomplete="off" value=true checked> 公開する
                     </label>
                     <label class="btn btn-default">
-                        <input type="radio" autocomplete="off"> 公開しない
+                        <input type="radio" name="is_adult" autocomplete="off" value=false> 公開しない
                     </label>
                 </div>
             </div>
                 <!-- コメントの許可設定 -->
             <div class="form-group text-center">
-                <p class="pull-left"><label for="Adults">コメントの許可設定:</label></p>
-                <div class="btn-group text-center" data-toggle="buttons">
+                <p class="pull-left"><label for="Comment">コメントの許可設定:</label></p>
+                <div class="btn-group text-center commentable" data-toggle="buttons">
                     <label class="btn btn-default active">
-                        <input type="radio" autocomplete="off" checked> 許可する
+                        <input type="radio" name="is_commentable" autocomplete="off" value=true checked> 許可する
                     </label>
                     <label class="btn btn-default">
-                        <input type="radio" autocomplete="off"> 許可しない
+                        <input type="radio" name="is_commentable" autocomplete="off" value=false> 許可しない
                     </label>
                 </div>
             </div>
@@ -83,42 +83,7 @@
         <p></p>
     </div>
 </div>
-
 <script>
-    $('#tags').tagsInput({width:'auto'});
-    $(function()
-    {   
-        $('#addcnt').on('click',function()
-        {
-            $('.cnt').last().clone().appendTo('.url-group');
-            $('.cnt-title').last().val('');
-            $('.cnt-url').last().val('');
-        });
-        $('#confirmation').on('click',function()
-        {
-            var taggroup = $('#tags').val().split(',');
-            $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
-            $('#check-title').text($('#title').val());
-            $('#check-description').text($('#description').val());
-            $.each($('.cnt'),function()
-            {
-                if($(this).children('.cnt-title').val() !== "" && $(this).children('.cnt-url').val() !== "")
-                    $('.check-link').append("<th>"+$(this).children('.cnt-title').val()+"</th><td>"+$(this).children('.cnt-url').val()+"</td>");
-            });
-            $('#input-item').toggle();
-            $('#check').toggle();
-            $('#check-description').jTruncSubstr(
-            {
-            length: 30,            // 表示させる文字数
-            minTrail: 0,            // 省略文字の最低文字数
-            moreText: "もっと読む",  // 非表示部分を表示するリンクの文字列
-            lessText: "閉じる",       // 表示した後、再び非表示にするリンクの文字列
-            ellipsisText: "...",    // 続きがあることを表示するための文字列
-            moreAni: "fast",        // 表示時のアニメーション速度
-            lessAni: "fast"         // 非表示時のアニメーション速度
-            });  
-        }); 
-    });
+$('#tags').tagsInput({width:'auto'});
 </script>
-
 @endsection
