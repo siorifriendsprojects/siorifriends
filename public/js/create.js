@@ -1,3 +1,4 @@
+$('#tags').tagsInput({width:'auto'});
 $(function()
 {   
     var taggroup;

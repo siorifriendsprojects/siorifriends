@@ -23,7 +23,7 @@
                     <div class="lines-empty cnt" >
                         <label for="title" class="h6">URL</label>
                         <input type="text" class="form-control cnt-url">
-                        <label for="title" class="h6">タイトル</label>
+                        <label for="title" class="h6">リンクタイトル</label>
                         <input type="text" class="form-control cnt-title">
                     </div>
                 </div>
@@ -106,7 +106,5 @@
         </div>
     </div>
 </div>
-<script>
-$('#tags').tagsInput({width:'auto'});
-</script>
+<script src="{{ asset('js/create.js') }} "></script>
 @endsection

@@ -81,6 +81,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/drawr.js') }}"></script>
     <script src="{{ asset('js/moretext.js') }}"></script>
-    <script src="{{ asset('js/create.js') }} "></script>
 </body>
 </html>
