@@ -9,10 +9,10 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.tagsinput.min.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.tagsinput.js') }}"></script>
      <!-- Styles -->
     <link href="{{ asset('css/default.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hamburger.css') }}" rel="stylesheet">

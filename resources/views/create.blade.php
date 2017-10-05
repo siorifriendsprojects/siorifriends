@@ -2,6 +2,9 @@
 
 @section('content')
 
+<script>
+    
+</script>
 <div class="container">
     <div class='col-xs-offset-1 col-xs-10' id='input-item'>
         <form class="form-horizontal col-xs-offset-1 col-xs-10">
@@ -42,7 +45,7 @@
                 <!-- タグのグループ -->
             <div class="form-group">   
                 <label for="tag">タグ:</label>
-                <input name="tags" id="tags" class="form-control" />
+                <input type="text" id="tags" class="tags form-control" />
             </div>
                 <!-- １８歳未満の公開設定 -->
             <div class="form-group text-center">
@@ -102,11 +105,7 @@
 </div>
 
 <script>
-    $('#tags').tagsInput({
-        height : '40px',
-        width : '100%'
-    });
-    
+    $('#tags').tagsInput({width:'auto'});
     $(function()
     {   
         $('#addcnt').on('click',function()
@@ -117,11 +116,13 @@
 
         $('#confirmation').on('click',function()
         {
+            var taggroup = $('#tags').val().split(',');
+            $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
             $('#check-title').text($('#title').val());
             $('#check-description').text($('#description').val());
+            
             $('#input-item').toggle();
             $('#check').toggle();
-            
             $('#check-description').jTruncSubstr(
             {
             length: 30,            // 表示させる文字数
