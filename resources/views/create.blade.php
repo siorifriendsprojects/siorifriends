@@ -22,22 +22,13 @@
                 <div class="url-group">
                     <div class="lines-empty cnt" >
                         <label for="title" class="h6">URL</label>
-                        <input type="text" id="cnt_url" class="form-control">
+                        <input type="text" class="form-control cnt-url">
                         <label for="title" class="h6">タイトル</label>
-                        <input type="text" id="cnt_title" class="form-control">
+                        <input type="text" class="form-control cnt-title">
                     </div>
                 </div>
-                <div hidden>
-                    <div class="lines-empty cnt">
-                        <label for="title" class="h6">URL</label>
-                        <input type="text" id="cnt_url" class="form-control">
-                        <label for="title" class="h6">タイトル</label>
-                        <input type="text" id="cnt_title" class="form-control">
-                    </div>
-                </div>
-                    <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
+                <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
             </div>
-
                 <!-- タグのグループ -->
             <div class="form-group">   
                 <label for="tag">タグ:</label>
@@ -80,8 +71,8 @@
         <label class="check-h6">概要</label>
         <div class="check-h3" id="check-description"></div>
         <p class="check-h6">リンク</p>
-        <table class="table third" id=" check-link">
-             <tr>
+        <table class="table third">
+            <tr class="check-link">
             </tr>
         </table>
         <label class="check-h6">タグ</label>
@@ -100,14 +91,20 @@
         $('#addcnt').on('click',function()
         {
             $('.cnt').last().clone().appendTo('.url-group');
+            $('.cnt-title').last().val('');
+            $('.cnt-url').last().val('');
         });
-
         $('#confirmation').on('click',function()
         {
             var taggroup = $('#tags').val().split(',');
             $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
             $('#check-title').text($('#title').val());
             $('#check-description').text($('#description').val());
+            $.each($('.cnt'),function()
+            {
+                if($(this).children('.cnt-title').val() !== "" && $(this).children('.cnt-url').val() !== "")
+                    $('.check-link').append("<th>"+$(this).children('.cnt-title').val()+"</th><td>"+$(this).children('.cnt-url').val()+"</td>");
+            });
             $('#input-item').toggle();
             $('#check').toggle();
             $('#check-description').jTruncSubstr(
@@ -121,10 +118,7 @@
             lessAni: "fast"         // 非表示時のアニメーション速度
             });  
         }); 
-
-       
     });
-
 </script>
 
 @endsection
