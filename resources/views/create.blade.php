@@ -35,14 +35,13 @@
                         <input type="text" id="cnt_title" class="form-control">
                     </div>
                 </div>
-
                     <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
             </div>
 
                 <!-- タグのグループ -->
             <div class="form-group">   
                 <label for="tag">タグ:</label>
-                <input name="tags" id="tags" class="form-control" />
+                <input type="text" id="tags" class="tags form-control" />
             </div>
                 <!-- １８歳未満の公開設定 -->
             <div class="form-group text-center">
@@ -69,7 +68,6 @@
                 </div>
             </div>
         </form>
-      
                 <!-- 確認ボタン -->
             <div class="text-center">
                 <button class="btn btn-default" id="confirmation">確認</button>
@@ -84,16 +82,10 @@
         <p class="check-h6">リンク</p>
         <table class="table third" id=" check-link">
              <tr>
-                <th>ABC</th>
-                <td>td01-01</td>
-                <th>ABC</th>
-                <td>td01-01</td>
             </tr>
         </table>
-
         <label class="check-h6">タグ</label>
         <div class="check-tag">
-            
         </div>
         <label class="check-h6">公開設定</label>
         <p class="check-h3"></p>
@@ -102,11 +94,7 @@
 </div>
 
 <script>
-    $('#tags').tagsInput({
-        height : '40px',
-        width : '100%'
-    });
-    
+    $('#tags').tagsInput({width:'auto'});
     $(function()
     {   
         $('#addcnt').on('click',function()
@@ -114,14 +102,14 @@
             $('.cnt').last().clone().appendTo('.url-group');
         });
 
-
         $('#confirmation').on('click',function()
         {
+            var taggroup = $('#tags').val().split(',');
+            $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
             $('#check-title').text($('#title').val());
             $('#check-description').text($('#description').val());
             $('#input-item').toggle();
             $('#check').toggle();
-            
             $('#check-description').jTruncSubstr(
             {
             length: 30,            // 表示させる文字数
