@@ -9,23 +9,29 @@ $(function()
     });
     $('#confirmation').on('click',function()
     {
-        var adult = ($('.adult input[name=is_adult]:checked').val() == 'true') ? '公開する':'公開しない';
-        var comment = ($('.commentable input[name=is_commentable]:checked').val() == 'true') ? '許可する':'許可しない';
-        var publishing = ($('.publishing input[name=publishing]:checked').val() == 'true') ? '公開する':'公開しない';
-        taggroup = $('#tags').val().split(',');
-        $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
+        
+        //タイトルを確認画面へ書き込む処理
         $('#check-title').text($('#title').val());
+        //概要を確認画面へ書き込む処理
         $('#check-description').text($('#description').val());
-        
-        $('#adult').children('strong').text(adult);
-        $('#comment').children('strong').text(comment);
-        $('#publishing').children('strong').text(publishing);
-        
+        //リンクを確認画面へ書き込む処理
         $.each($('.cnt'),function()
         {
             if($(this).children('.cnt-title').val() !== "" && $(this).children('.cnt-url').val() !== "")
                 $('.check-link').append("<th>"+$(this).children('.cnt-title').val()+"</th><td>"+$(this).children('.cnt-url').val()+"</td>");
         });
+        //タグを確認画面へ書き込む処理
+        taggroup = $('#tags').val().split(',');
+        $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
+        
+        //公開設定を確認画面へ書き込む処理
+        var adult = ($('.adult input[name=is_adult]:checked').val() == 'true') ? '公開する':'公開しない';
+        var comment = ($('.commentable input[name=is_commentable]:checked').val() == 'true') ? '許可する':'許可しない';
+        var publishing = ($('.publishing input[name=publishing]:checked').val() == 'true') ? '公開する':'公開しない';
+        $('#adult').children('strong').text(adult);
+        $('#comment').children('strong').text(comment);
+        $('#publishing').children('strong').text(publishing);
+        
         $('#input-item').toggle();
         $('#check').toggle();
         $('#check-description').jTruncSubstr(
