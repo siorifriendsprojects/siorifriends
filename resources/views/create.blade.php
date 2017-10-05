@@ -36,7 +36,7 @@
             </div>
                 <!-- １８歳未満の公開設定 -->
             <div class="form-group text-center">
-                <p class="pull-left"><label for="Adults">１８歳未満への公開設定:</label> </p>
+                <p class="pull-left"><label for="Adults">１８歳未満公開設定:</label> </p>
                 <div class="btn-group text-center adult" data-toggle="buttons">
                     <label class="btn btn-default active">
                         <input type="radio" name="is_adult" autocomplete="off" value=true checked> 公開する
@@ -79,6 +79,12 @@
         <div class="check-tag">
         </div>
         <label class="check-h6">公開設定</label>
+        <div class="is-settings">
+            <label class="h6" name="adult">１８歳未満公開</label>
+            <p class="h5" id="adult"><strong></strong></p>
+            <label class="h6" name="commentable">コメントの許可設定</label>
+            <p class="h5" id="comment"><strong></strong></p>
+        </div>
         
         <div class="text-center">
                 <button class="btn btn-default" id="revision">修正</button>
