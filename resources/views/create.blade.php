@@ -79,8 +79,11 @@
         <div class="check-tag">
         </div>
         <label class="check-h6">公開設定</label>
-        <p class="check-h3"></p>
-        <p></p>
+        
+        <div class="text-center">
+                <button class="btn btn-default" id="revision">修正</button>
+                <button class="btn btn-default" id="push">作成</button>
+        </div>
     </div>
 </div>
 <script>

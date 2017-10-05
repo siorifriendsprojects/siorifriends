@@ -1,5 +1,6 @@
 $(function()
 {   
+    var taggroup;
     $('#addcnt').on('click',function()
     {
         $('.cnt').last().clone().appendTo('.url-group');
@@ -8,7 +9,7 @@ $(function()
     });
     $('#confirmation').on('click',function()
     {
-        var taggroup = $('#tags').val().split(',');
+        taggroup = $('#tags').val().split(',');
         $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
         $('#check-title').text($('#title').val());
         $('#check-description').text($('#description').val());
@@ -34,4 +35,13 @@ $(function()
         lessAni: "fast"         // 非表示時のアニメーション速度
         });  
     }); 
+
+    $('#revision').on('click',function()
+    {
+        taggroup = null;
+        $('.check-link').empty();
+        $('#input-item').toggle();
+        $('#check').toggle();
+
+    });
 });
