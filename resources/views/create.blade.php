@@ -2,9 +2,6 @@
 
 @section('content')
 
-<script>
-    
-</script>
 <div class="container">
     <div class='col-xs-offset-1 col-xs-10' id='input-item'>
         <form class="form-horizontal col-xs-offset-1 col-xs-10">
@@ -38,7 +35,6 @@
                         <input type="text" id="cnt_title" class="form-control">
                     </div>
                 </div>
-
                     <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
             </div>
 
@@ -72,7 +68,6 @@
                 </div>
             </div>
         </form>
-      
                 <!-- 確認ボタン -->
             <div class="text-center">
                 <button class="btn btn-default" id="confirmation">確認</button>
@@ -87,16 +82,10 @@
         <p class="check-h6">リンク</p>
         <table class="table third" id=" check-link">
              <tr>
-                <th>ABC</th>
-                <td>td01-01</td>
-                <th>ABC</th>
-                <td>td01-01</td>
             </tr>
         </table>
-
         <label class="check-h6">タグ</label>
         <div class="check-tag">
-            
         </div>
         <label class="check-h6">公開設定</label>
         <p class="check-h3"></p>
@@ -113,14 +102,12 @@
             $('.cnt').last().clone().appendTo('.url-group');
         });
 
-
         $('#confirmation').on('click',function()
         {
             var taggroup = $('#tags').val().split(',');
             $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
             $('#check-title').text($('#title').val());
             $('#check-description').text($('#description').val());
-            
             $('#input-item').toggle();
             $('#check').toggle();
             $('#check-description').jTruncSubstr(
