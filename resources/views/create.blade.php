@@ -76,7 +76,7 @@
                 <button class="btn btn-default" id="confirmation">確認</button>
             </div>
     </div>
-    <!-- style="display: none;"  -->
+    <!-- ここから確認画面  -->
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
         <label class="check-h6">タイトル</label>
         <div class="col-xs-offset-1 check-h3" id="check-title"></div>
