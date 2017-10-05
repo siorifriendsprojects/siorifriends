@@ -11,6 +11,7 @@ $(function()
     {
         var adult = ($('.adult input[name=is_adult]:checked').val() == 'true') ? '公開する':'公開しない';
         var comment = ($('.commentable input[name=is_commentable]:checked').val() == 'true') ? '許可する':'許可しない';
+        var publishing = ($('.publishing input[name=publishing]:checked').val() == 'true') ? '公開する':'公開しない';
         taggroup = $('#tags').val().split(',');
         $.each(taggroup,function(num,val){$('.check-tag').append("<p>",val,"</p>")});
         $('#check-title').text($('#title').val());
@@ -18,6 +19,7 @@ $(function()
         
         $('#adult').children('strong').text(adult);
         $('#comment').children('strong').text(comment);
+        $('#publishing').children('strong').text(publishing);
         
         $.each($('.cnt'),function()
         {

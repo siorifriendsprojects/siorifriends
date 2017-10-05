@@ -34,6 +34,18 @@
                 <label for="tag">タグ:</label>
                 <input type="text" id="tags" class="tags form-control" />
             </div>
+                <!-- 全体へ公開するか -->
+            <div class="form-group text-center">
+                <p class="pull-left"><label for="Comment">全体公開設定:</label></p>
+                <div class="btn-group text-center publishing" data-toggle="buttons">
+                    <label class="btn btn-default active">
+                        <input type="radio" name="is_publishing" autocomplete="off" value=true checked>公開する
+                    </label>
+                    <label class="btn btn-default">
+                        <input type="radio" name="is_publishing" autocomplete="off" value=false>公開しない
+                    </label>
+                </div>
+            </div>
                 <!-- １８歳未満の公開設定 -->
             <div class="form-group text-center">
                 <p class="pull-left"><label for="Adults">１８歳未満公開設定:</label> </p>
@@ -67,19 +79,21 @@
     <!-- style="display: none;"  -->
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
         <label class="check-h6">タイトル</label>
-        <div class="check-h3" id="check-title"></div>
+        <div class="col-xs-offset-1 check-h3" id="check-title"></div>
         <label class="check-h6">概要</label>
-        <div class="check-h3" id="check-description"></div>
-        <p class="check-h6">リンク</p>
-        <table class="table third">
+        <div class="col-xs-offset-1 check-h3" id="check-description"></div>
+        <p class="check-h6"><strong>リンク</strong></p>
+        <table class="col-xs-offset-1 table third">
             <tr class="check-link">
             </tr>
         </table>
         <label class="check-h6">タグ</label>
-        <div class="check-tag">
+        <div class="col-xs-offset-1 check-tag">
         </div>
         <label class="check-h6">公開設定</label>
-        <div class="is-settings">
+        <div class="is-settings col-xs-offset-1">
+            <label class="h6" name="publishing">全体公開</label>
+            <p class="h5" id="publishing"><strong></strong></p>            
             <label class="h6" name="adult">１８歳未満公開</label>
             <p class="h5" id="adult"><strong></strong></p>
             <label class="h6" name="commentable">コメントの許可設定</label>
