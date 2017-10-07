@@ -220,3 +220,8 @@ table.third tr td {
     margin-left: 2.5em;
   }
 }
+
+.btn-ghost {
+    background: transparent;
+    border-radius: 0;
+  }
