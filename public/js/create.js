@@ -20,7 +20,7 @@ $(function()
             $.each($('.cnt'),function()
             {
                 if($(this).children('.cnt-title').val() !== "" && $(this).children('.cnt-url').val() !== "")
-                    $('.check-link').append("<th class='check-lav'>"+$(this).children('.cnt-title').val()+"</th><td class='check-lav'>"+$(this).children('.cnt-url').val()+"</td>");
+                    $('.check-link').append("<th class='check-lav'>"+$(this).children('.cnt-title').val()+"</th><td class='check-url'>"+$(this).children('.cnt-url').val()+"</td>");
             });
             //タグを確認画面へ書き込む処理
             taggroup = $('#tags').val().split(',');

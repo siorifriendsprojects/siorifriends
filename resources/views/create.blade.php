@@ -78,26 +78,27 @@
     </div>
     <!-- ここから確認画面  -->
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
-        <div class="lines-empty">
+        <div class="lines-empty col-xs-12">
             <label class="check-cnt">タイトル</label>
             <div class="col-xs-offset-1 check-lav" id="check-title"></div>
         </div>
-        <div class="lines-empty">
+        <div class="lines-empty col-xs-12">
             <label class="check-cnt">概要</label>
             <div class="col-xs-offset-1 check-lav" id="check-description"></div>
         </div>
         
-        <div class="lines-empty">
+        <div class="lines-empty col-xs-12">
             <p class="check-cnt"><strong>リンク</strong></p>
-            <table class="table third">
-                <tr class="check-link">
-                </tr>
-            </table>
+                <table class="table third">
+                    <tr class="check-link"></tr>
+                </table>
         </div>
-                
-        <label class="check-cnt">タグ</label>
-        <div class="col-xs-offset-1 check-tag">
+        
+        <div class="lines-empty col-xs-12">
+            <label class="check-cnt">タグ</label>
+            <div class="col-xs-offset-1 col-xs-10 check-tag"></div>
         </div>
+
         <label class="check-cnt">公開設定</label>
         <div class="is-settings col-xs-offset-1 lines-empty">
             <div class="lines-empty">
