@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <title>{{ config('app.name') }}</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <!-- Styles -->
+    <link href="{{ asset('css/default.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/hamburger.css') }}" rel="stylesheet">
+    <style>
+        body{
+            text-align:center;
+        }
+    </style>
+</head>
+<body>
+    <header class="container-fluid">
+    <div class="row">
+        <div class="col-xs-1 icon-btn">
+            <button class="btn hum-btn">
+                <span class="glyphicon glyphicon-align-justify"></span>
+                <span class="glyphicon glyphicon-remove" style="display:none;color:white;"></span>
+            </button>
+            <nav class="drawr">
+                <div class="row">
+                    <div class="col-xs-offset-5">
+                        <img src="{{ asset('img/siori_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
+                    </div>
+                    <div class="col-xs-12" style="color:white;text-align:center;">
+                    @if(Auth::guest())
+                        User name<br>
+                        account ID
+                    @else
+                        {{Auth::user()->name}}<br>
+                        {{"@".Auth::user()->account}}
+                    @endif
+                    </div>
+                </div>   
+                <ul id="menu">
+                    <li><a href="#">本棚</a></li>
+                    <li><a href="#">お気に入り</a></li>
+                    <li><a href="#">設定</a></li>
+                    <li><a href="#">ヘルプ</a></li>
+                    <li><a href="#">ログアウト</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-xs-2" style="height:50px;padding-right:0px;">
+            <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
+        </div>
+        <div class="col-xs-6 logo-btn" style="padding-left:0px;">
+            <button class="btn" style="padding-left:0px;background-color:#f0ffe8;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
+        </div>
+        <div class="col-xs-3" id="sn-icon" style="padding-left:0px;height:50px;">
+            <div class="row">
+                <!--<button class="btn btn-xs sign-button" style="background-color:#f0ffe8;">sign up</button><br> -->
+                <!-- <button class="btn btn-xs sign-button" style="background-color:#f0ffe8;">sign in</button> -->
+                <a style="background-color:#f0ffe8;">sign up</a><br>
+                <a style="background-color:#f0ffe8;">sign in</a>
+                </div>
+        </div>
+    </header>
+    <main>
+    @yield('content')
+    </main>
+    <footer></footer>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/drawr.js') }}"></script>
+    <script src="{{ asset('js/style.js') }}"></script>
+    <script src="{{ asset('js/textOverflowEllipsis.js') }}"></script>
+</body>
+</html>

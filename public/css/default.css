@@ -13,14 +13,19 @@
 .row-50 >div{ padding-right:25px;  padding-left:25px}
 
 
-body
-{
+body{
     background-color : #f0ffe8;
 }
 
 
 .bg-white{
     background-color: white;
+}
+
+hr.my-hr{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-top: 1px solid gray;
 }
 
 header.container-fluid{
@@ -69,12 +74,12 @@ header.container-fluid{
     bottom: 0;
 }
 
-/* overflow:hidden、heightは必ず指定する */
-.textOverflowTest4 {
+/* overflow:hidden、heightは必ず指定する 
+.textOverflow {
     overflow: hidden;
     height: 60px;
-    background: #eee;
-  }
+}
+*/
 
 /* ここから門地が作成したcss */
 
