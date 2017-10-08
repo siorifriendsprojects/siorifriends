@@ -29,7 +29,7 @@ $(function()
             //公開設定を確認画面へ書き込む処理
             var adult = ($('.adult input[name=is_adult]:checked').val() == 'true') ? '公開する':'公開しない';
             var comment = ($('.commentable input[name=is_commentable]:checked').val() == 'true') ? '許可する':'許可しない';
-            var publishing = ($('.publishing input[name=publishing]:checked').val() == 'true') ? '公開する':'公開しない';
+            var publishing = ($('.publishing input[name=is_publishing]:checked').val() == 'true') ? '公開する':'公開しない';
             $('#adult').children('strong').text(adult);
             $('#comment').children('strong').text(comment);
             $('#publishing').children('strong').text(publishing);

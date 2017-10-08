@@ -78,26 +78,32 @@
     </div>
     <!-- ここから確認画面  -->
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
-        <label class="check-h6">タイトル</label>
-        <div class="col-xs-offset-1 check-h3" id="check-title"></div>
-        <label class="check-h6">概要</label>
-        <div class="col-xs-offset-1 check-h3" id="check-description"></div>
-        <p class="check-h6"><strong>リンク</strong></p>
+        <label class="check-cnt">タイトル</label>
+        <div class="col-xs-offset-1 check-lav" id="check-title"></div>
+        <label class="check-cnt">概要</label>
+        <div class="col-xs-offset-1 check-lav" id="check-description"></div>
+        <p class="check-cnt"><strong>リンク</strong></p>
         <table class="col-xs-offset-1 table third">
             <tr class="check-link">
             </tr>
         </table>
-        <label class="check-h6">タグ</label>
+        <label class="check-cnt">タグ</label>
         <div class="col-xs-offset-1 check-tag">
         </div>
-        <label class="check-h6">公開設定</label>
-        <div class="is-settings col-xs-offset-1">
-            <label class="h6" name="publishing">全体公開</label>
-            <p class="h5" id="publishing"><strong></strong></p>            
-            <label class="h6" name="adult">１８歳未満公開</label>
-            <p class="h5" id="adult"><strong></strong></p>
-            <label class="h6" name="commentable">コメントの許可設定</label>
-            <p class="h5" id="comment"><strong></strong></p>
+        <label class="check-cnt">公開設定</label>
+        <div class="is-settings col-xs-offset-1 lines-empty">
+            <div class="lines-empty">
+                <label class="check-cnt" name="publishing">全体公開</label>
+                <p class="check-lav" id="publishing"><strong></strong></p>            
+            </div>
+            <div class="lines-empty">
+                <label class="check-cnt" name="adult">１８歳未満公開</label>
+                <p class="check-lav" id="adult"><strong></strong></p>
+            </div>
+            <div class="lines-empty">
+                <label class="check-cnt" name="commentable">コメントの許可設定</label>
+                <p class="check-lav" id="comment"><strong></strong></p>
+            </div>
         </div>
         
         <div class="text-center">
