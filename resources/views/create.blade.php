@@ -80,11 +80,11 @@
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
         <div class="lines-empty col-xs-12">
             <label class="check-cnt">タイトル</label>
-            <div class="col-xs-offset-1 check-lav" id="check-title"></div>
+            <div class="col-xs-offset-1 col-xs-11 check-lav" id="check-title"></div>
         </div>
         <div class="lines-empty col-xs-12">
             <label class="check-cnt">概要</label>
-            <div class="col-xs-offset-1 check-lav" id="check-description"></div>
+            <div class="col-xs-offset-1 col-xs-11 check-lav" id="check-description"></div>
         </div>
         
         <div class="lines-empty col-xs-12">
@@ -96,7 +96,7 @@
         
         <div class="lines-empty col-xs-12">
             <label class="check-cnt">タグ</label>
-            <div class="col-xs-offset-1 col-xs-10 check-tag"></div>
+            <div class="col-xs-offset-1 col-xs-11 check-tag"></div>
         </div>
 
         <label class="check-cnt">公開設定</label>
