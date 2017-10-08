@@ -78,15 +78,23 @@
     </div>
     <!-- ここから確認画面  -->
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
-        <label class="check-cnt">タイトル</label>
-        <div class="col-xs-offset-1 check-lav" id="check-title"></div>
-        <label class="check-cnt">概要</label>
-        <div class="col-xs-offset-1 check-lav" id="check-description"></div>
-        <p class="check-cnt"><strong>リンク</strong></p>
-        <table class="col-xs-offset-1 table third">
-            <tr class="check-link">
-            </tr>
-        </table>
+        <div class="lines-empty">
+            <label class="check-cnt">タイトル</label>
+            <div class="col-xs-offset-1 check-lav" id="check-title"></div>
+        </div>
+        <div class="lines-empty">
+            <label class="check-cnt">概要</label>
+            <div class="col-xs-offset-1 check-lav" id="check-description"></div>
+        </div>
+        
+        <div class="lines-empty">
+            <p class="check-cnt"><strong>リンク</strong></p>
+            <table class="table third">
+                <tr class="check-link">
+                </tr>
+            </table>
+        </div>
+                
         <label class="check-cnt">タグ</label>
         <div class="col-xs-offset-1 check-tag">
         </div>

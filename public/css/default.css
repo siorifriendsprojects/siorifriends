@@ -217,7 +217,7 @@ table.third tr td {
   table.third tr td {
     display: list-item;
     border: 0;
-    margin-left: 2.5em;
+    margin-left: 0.5em;
   }
 }
 
