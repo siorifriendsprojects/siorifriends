@@ -27,14 +27,14 @@ Route::prefix('/books')->group(function(){
     Route::get('/',function(){
         return view('books');
     });
-
-    Route::get('/{id}','BookController@show');
     
     Route::get('/new',function(){
         return view('create');
     });    
 
     Route::post('/new','BookController@create');
+
+    Route::get('/{id}','BookController@show');    
 });
 
 Route::prefix('/users')->group(function() {
