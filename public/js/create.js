@@ -1,7 +1,11 @@
 $('#tags').tagsInput({width:'auto'});
+$('#title').val("s");
+$('#description').val("s");
+
 $(function()
 {   
     var taggroup;
+
     $('#addcnt').on('click',function()
     {
         $('.cnt').last().clone().appendTo('.url-group');
@@ -20,7 +24,17 @@ $(function()
             $.each($('.cnt'),function()
             {
                 if($(this).children('.cnt-title').val() !== "" && $(this).children('.cnt-url').val() !== "")
-                    $('.check-link').append("<th>"+$(this).children('.cnt-title').val()+"</th><td>"+$(this).children('.cnt-url').val()+"</td>");
+                    $('.check-link').append("<th class='check-lav'>"+$(this).children('.cnt-title').val()+"</th>" + 
+                                            "<td class='check-url'>"+$(this).children('.cnt-url').val()+"</td>");
+
+                else if($(this).children('.cnt-title').val() == "" && $(this).children('.cnt-url').val() !== "") 
+                {
+                    $('.check-link').append("<th class='check-lav'>タイトル未入力</th><td class='check-url'>"+$(this).children('.cnt-url').val()+"</td>");                    
+                }
+                else if($(this).children('.cnt-url').val() == "" && $(this).children('.cnt-title').val() !== "")
+                { 
+                    $('.check-link').append("<th class='check-lav'>"+$(this).children('.cnt-title').val()+"</th><td class='check-url'>URL未入力</td>");
+                }
             });
             //タグを確認画面へ書き込む処理
             taggroup = $('#tags').val().split(',');
@@ -29,10 +43,10 @@ $(function()
             //公開設定を確認画面へ書き込む処理
             var adult = ($('.adult input[name=is_adult]:checked').val() == 'true') ? '公開する':'公開しない';
             var comment = ($('.commentable input[name=is_commentable]:checked').val() == 'true') ? '許可する':'許可しない';
-            var publishing = ($('.publishing input[name=publishing]:checked').val() == 'true') ? '公開する':'公開しない';
-            $('#adult').children('strong').text(adult);
-            $('#comment').children('strong').text(comment);
-            $('#publishing').children('strong').text(publishing);
+            var publishing = ($('.publishing input[name=is_publishing]:checked').val() == 'true') ? '公開する':'公開しない';
+            $('#adult').text(adult);
+            $('#comment').text(comment);
+            $('#publishing').text(publishing);
             
             $('#input-item').toggle();
             $('#check').toggle();
@@ -57,4 +71,55 @@ $(function()
         $('#check').toggle();
 
     });
+    
+    $('#create').on('click',function()
+    {
+        var myRet = confirm("本を作成します、よろしいですか？");
+        if ( myRet == true )
+        {
+            
+            var anchors = [];
+            $('.cnt').each(function()
+            {
+                anchors.push(
+                {
+                    name : $(this).children('.cnt-title').val(),
+                    url : $(this).children('.cnt-url').val()
+                });
+            });
+
+            $.ajax(
+            {
+                type : 'POST',
+                url : '/books/new',
+                dataType : 'json',
+                data : 
+                {
+                    title : $('#title').val(),
+                    description : $('#description').val(),
+                    tag : taggroup,
+                    anchors : anchors
+                },
+                contentType : 'application/json'
+            })
+            
+            .done(function(res)
+            {
+                if(res.hasCreated)
+                {   
+
+                }
+                else
+                {
+                    alert("本の作成に失敗しました");
+                    taggroup = null;
+                    $('.check-link').empty();
+                    $('#input-item').toggle();
+                    $('#check').toggle();
+                }
+            });
+        }          
+    
+    });
+    
 });

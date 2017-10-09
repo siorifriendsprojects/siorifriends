@@ -21,10 +21,10 @@
                 <label for="addURL">リンクの追加:</label>
                 <div class="url-group">
                     <div class="lines-empty cnt" >
-                        <label for="title" class="h6">URL</label>
-                        <input type="text" class="form-control cnt-url">
                         <label for="title" class="h6">リンクタイトル</label>
                         <input type="text" class="form-control cnt-title">
+                        <label for="title" class="h6">URL</label>
+                        <input type="text" class="form-control cnt-url">
                     </div>
                 </div>
                 <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
@@ -78,31 +78,46 @@
     </div>
     <!-- ここから確認画面  -->
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
-        <label class="check-h6">タイトル</label>
-        <div class="col-xs-offset-1 check-h3" id="check-title"></div>
-        <label class="check-h6">概要</label>
-        <div class="col-xs-offset-1 check-h3" id="check-description"></div>
-        <p class="check-h6"><strong>リンク</strong></p>
-        <table class="col-xs-offset-1 table third">
-            <tr class="check-link">
-            </tr>
-        </table>
-        <label class="check-h6">タグ</label>
-        <div class="col-xs-offset-1 check-tag">
+        <div class="lines-empty col-xs-12">
+            <label class="check-cnt">タイトル</label>
+            <div class="col-xs-offset-1 col-xs-11 check-lav" id="check-title"></div>
         </div>
-        <label class="check-h6">公開設定</label>
-        <div class="is-settings col-xs-offset-1">
-            <label class="h6" name="publishing">全体公開</label>
-            <p class="h5" id="publishing"><strong></strong></p>            
-            <label class="h6" name="adult">１８歳未満公開</label>
-            <p class="h5" id="adult"><strong></strong></p>
-            <label class="h6" name="commentable">コメントの許可設定</label>
-            <p class="h5" id="comment"><strong></strong></p>
+        <div class="lines-empty col-xs-12">
+            <label class="check-cnt">概要</label>
+            <div class="col-xs-offset-1 col-xs-11 check-lav" id="check-description"></div>
+        </div>
+        
+        <div class="lines-empty col-xs-12">
+            <p class="check-cnt"><strong>リンク</strong></p>
+                <table class="table third">
+                    <tr class="check-link"></tr>
+                </table>
+        </div>
+        
+        <div class="lines-empty col-xs-12">
+            <label class="check-cnt">タグ</label>
+            <div class="col-xs-offset-1 col-xs-11 check-tag"></div>
+        </div>
+
+        <label class="check-cnt">公開設定</label>
+        <div class="is-settings col-xs-offset-1 lines-empty">
+            <div class="lines-empty">
+                <label class="check-cnt" name="publishing">全体公開</label>
+                <p class="check-lav" id="publishing"></p>            
+            </div>
+            <div class="lines-empty">
+                <label class="check-cnt" name="adult">１８歳未満公開</label>
+                <p class="check-lav" id="adult"></p>
+            </div>
+            <div class="lines-empty">
+                <label class="check-cnt" name="commentable">コメントの許可設定</label>
+                <p class="check-lav" id="comment"></p>
+            </div>
         </div>
         
         <div class="text-center">
                 <button class="btn btn-default" id="revision">修正</button>
-                <button class="btn btn-default" id="push">作成</button>
+                <button class="btn btn-default" id="create">作成</button>
         </div>
     </div>
 </div>

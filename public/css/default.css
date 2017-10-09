@@ -171,24 +171,29 @@ border-radius: 35px;
 }
 
 /* font-size  */
-.check-h3 {
+.check-lav {
     font-size : 1.5em;
     margin-top : 0;
     margin-bottom : 0; 
+    word-break: break-all; 
 }
 
-.check-h6 {
-    font-size : 0.5em;
+.check-cnt {
+    font-size : 1em;
     margin-top : 0;
     margin-bottom : 0; 
+}
+.check-url {
+    font-size : 1em;
 }
 
     /* table設定 */
 
 table.third {
   width: 100%;
+  max-width: 100%;
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 450px) {
   table.third tr {
     display: block;
     margin-bottom: 2em;
@@ -202,7 +207,7 @@ table.third tr th {
   box-sizing: border-box;
 
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 450px) {
   table.third tr th {
     display: block;
     width: 100%;
@@ -212,11 +217,19 @@ table.third tr th {
 table.third tr td {
   padding: 3px;
   border: 1px solid #777;
+  word-break: break-all;  
+
 }
-@media only screen and (max-width: 640px) {
+@media only screen and (max-width: 450px) {
   table.third tr td {
     display: list-item;
     border: 0;
-    margin-left: 2.5em;
+    margin-left: 0.5em;
+    word-break: break-all;
   }
 }
+
+.btn-ghost {
+    background: transparent;
+    border-radius: 0;
+  }
