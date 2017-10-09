@@ -22,14 +22,14 @@ hr{
     margin-bottom: 10px;
 }
 
-.bg-white{
-    background-color: white;
-}
-
 hr.my-hr{
     margin-top: 0px;
     margin-bottom: 5px;
     border-top: 1px solid gray;
+}
+
+.bg-white{
+    background-color: white;
 }
 
 header.container-fluid{
@@ -164,4 +164,8 @@ body span.bookuserID
 .ranking-list
 {
     margin-top: 15px;
+}
+
+.lines-empty {
+    margin-top : 20px;
 }
