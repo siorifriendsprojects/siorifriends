@@ -17,6 +17,8 @@ interface BookRepository
 
     public function findById(string $bookId);
 
+    public function fetchNewBooks(int $limit);
+
     public function add(Book $book);
 
     public function save(Book $book);

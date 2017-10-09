@@ -49,6 +49,19 @@ class EloquentBookRepository implements BookRepository
     }
 
     /**
+     *
+     * 新着の本を limit 件取得する。
+     *
+     * @param int $limit 取得する本の数
+     * @return Illuminate\Database\Eloquent\Builder 取得した本
+     *
+     */
+    public function fetchNewBooks(int $limit)
+    {
+        return Book::orderBy('created_at','desc')->take($limit);
+    }
+
+    /**
      * 本の変更を保存する。
      *
      * @param Model $book
