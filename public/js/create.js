@@ -67,6 +67,7 @@ $(function()
     {
         taggroup = null;
         $('.check-link').empty();
+        $('.check-tag').empty();
         $('#input-item').toggle();
         $('#check').toggle();
 
