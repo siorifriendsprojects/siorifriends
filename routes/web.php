@@ -27,6 +27,8 @@ Route::prefix('/books')->group(function(){
     Route::get('/',function(){
         return view('books');
     });
+
+    Route::get('/{id}','BookController@show');
     
     Route::get('/new',function(){
         return view('create');
