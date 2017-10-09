@@ -169,6 +169,9 @@ border-radius: 35px;
 .lines-empty {
     margin-top : 20px;
 }
+.lines-btn {
+    margin-top : 10px;
+}
 
 /* font-size  */
 .check-lav {
