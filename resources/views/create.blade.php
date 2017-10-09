@@ -21,10 +21,10 @@
                 <label for="addURL">リンクの追加:</label>
                 <div class="url-group">
                     <div class="lines-empty cnt" >
-                        <label for="title" class="h6">URL</label>
-                        <input type="text" class="form-control cnt-url">
                         <label for="title" class="h6">リンクタイトル</label>
                         <input type="text" class="form-control cnt-title">
+                        <label for="title" class="h6">URL</label>
+                        <input type="text" class="form-control cnt-url">
                     </div>
                 </div>
                 <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
@@ -103,15 +103,15 @@
         <div class="is-settings col-xs-offset-1 lines-empty">
             <div class="lines-empty">
                 <label class="check-cnt" name="publishing">全体公開</label>
-                <p class="check-lav" id="publishing"><strong></strong></p>            
+                <p class="check-lav" id="publishing"></p>            
             </div>
             <div class="lines-empty">
                 <label class="check-cnt" name="adult">１８歳未満公開</label>
-                <p class="check-lav" id="adult"><strong></strong></p>
+                <p class="check-lav" id="adult"></p>
             </div>
             <div class="lines-empty">
                 <label class="check-cnt" name="commentable">コメントの許可設定</label>
-                <p class="check-lav" id="comment"><strong></strong></p>
+                <p class="check-lav" id="comment"></p>
             </div>
         </div>
         
