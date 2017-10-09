@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\SioriFriends\Models\Book\Book;
+use App\SioriFriends\Models\Book\BookRepository;
 
 class HomeController extends Controller
 {
@@ -11,9 +13,10 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(BookRepository $books)
     {
         $this->middleware('auth');
+        $this->books = $books;
     }
 
     /**
@@ -23,6 +26,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('home',['newBooks' => $this->books->fetchNewBooks(5)->get()]);
     }
 }
