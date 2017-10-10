@@ -3,7 +3,7 @@
 @section('content')
 <div id="fb-root"></div>
     <script>
-        (function(d, s, id) 
+        (function(d, s, id)
         {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
@@ -17,7 +17,7 @@
     <div class="col-xs-12 container">
         <div class="col-xs-12">
             <h3 class="lines-empty text-center">{{ $book->title }}</h3>
-            
+
             <div class="lines-empty text-center">
                 {{ $book->description }}
             </div>
@@ -39,9 +39,9 @@
                             <button class="btn btn-primary lines-btn pull-right">投稿</button>
                         </div>
                 </div>
-            </form> 
+            </form>
         </div>
-    </div>  
+    </div>
             <!--
              <div class="sns">
                 <a href="https://twitter.com/share" class="twitter-share-button" data-via="szmcafe">Tweet</a> <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
