@@ -5,7 +5,7 @@
         <div class="col-xs-12 center">
 
             <div class="bg-success">
-                    <div class="col-xs-6">   
+                    <div class="col-xs-6">
                         <label for="selection">ソート:</label>
                             <select id="selection" class="form-control">
                                 <option>昇順
@@ -21,7 +21,7 @@
             </div>
         </div>
     </form>
-    
+
         <div class="col-xs-12 container">
 
         <?php for($i = 0; $i < 9; $i++){ ?>
@@ -42,7 +42,7 @@
                             <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
                         </div>
                     </div>
-                </div>     
+                </div>
             </div>
         <?php } ?>
         </div>
