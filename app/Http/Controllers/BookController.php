@@ -38,14 +38,22 @@ class BookController extends Controller
         $book->save();
 
         collect($request->input('anchors'))->each(function($item) use ($book) {
-            $book->addAnchor(Anchor::firstOrCreate(['url' => $item->url]), $item->name);
+            $book->addAnchor(Anchor::firstOrCreate(['url' => $item['url'] ]), $item['name']);
         });
 
         collect($request->input("tags"))->each(function($item) use ($book) {
             $book->addTag(Tag::firstOrCreate(['name' => $item]));
         });
 
-        return redirect('books/' . $book->id);
+        $response = new class(){
+            public $redirectTo;
+            public $hasCreated = true;
+        };
+        
+        $response->redirectTo = "/books/".$book->id;
+        
+        return json_encode($response);
+
     }
 
 }
