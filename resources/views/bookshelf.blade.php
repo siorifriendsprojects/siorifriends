@@ -29,6 +29,7 @@
                 <div class="col-xs-12">
                     <div class="book_shadow">
                         <div class="book">
+                            <div hidden class="bookid">{{$book->id}}</div>
                             <div class="booktitle_space">
                             <span class="booktitle">{{ $book->title }}</span>
                             </div>
@@ -38,11 +39,11 @@
 
                 <div class="col-xs-12">
                     <div class="userback">
-                        <div class="bookuserID">
+                        <div class="is_favo">
                         @if(Auth::check() && $book->isFavorite(Auth::user()))
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->author->account }}</span>
+                            <span class="glyphicon glyphicon glyphicon-star bookuserID"></span>
                         @else
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->author->account }}</span>   
+                            <span class="glyphicon glyphicon-star-empty bookuserID"></span>   
                         @endif
                         </div>
                     </div>
@@ -54,6 +55,12 @@
         <script>
             $(function()
             {
+                $('.book').on('click',function()
+                {
+                    var num = $(".book").index(this);
+                    window.location.href = '/books/' + $('.bookid').eq(num).text();
+                });
+
                 $('#selection').on('change',function()
                 {
                     console.log($('#selection').val());
