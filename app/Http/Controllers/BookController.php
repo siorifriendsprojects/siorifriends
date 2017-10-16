@@ -48,7 +48,7 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\CreateBookPost  $request
      * @return \Illuminate\Http\Response
      */
     public function store(CreateBookPost $request)
@@ -79,10 +79,10 @@ class BookController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $bookId
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($bookId)
     {
         //
     }
@@ -91,10 +91,10 @@ class BookController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  string  $bookId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $bookId)
     {
         //
     }
@@ -102,10 +102,10 @@ class BookController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  string  $bookId
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($bookId)
     {
         //
     }
