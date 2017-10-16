@@ -15,7 +15,7 @@
             </div>
             <!-- 新着ランキング -->
             <div class="col-xs-12 ranking-list">
-                <div class="" style="border: 1px solid black">新着</div>
+                <div class="text-center" style="border: 1px solid black">新着</div>
             </div>
             <div>
                 <!-- 本一冊ここから -->
@@ -45,7 +45,7 @@
 
             <!-- 人気ランキング -->
             <div class="col-xs-12 ranking-list">
-                <div style="border: 1px solid black">人気</div>
+                <div class="text-center" style="border: 1px solid black">人気</div>
             </div>
             <div>
                 <!-- 本一冊ここから -->
