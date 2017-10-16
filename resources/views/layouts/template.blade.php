@@ -55,21 +55,31 @@
         <div class="col-xs-2" style="height:50px;padding-right:0px;">
             <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
         </div>
-        <div class="col-xs-6 logo-btn" style="padding-left:0px;">
+        <div class="col-xs-6 logo-btn" style="padding-left:0px;background-color:#f0ffe8;">
             <button class="btn btn-ghost" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
         </div>
-        <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
-            <div class="row">
-                <div class="col-xs-4 icon-btn" style="">
-                    <button class="btn btn-ghost"><span class="glyphicon glyphicon-search"></span></button>
-                </div>  
-                <div class="col-xs-4 col-xs-offset-1 icon-btn">
-                    <button class="btn btn-ghost"><span class="glyphicon glyphicon-bell"></span></button>
+        @if(Auth::guest())
+            <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
+                <div class="row">
+                    <a style="background-color:#f0ffe8;">sign up</a><br>
+                    <a style="background-color:#f0ffe8;">sign in</a>
                 </div>
-                <div class="col-xs-4">
+          </div>
+        @else
+            <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
+                <div class="row">
+                    <div class="col-xs-4 icon-btn" style="">
+                        <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-search"></span></button>
+                    </div>  
+                    <div class="col-xs-4 col-xs-offset-1 icon-btn">
+                        <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-bell"></span></button>
+                    </div>
+                    <div class="col-xs-4">
+                    </div>
                 </div>
             </div>
-        </div>
+        @endif
+       
     </div>
     </header>
     <main>
@@ -80,5 +90,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/drawr.js') }}"></script>
     <script src="{{ asset('js/moretext.js') }}"></script>
+    <script src="{{ asset('js/textOverflowEllipsis.js') }}"></script>
 </body>
 </html>

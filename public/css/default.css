@@ -13,11 +13,20 @@
 .row-50 >div{ padding-right:25px;  padding-left:25px}
 
 
-body
-{
+body{
     background-color : #f0ffe8;
 }
 
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+hr.my-hr{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-top: 1px solid gray;
+}
 
 .bg-white{
     background-color: white;
@@ -69,12 +78,12 @@ header.container-fluid{
     bottom: 0;
 }
 
-/* overflow:hidden、heightは必ず指定する */
-.textOverflowTest4 {
+/* overflow:hidden、heightは必ず指定する 
+.textOverflow {
     overflow: hidden;
     height: 60px;
-    background: #eee;
-  }
+}
+*/
 
 /* ここから門地が作成したcss */
 
@@ -110,6 +119,8 @@ div.shadow{
 div.booktitle_space{
     position : relative;
     top : 1em;
+    height: 230px;
+    word-break: break-all; 
 }
 
 body span.booktitle{
@@ -133,7 +144,7 @@ div.userback{
 body span.bookuserID{
         position : relative;
         top : 10px;
-        left : 1.5em;
+        left : 3em;
         background-color : #fff;
         padding : 0.3em 0.7em 0.3em 0.7em;
         border-radius : 1em;
@@ -164,6 +175,16 @@ padding: 10px 16px;
 font-size: 24px;
 line-height: 1.33;
 border-radius: 35px;
+}
+.sign
+{
+    position: absolute;
+    padding-right: 0px;
+}
+
+.ranking-list
+{
+    margin-top: 15px;
 }
 
 .lines-empty {
@@ -235,9 +256,9 @@ table.third tr td {
 .btn-ghost {
     background: transparent;
     border-radius: 0;
-  }
+}
 
 /* ここから斎藤が作成CSS */
-  div.pr{
+div.pr{
     word-wrap:break-word;
 }
