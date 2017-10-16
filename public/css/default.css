@@ -78,6 +78,12 @@ header.container-fluid{
 
 /* ここから門地が作成したcss */
 
+    .in{
+        max-width: 300px;
+        padding: 40px;
+        margin: 0 auto;
+
+	}
 
   div.obj{
     position : relative;
