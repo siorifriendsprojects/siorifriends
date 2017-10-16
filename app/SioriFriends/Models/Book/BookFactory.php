@@ -36,8 +36,8 @@ class BookFactory
 
         // anchor の追加
         foreach ($request['anchors'] as $hash) {
-            $anchor = Anchor::firstOrCreate(['url' => $hash->url]);
-            $book->addAnchor($anchor, $hash->name);
+            $anchor = Anchor::firstOrCreate(['url' => $hash['url'] ]);
+            $book->addAnchor($anchor, $hash['name']);
         }
 
         return $book;
