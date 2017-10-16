@@ -9,13 +9,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/jquery.tagsinput.js') }}"></script>
      <!-- Styles -->
     <link href="{{ asset('css/default.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hamburger.css') }}" rel="stylesheet">
     <style>
     </style>
+
 </head>
 <body>
     <header class="container-fluid">
@@ -53,15 +56,15 @@
             <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
         </div>
         <div class="col-xs-6 logo-btn" style="padding-left:0px;">
-            <button class="btn" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
+            <button class="btn btn-ghost" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
         </div>
         <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
             <div class="row">
                 <div class="col-xs-4 icon-btn" style="">
-                    <button class="btn"><span class="glyphicon glyphicon-search"></span></button>
+                    <button class="btn btn-ghost"><span class="glyphicon glyphicon-search"></span></button>
                 </div>  
                 <div class="col-xs-4 col-xs-offset-1 icon-btn">
-                    <button class="btn"><span class="glyphicon glyphicon-bell"></span></button>
+                    <button class="btn btn-ghost"><span class="glyphicon glyphicon-bell"></span></button>
                 </div>
                 <div class="col-xs-4">
                 </div>
