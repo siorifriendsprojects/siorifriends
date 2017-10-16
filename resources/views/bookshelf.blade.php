@@ -8,9 +8,9 @@
                     <div class="col-xs-6">
                         <label for="selection">ソート:</label>
                             <select id="selection" class="form-control">
-                                <option>昇順
-                                <option>降順
-                                <option>新着順
+                                <option value="asc">昇順
+                                <option value="desc">降順
+                                <option value="new">新着順
                             </select>
                     </div>
 
@@ -24,13 +24,14 @@
 
         <div class="col-xs-12 container">
 
-        <?php for($i = 0; $i < 9; $i++){ ?>
+        @foreach($books->sortBy('ascription') as $book)
             <div class="col-xs-3 obj">
                 <div class="col-xs-12">
                     <div class="book_shadow">
                         <div class="book">
+                            <div hidden class="bookid">{{$book->id}}</div>
                             <div class="booktitle_space">
-                            <span class="booktitle">世界の作り方</span>
+                            <span class="booktitle">{{ $book->title }}</span>
                             </div>
                         </div>
                     </div>
@@ -38,12 +39,32 @@
 
                 <div class="col-xs-12">
                     <div class="userback">
-                        <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
+                        <div class="is_favo">
+                        @if(Auth::check() && $book->isFavorite(Auth::user()))
+                            <span class="glyphicon glyphicon glyphicon-star bookuserID"></span>
+                        @else
+                            <span class="glyphicon glyphicon-star-empty bookuserID"></span>   
+                        @endif
                         </div>
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        @endforeach
         </div>
+
+        <script>
+            $(function()
+            {
+                $('.book').on('click',function()
+                {
+                    var num = $(".book").index(this);
+                    window.location.href = '/books/' + $('.bookid').eq(num).text();
+                });
+
+                $('#selection').on('change',function()
+                {
+                    console.log($('#selection').val());
+                });
+            });
+        </script>
 @endsection
