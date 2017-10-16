@@ -236,3 +236,8 @@ table.third tr td {
     background: transparent;
     border-radius: 0;
   }
+
+/* ここから斎藤が作成CSS */
+  div.pr{
+    word-wrap:break-word;
+}
