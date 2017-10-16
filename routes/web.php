@@ -23,19 +23,8 @@ Route::get('/tags',function(){
     return view('tags');
 });
 
-Route::prefix('/books')->group(function(){
-    Route::get('/',function(){
-        return view('books');
-    });
-    
-    Route::get('/new',function(){
-        return view('create');
-    });    
+Route::resource('/books', 'BookController');
 
-    Route::post('/new','BookController@create');
-
-    Route::get('/{id}','BookController@show');    
-});
 
 Route::prefix('/users')->group(function() {
     Route::get('/',function(){
