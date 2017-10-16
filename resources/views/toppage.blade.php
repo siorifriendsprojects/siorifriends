@@ -1,4 +1,4 @@
-@extends('layouts.template_toppage')
+@extends('layouts.template')
 
 @section('content')
     <div class="row">

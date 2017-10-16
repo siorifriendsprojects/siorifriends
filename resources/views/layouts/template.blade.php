@@ -59,7 +59,7 @@
             <button class="btn btn-ghost" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
         </div>
         @if(Auth::guest())
-            <div class="col-xs-3" id="sn-icon" style="padding-left:0px;height:50px;">
+            <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
                 <div class="row">
                     <a style="background-color:#f0ffe8;">sign up</a><br>
                     <a style="background-color:#f0ffe8;">sign in</a>
