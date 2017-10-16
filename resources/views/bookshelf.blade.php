@@ -8,9 +8,9 @@
                     <div class="col-xs-6">
                         <label for="selection">ソート:</label>
                             <select id="selection" class="form-control">
-                                <option>昇順
-                                <option>降順
-                                <option>新着順
+                                <option value="asc">昇順
+                                <option value="desc">降順
+                                <option value="new">新着順
                             </select>
                     </div>
 
@@ -24,7 +24,7 @@
 
         <div class="col-xs-12 container">
 
-        @foreach($books as $book)
+        @foreach($books->sortBy('ascription') as $book)
             <div class="col-xs-3 obj">
                 <div class="col-xs-12">
                     <div class="book_shadow">
@@ -39,11 +39,25 @@
                 <div class="col-xs-12">
                     <div class="userback">
                         <div class="bookuserID">
+                        @if(Auth::check() && $book->isFavorite(Auth::user()))
                             <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->author->account }}</span>
+                        @else
+                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->author->account }}</span>   
+                        @endif
                         </div>
                     </div>
                 </div>
             </div>
         @endforeach
         </div>
+
+        <script>
+            $(function()
+            {
+                $('#selection').on('change',function()
+                {
+                    console.log($('#selection').val());
+                });
+            });
+        </script>
 @endsection
