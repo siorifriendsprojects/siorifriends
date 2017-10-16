@@ -108,6 +108,30 @@ class User extends Authenticatable
     }
 
     /**
+     * 本をお気に入りに登録する。
+     *
+     * @param Book $book
+     * @return void
+     */
+    public function addFavorite(Book $book): void
+    {
+        $this->favorites()->attach($book->id);
+    }
+
+     /**
+      * 本のお気に入りを解除する。
+      *
+      * @param Book $book
+      * @return void
+      */
+    public function removeFavorite(): void
+    {
+        $this->favorites()->detach($book->id);
+    }
+
+
+
+    /**
      * ユーザをフォローする。
      *
      * @param User $user
