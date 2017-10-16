@@ -42,7 +42,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('create');
+        return view('books.create');
     }
 
     /**
@@ -56,7 +56,7 @@ class BookController extends Controller
         $author = $this->users->findById(Auth::id());
         $book = BookFactory::create($request->all(), $author);
 
-        return view('book', [ 'book' => $book ]);
+        return view('books.show', [ 'book' => $book ]);
     }
 
     /**
@@ -69,7 +69,7 @@ class BookController extends Controller
     {
         try {
             $book = $this->books->findById($bookId);
-            return view('book', [ 'book' => $book ]);
+            return view('books.show', [ 'book' => $book ]);
         } catch(ModelNotFoundException $e) {
 //            throwException($e::class);
             abort(404, $e->getMessage());
