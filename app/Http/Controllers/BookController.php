@@ -2,16 +2,26 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateBookPost;
+use App\SioriFriends\Models\Book\Book;
+use App\SioriFriends\Models\Book\BookFactory;
 use App\SioriFriends\Models\Book\BookRepository;
+use App\SioriFriends\Models\User\UserRepository;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BookController extends Controller
 {
+    /** @var UserRepository */
+    private $users;
+
     /** @var BookRepository */
     private $books;
 
-    public function __construct(BookRepository $bookRepository)
+    public function __construct(UserRepository $userRepository, BookRepository $bookRepository)
     {
+        $this->users = $userRepository;
         $this->books = $bookRepository;
     }
 
@@ -32,7 +42,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        return view('create');
     }
 
     /**
@@ -41,20 +51,29 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateBookPost $request)
     {
-        //
+        $author = $this->users->findById(Auth::id());
+        $book = BookFactory::create($request->all(), $author);
+
+        return view('book', [ 'book' => $book ]);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string $bookId
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($bookId)
     {
-        //
+        try {
+            $book = $this->books->findById($bookId);
+            return view('book', [ 'book' => $book ]);
+        } catch(ModelNotFoundException $e) {
+//            throwException($e::class);
+            abort(404, $e->getMessage());
+        }
     }
 
     /**
