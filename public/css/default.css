@@ -110,6 +110,8 @@ div.shadow{
 div.booktitle_space{
     position : relative;
     top : 1em;
+    height: 230px;
+    word-break: break-all; 
 }
 
 body span.booktitle{

@@ -24,13 +24,13 @@
 
         <div class="col-xs-12 container">
 
-        <?php for($i = 0; $i < 9; $i++){ ?>
+        @foreach($books as $book)
             <div class="col-xs-3 obj">
                 <div class="col-xs-12">
                     <div class="book_shadow">
                         <div class="book">
                             <div class="booktitle_space">
-                            <span class="booktitle">世界の作り方</span>
+                            <span class="booktitle">{{ $book->title }}</span>
                             </div>
                         </div>
                     </div>
@@ -39,11 +39,11 @@
                 <div class="col-xs-12">
                     <div class="userback">
                         <div class="bookuserID">
-                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">userID</span>
+                            <span class="bookuserID glyphicon glyphicon-bookmark bookuserID">{{ $book->author->account }}</span>
                         </div>
                     </div>
                 </div>
             </div>
-        <?php } ?>
+        @endforeach
         </div>
 @endsection
