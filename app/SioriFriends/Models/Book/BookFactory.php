@@ -20,7 +20,7 @@ class BookFactory
     public static function create(array $request, User $author)
     {
         // 本の生成
-        $book = Book::create([
+        $book = $author->books()->create([
             'user_id' => $author->id,
             'title'   => $request['title'],
             'description' => $request['description'],
