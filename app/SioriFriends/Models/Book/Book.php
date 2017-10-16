@@ -49,6 +49,19 @@ class Book extends Model
     }
 
     /**
+     * この本を引数で渡されたユーザがお気に入りしているかを返す
+     *
+     * @param User $user 
+     * @return bool お気に入りしていればtrueを返す。
+     */
+    public function isFavorite(User $user)
+    {
+        return $this->favorites()
+            ->where('id', $user->id)
+            ->exists();
+    }
+
+    /**
      * この本に付いているタグの一覧を取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
