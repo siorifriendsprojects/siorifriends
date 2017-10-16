@@ -31,7 +31,7 @@
             <nav class="drawr">
                 <div class="row">
                     <div class="col-xs-offset-5">
-                        <img src="{{ asset('img/siori_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
+                        <img src="{{ asset('img/mamoru_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
                     </div>
                     <div class="col-xs-12" style="color:white;text-align:center;">
                     @if(Auth::guest())
@@ -78,7 +78,6 @@
     <footer></footer>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/drawr.js') }}"></script>
     <script src="{{ asset('js/moretext.js') }}"></script>
 </body>

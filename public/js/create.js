@@ -67,6 +67,7 @@ $(function()
     {
         taggroup = null;
         $('.check-link').empty();
+        $('.check-tag').empty();
         $('#input-item').toggle();
         $('#check').toggle();
 
@@ -88,6 +89,15 @@ $(function()
                 });
             });
 
+            if($('.adult input[name=is_adult]:checked').val() == 'false')
+                taggroup.push("R-18");
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
             $.ajax(
             {
                 type : 'POST',
@@ -95,19 +105,19 @@ $(function()
                 dataType : 'json',
                 data : 
                 {
-                    title : $('#title').val(),
-                    description : $('#description').val(),
-                    tag : taggroup,
-                    anchors : anchors
+                    'title' : $('#title').val(),
+                    'description' : $('#description').val(),
+                    'tags' : taggroup,
+                    'anchors' : anchors
                 },
-                contentType : 'application/json'
+                //contentType : 'application/json'
             })
             
             .done(function(res)
             {
                 if(res.hasCreated)
                 {   
-
+                    location.href=res.redirectTo;
                 }
                 else
                 {

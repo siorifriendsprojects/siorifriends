@@ -14,5 +14,6 @@ $factory->define(App\SioriFriends\Models\Book\Tag::class, function (Faker\Genera
     return [
         'id' => $uuid,
         'name' => $faker->unique()->word,
+        'created_at' => \Carbon\Carbon::now(),
     ];
 });
