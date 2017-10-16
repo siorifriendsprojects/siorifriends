@@ -251,9 +251,14 @@ table.third tr td {
     margin-left: 0.5em;
     word-break: break-all;
   }
+}
 
 .btn-ghost {
     background: transparent;
     border-radius: 0;
-  }
+}
+
+/* ここから斎藤が作成CSS */
+div.pr{
+    word-wrap:break-word;
 }
