@@ -9,16 +9,16 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name') }}</title>
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}">
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="{{ asset('js/jquery.tagsinput.js') }}"></script>
      <!-- Styles -->
     <link href="{{ asset('css/default.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hamburger.css') }}" rel="stylesheet">
     <style>
+        body{
+            text-align:center;
+        }
     </style>
-
 </head>
 <body>
     <header class="container-fluid">
@@ -31,7 +31,7 @@
             <nav class="drawr">
                 <div class="row">
                     <div class="col-xs-offset-5">
-                        <img src="{{ asset('img/mamoru_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
+                        <img src="{{ asset('img/siori_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
                     </div>
                     <div class="col-xs-12" style="color:white;text-align:center;">
                     @if(Auth::guest())
@@ -55,32 +55,17 @@
         <div class="col-xs-2" style="height:50px;padding-right:0px;">
             <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
         </div>
-        <div class="col-xs-6 logo-btn" style="padding-left:0px;background-color:#f0ffe8;">
-            <button class="btn btn-ghost" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
+        <div class="col-xs-6 logo-btn" style="padding-left:0px;">
+            <button class="btn" style="padding-left:0px;background-color:#f0ffe8;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
         </div>
-        @if(Auth::guest())
-            <div class="col-xs-3" id="sn-icon" style="padding-left:0px;height:50px;">
-                <div class="row">
-                    <a style="background-color:#f0ffe8;">sign up</a><br>
-                    <a style="background-color:#f0ffe8;">sign in</a>
+        <div class="col-xs-3" id="sn-icon" style="padding-left:0px;height:50px;">
+            <div class="row">
+                <!--<button class="btn btn-xs sign-button" style="background-color:#f0ffe8;">sign up</button><br> -->
+                <!-- <button class="btn btn-xs sign-button" style="background-color:#f0ffe8;">sign in</button> -->
+                <a style="background-color:#f0ffe8;">sign up</a><br>
+                <a style="background-color:#f0ffe8;">sign in</a>
                 </div>
-          </div>
-        @else
-            <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
-                <div class="row">
-                    <div class="col-xs-4 icon-btn" style="">
-                        <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-search"></span></button>
-                    </div>  
-                    <div class="col-xs-4 col-xs-offset-1 icon-btn">
-                        <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-bell"></span></button>
-                    </div>
-                    <div class="col-xs-4">
-                    </div>
-                </div>
-            </div>
-        @endif
-       
-    </div>
+        </div>
     </header>
     <main>
     @yield('content')
@@ -89,7 +74,7 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/drawr.js') }}"></script>
-    <script src="{{ asset('js/moretext.js') }}"></script>
+    <script src="{{ asset('js/style.js') }}"></script>
     <script src="{{ asset('js/textOverflowEllipsis.js') }}"></script>
 </body>
 </html>
