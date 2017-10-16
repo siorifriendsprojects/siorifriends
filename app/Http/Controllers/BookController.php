@@ -2,17 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\SioriFriends\Models\Book\BookRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\Auth;
-
-use App\Http\Requests\CreateBookPost;
-use App\SioriFriends\Models\Book\Book;
-use App\SioriFriends\Models\Book\Anchor;
-use App\SioriFriends\Models\Book\Tag;
 
 class BookController extends Controller
 {
+    /** @var BookRepository */
+    private $books;
+
+    public function __construct(BookRepository $bookRepository)
+    {
+        $this->books = $bookRepository;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
     /**
      * Display the specified resource.
      *
@@ -21,31 +54,40 @@ class BookController extends Controller
      */
     public function show($id)
     {
-       return view('book',['book' => Book::where('id','=',$id)->firstOrFail()]);
+        //
     }
 
     /**
-     * bookを作成します
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
      */
-    public function create(CreateBookPost $request)
+    public function edit($id)
     {
-        $book = new Book();
-        $book->user_id = Auth::id();
-        $book->title = $request->title;
-        $book->description = $request->description;
-        $book->is_publishing = $request->input('is_publishing',true);
-        $book->is_commentable = $request->input('is_commentable',true);
-        $book->save();
-
-        collect($request->input('anchors'))->each(function($item) use ($book) {
-            $book->addAnchor(Anchor::firstOrCreate(['url' => $item->url]), $item->name);
-        });
-
-        collect($request->input("tags"))->each(function($item) use ($book) {
-            $book->addTag(Tag::firstOrCreate(['name' => $item]));
-        });
-
-        return redirect('books/' . $book->id);
+        //
     }
 
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
 }
