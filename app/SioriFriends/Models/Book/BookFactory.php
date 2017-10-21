@@ -17,25 +17,24 @@ use Illuminate\Support\Facades\App;
 
 class BookFactory
 {
-    public static function create(array $request, User $author)
+    public static function create(BookSpec $bookSpec, User $author)
     {
         // 本の生成
         $book = $author->books()->create([
-            'user_id' => $author->id,
-            'title'   => $request['title'],
-            'description' => $request['description'],
-            'is_publishing' => $request['is_publishing'] ?? true,
-            'is_commentable' => $request['is_commentable'] ?? true,
+            'title'   => $bookSpec->title(),
+            'description' => $bookSpec->description(),
+            'is_publishing' => $bookSpec->isPublishing(),
+            'is_commentable' => $bookSpec->isCommentable(),
         ]);
 
         // tag の追加
-        foreach ($request['tags'] as $tagName) {
+        foreach ($bookSpec->tags() as $tagName) {
             $tag = Tag::firstOrCreate([ 'name' => $tagName ]);
             $book->addTag($tag);
         }
 
         // anchor の追加
-        foreach ($request['anchors'] as $hash) {
+        foreach ($bookSpec->anchors() as $hash) {
             $anchor = Anchor::firstOrCreate(['url' => $hash['url'] ]);
             $book->addAnchor($anchor, $hash['name']);
         }
