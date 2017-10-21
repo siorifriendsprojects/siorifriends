@@ -2,7 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\SioriFriends\Models\Book\BookSpec;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateBookPost extends FormRequest
 {
@@ -13,7 +15,7 @@ class CreateBookPost extends FormRequest
      */
     public function authorize()
     {
-        return true;
+        return Auth::check();
     }
 
     /**
@@ -23,16 +25,6 @@ class CreateBookPost extends FormRequest
      */
     public function rules()
     {
-        return [
-            'title' => 'required|string',
-            'description' => 'required|string',
-            'is_publishing' => 'sometimes|required|boolean',
-            'is_commentable' => 'sometimes|required|boolean',
-            'tags' => 'required|array',
-            'tags.*' => 'required|string',
-            'anchors' => 'required|array',
-            'anchors.*.url' => 'required|url',
-            'anchors.*.name' => 'required|string'
-        ];
+        return BookSpec::rules();
     }
 }
