@@ -33,6 +33,11 @@ class BookSpec
     /** @var array */
     private $anchors;
 
+    /**
+     * 本の作成に必要なパラメータのバリデーションルール
+     *
+     * @return array
+     */
     public static function rules()
     {
         return [
@@ -62,7 +67,7 @@ class BookSpec
     {
         $validator = Validator::make($parameters, self::rules());
         if ($validator->fails()) {
-            throw new \InvalidArgumentException("faild parameters validation.");
+            throw new \InvalidArgumentException("Failed parameters validation.");
         }
 
         $this->title = $parameters['title'];
