@@ -45,10 +45,10 @@ class BookSpec
             'description' => 'required|string',
             'isPublishing' => 'sometimes|required|boolean',
             'isCommentable' => 'sometimes|required|boolean',
-            'tags' => 'required|array',
-            'tags.*' => 'required|string|min:1|max:10',
-            'anchors' => 'required|array',
-            'anchors.*' => 'min:1|max:30',
+            'tags' => 'required|array|min:1|max:10',
+            'tags.*' => 'required|string',
+            'anchors' => 'required|array|min:1|max:30',
+            'anchors.*' => 'required|array',
             'anchors.*.url' => 'required|url',
             'anchors.*.name' => 'required|string'
         ];
