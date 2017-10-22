@@ -26,12 +26,12 @@ class BookSpecTest extends TestCase
                 [
                     'title' => $faker->jobTitle,
                     'description' => $faker->sentence(),
-                    'is_publishing' => $faker->boolean,
-                    'is_commentable' => $faker->boolean,
+                    'isPublishing' => $faker->boolean,
+                    'isCommentable' => $faker->boolean,
                     'tags' => [$faker->unique()->word, $faker->unique()->word],
                     'anchors' => [
-                        ['url' => $faker->unique()->url, 'name' => $faker->name],
-                        ['url' => $faker->unique()->url, 'name' => $faker->name],
+                        ['url' => $faker->unique()->url, 'name' => $faker->sentence(3)],
+                        ['url' => $faker->unique()->url, 'name' => $faker->sentence(3)],
                     ],
                 ],
             ],
@@ -42,33 +42,68 @@ class BookSpecTest extends TestCase
                     'description' => $faker->sentence(),
                     'tags' => [$faker->unique()->word, $faker->unique()->word],
                     'anchors' => [
-                        ['url' => $faker->unique()->url, 'name' => $faker->name],
-                        ['url' => $faker->unique()->url, 'name' => $faker->name],
+                        ['url' => $faker->unique()->url, 'name' => $faker->sentence(3)],
+                        ['url' => $faker->unique()->url, 'name' => $faker->sentence(3)],
                     ],
                 ],
             ],
             'failed without tag' => [
                 false,
                 [
+                    'title' => $faker->jobTitle,
                     'description' => $faker->sentence(),
-                    'is_publishing' => $faker->boolean,
-                    'is_commentable' => $faker->boolean,
+                    'isPublishing' => $faker->boolean,
+                    'isCommentable' => $faker->boolean,
                     'tags' => [],
                     'anchors' => [
-                        ['url' => $faker->unique()->url, 'name' => $faker->name],
-                        ['url' => $faker->unique()->url, 'name' => $faker->name],
+                        ['url' => $faker->unique()->url, 'name' => $faker->sentence(3)],
+                        ['url' => $faker->unique()->url, 'name' => $faker->sentence(3)],
                     ],
                 ]
             ],
             'failed without anchor' => [
                 false,
                 [
+                    'title' => $faker->jobTitle,
                     'description' => $faker->sentence(),
-                    'is_publishing' => $faker->boolean,
-                    'is_commentable' => $faker->boolean,
+                    'isPublishing' => $faker->boolean,
+                    'isCommentable' => $faker->boolean,
                     'tags' => [$faker->unique()->word, $faker->unique()->word],
                     'anchors' => [],
                 ]
+            ],
+            'failed over tags' => [
+                false,
+                [
+                    'title' => $faker->jobTitle,
+                    'description' => $faker->sentence(),
+                    'isPublishing' => $faker->boolean,
+                    'isCommentable' => $faker->boolean,
+                    'tags' => collect(range(1, 11))
+                        ->map(function($__) use ($faker) { return $faker->word; })
+                        ->toArray(),
+                    'anchors' => [
+                        ['url' => $faker->unique()->url, 'name' => $faker->sentence(3)],
+                    ],
+                ],
+            ],
+            'failed over anchor' => [
+                false,
+                [
+                    'title' => $faker->jobTitle,
+                    'description' => $faker->sentence(),
+                    'isPublishing' => $faker->boolean,
+                    'isCommentable' => $faker->boolean,
+                    'tags' => [$faker->unique()->word, $faker->unique()->word],
+                    'anchors' => [
+                        collect(range(1, 31))->map(function($_) use ($faker) {
+                            return [
+                                'url' => $faker->unique()->url,
+                                'name' => $faker->sentence(3)
+                            ];
+                        })->toArray(),
+                    ],
+                ],
             ],
         ];
     }
