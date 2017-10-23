@@ -23,29 +23,19 @@ Route::get('/tags',function(){
     return view('tags');
 });
 
-Route::resource('/books', 'BookController');
 
+Route::prefix('/users/{account}')->group(function() {
+    Route::get('/', 'User\ProfileController@show')->name('overview');
 
-Route::prefix('/users')->group(function() {
-    Route::get('/',function(){
-        return view('users');
-    });
+    Route::get('/follow','User\FollowController@showFollows');
+    Route::get('/follower','UserController@showFollower');
+    Route::get('/bookshelf','User\BookShelfController@showBooks');
 
-    Route::get('/{account}', 'User\ProfileController@show')->name('overview');
-
-    Route::get('/{account}/follow','User\FollowController@showFollows');
-
-    Route::get('/{account}/follower','UserController@showFollower');
-
-    Route::get('/{account}/bookshelf','User\BookShelfController@showBooks');
-
-    Route::get('/{account}/favorite',function(){
+    Route::get('/favorite',function(){
         return view('favorite');
     });
 
-    Route::get('/{account}/{bookId}',function(){
-        return view('book');
-    });
+    Route::resource('/books', 'BookController');
 });
 
 
