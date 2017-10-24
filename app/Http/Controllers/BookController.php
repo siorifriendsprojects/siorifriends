@@ -61,10 +61,12 @@ class BookController extends Controller
             // request が本の仕様を満たしているかどうか
             $bookSpec = new BookSpec($request->all());
             // login user model の取得
-            $author = $this->users->findById(Auth::id());
+            $author = $this->users->findById(Auth::id() ?? "");
             $book = BookFactory::create($bookSpec, $author);
 
-            return view('books.show', [ 'book' => $book ]);
+            //作成した本のページヘリダイレクトする
+            $to = route('books.show', [ 'bookId' => $book->id ]);
+            return redirect($to);
         } catch(\InvalidArgumentException $e1) {
             abort(400, $e1->getMessage());
         } catch (ModelNotFoundException $e2) {
