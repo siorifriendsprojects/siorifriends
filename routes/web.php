@@ -23,7 +23,11 @@ Route::get('/tags',function(){
     return view('tags');
 });
 
-Route::resource('/books', 'BookController');
+Route::resource('/books', 'BookController', [
+    'parameters' => [
+        'book' => 'bookId'
+    ]
+]);
 
 
 Route::prefix('/users')->group(function() {
