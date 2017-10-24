@@ -38,11 +38,62 @@ class BookCreateTest extends TestCase
         ];
     }
 
-    public function testPost()
+    public function requestDataProvider()
     {
-        Auth::login($this->user);
-        $response = $this->post('/books', $this->requestParameter);
+        return [
+            'success' => [
+                302, // 成功時はリダイレクトする
+                [
+                    'title' => 'book title',
+                    'description' => 'この本の説明',
+                    'isPublishing' => true,
+                    'isCommentable' => false,
+                    'tags' => ['php', 'laravel'],
+                    'anchors' => [
+                        ['url' => 'http://qiita.com', 'name' => 'qiita'],
+                        ['url' => 'https://www.google.co.jp', 'name' => 'google'],
+                    ]
+                ]
+            ],
+            'failed : invalid arguments' => [
+                400,
+                [
+                    'description' => 'この本の説明',
+                    'isPublishing' => true,
+                    'isCommentable' => false,
+                    'tags' => ['php', 'laravel'],
+                    'anchors' => [
+                        ['url' => 'http://qiita.com', 'name' => 'qiita'],
+                        ['url' => 'https://www.google.co.jp', 'name' => 'google'],
+                    ]
+                ]
+            ],
+            'failed : not login' => [
+                401,
+                [
+                    'title' => 'book title',
+                    'description' => 'この本の説明',
+                    'isPublishing' => true,
+                    'isCommentable' => false,
+                    'tags' => ['php', 'laravel'],
+                    'anchors' => [
+                        ['url' => 'http://qiita.com', 'name' => 'qiita'],
+                        ['url' => 'https://www.google.co.jp', 'name' => 'google'],
+                    ]
+                ],
+                false, // test でlogin をしないフラグ
+            ],
+        ];
+    }
 
-        $response->assertStatus(200);
+    /**
+     * @dataProvider requestDataProvider
+     */
+    public function testPost($statusCode, $request, $isToLogin = true)
+    {
+        if ($isToLogin) Auth::login($this->user);
+        $response = $this->post('/books', $request);
+
+        $response->assertStatus($statusCode);
     }
 }
