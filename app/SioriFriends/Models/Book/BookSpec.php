@@ -9,6 +9,8 @@
 namespace App\SioriFriends\Models\Book;
 
 
+use App\SioriFriends\Models\User\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -20,6 +22,8 @@ use Illuminate\Support\Facades\Validator;
  */
 class BookSpec
 {
+    /** @var User */
+    private $author;
     /** @var string */
     private $title;
     /** @var string */
@@ -57,25 +61,25 @@ class BookSpec
     /**
      * BookSpec constructor.
      *
-     * 連想配列を受け取って本を作成可能ならインスタンスを返す。
-     * 作成そうでない場合は、InvalidArgumentExceptionを投げる
+     * validationはcontroller がrequest を受け取るときに行う。
      *
-     * @param array $parameters 本を作成するのに必要な値の連想配列
-     * @throws \InvalidArgumentException 引数をバリデーションして失敗した場合
+     * @param User $author 本を作成するユーザ
+     * @param Request $request
      */
-    public function __construct(array $parameters)
+    public function __construct(User $author, Request $request)
     {
-        $validator = Validator::make($parameters, self::rules());
-        if ($validator->fails()) {
-            throw new \InvalidArgumentException("Failed parameters validation.");
-        }
+        $this->author = $author;
+        $this->title = $request->input('title');
+        $this->description = $request->input('description');
+        $this->isPublishing = $request->input('isPublishing', true);
+        $this->isCommentable = $request->input('isCommentable', true);
+        $this->tags = $request->input('tags');
+        $this->anchors = $request->input('anchors');
+    }
 
-        $this->title = $parameters['title'];
-        $this->description = $parameters['description'];
-        $this->isPublishing = $parameters['isPublishing'] ?? true;  // default value true
-        $this->isCommentable = $parameters['isCommentable'] ?? true;
-        $this->tags = $parameters['tags'];
-        $this->anchors = $parameters['anchors'];
+    public function author()
+    {
+        return $this->author;
     }
 
     public function title()

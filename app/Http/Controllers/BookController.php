@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreBookPost;
 use App\SioriFriends\Models\Book\Book;
 use App\SioriFriends\Models\Book\BookFactory;
 use App\SioriFriends\Models\Book\BookRepository;
@@ -48,29 +49,24 @@ class BookController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Http\Requests\StoreBookPost  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreBookPost $request)
     {
-        if (Auth::guest()) {
-            abort(401, 'Please register or login.');
-        }
-
         try {
-            // request が本の仕様を満たしているかどうか
-            $bookSpec = new BookSpec($request->all());
             // login user model の取得
-            $author = $this->users->findById(Auth::id() ?? "");
-            $book = BookFactory::create($bookSpec, $author);
+            $author = $this->users->findById(Auth::id());
+            // request が本の仕様を満たしているかどうか
+            $bookSpec = new BookSpec($author, $request);
+
+            $book = BookFactory::create($bookSpec);
 
             //作成した本のページヘリダイレクトする
             $to = route('books.show', [ 'bookId' => $book->id ]);
             return redirect($to);
-        } catch(\InvalidArgumentException $e1) {
-            abort(400, $e1->getMessage());
-        } catch (ModelNotFoundException $e2) {
-            abort(404, $e2->getMessage());
+        } catch (ModelNotFoundException $e) {
+            abort(404, $e->getMessage());
         }
     }
 

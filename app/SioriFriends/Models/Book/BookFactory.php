@@ -9,18 +9,14 @@
 namespace App\SioriFriends\Models\Book;
 
 
-use App\Http\Requests\CreateBookPost;
 use App\SioriFriends\Models\User\User;
-use App\SioriFriends\Models\Book\Book;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\App;
 
 class BookFactory
 {
-    public static function create(BookSpec $bookSpec, User $author)
+    public static function create(BookSpec $bookSpec)
     {
         // 本の生成
-        $book = $author->books()->create([
+        $book = $bookSpec->author()->books()->create([
             'title'   => $bookSpec->title(),
             'description' => $bookSpec->description(),
             'is_publishing' => $bookSpec->isPublishing(),

@@ -56,7 +56,7 @@ class BookCreateTest extends TestCase
                 ]
             ],
             'failed : invalid arguments' => [
-                400,
+                302,
                 [
                     'description' => 'この本の説明',
                     'isPublishing' => true,
@@ -69,7 +69,7 @@ class BookCreateTest extends TestCase
                 ]
             ],
             'failed : not login' => [
-                401,
+                403,
                 [
                     'title' => 'book title',
                     'description' => 'この本の説明',

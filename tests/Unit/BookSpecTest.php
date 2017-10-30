@@ -122,19 +122,4 @@ class BookSpecTest extends TestCase
 
         $this->assertEquals($expected, $actual);
     }
-
-    /**
-     * @param bool $expected
-     * @param array $parameters
-     * @dataProvider rulesDataProvider
-     */
-    public function testConstruct(bool $expected, array $parameters)
-    {
-        try {
-            new BookSpec($parameters);
-            $this->assertEquals($expected, true);
-        } catch (\InvalidArgumentException $e) {
-            $this->assertEquals($expected, false);
-        }
-    }
 }
