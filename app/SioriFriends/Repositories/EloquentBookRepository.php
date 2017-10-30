@@ -11,11 +11,20 @@ namespace App\SioriFriends\Repositories;
 
 use App\SioriFriends\Models\Book\Book;
 use App\SioriFriends\Models\Book\BookRepository;
+use App\SioriFriends\Models\User\UserRepository;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class EloquentBookRepository implements BookRepository
 {
+    /** @var UserRepository */
+    private $users;
+
+    public function __construct(UserRepository $users)
+    {
+        $this->users = $users;
+    }
+
     /**
      * 本を追加する。
      *
@@ -46,6 +55,19 @@ class EloquentBookRepository implements BookRepository
     public function findById(string $bookId)
     {
         return Book::findOrFail($bookId);
+    }
+
+    /**
+     * ユーザのアカウント名からそのユーザの本の一覧を取得する。
+     *
+     * @param string $account
+     * @return mixed
+     * @throws ModelNotFoundException ユーザが見つからなかった場合。
+     */
+    public function findByUserAccount(string $account)
+    {
+        $user = $this->users->findByAccount($account);
+        return $user->books;
     }
 
     /**
