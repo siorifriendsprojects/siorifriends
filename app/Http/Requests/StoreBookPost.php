@@ -6,7 +6,7 @@ use App\SioriFriends\Models\Book\BookSpec;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class CreateBookPost extends FormRequest
+class StoreBookPost extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
