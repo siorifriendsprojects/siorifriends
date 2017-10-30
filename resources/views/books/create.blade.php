@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class='col-xs-offset-1 col-xs-10' id='input-item'>
-        <form action="/books/store" method="post" class="form-horizontal col-xs-offset-1 col-xs-10">
+        <form action={{ route('books.store') }} method="post" class="form-horizontal col-xs-offset-1 col-xs-10">
             {{ csrf_field() }}
                 <!-- タイトルのグループ -->
             <div class="form-group">
