@@ -1,10 +1,11 @@
 $('#tags').tagsInput({width:'auto'});
-$('#title').val("s");
-$('#description').val("s");
+$('#title').val("title");
+$('#description').val("description");
 
 $(function()
 {   
     var taggroup;
+
 
     $('#addcnt').on('click',function()
     {
@@ -72,64 +73,58 @@ $(function()
         $('#check').toggle();
 
     });
-    
+
     $('#create').on('click',function()
     {
         var myRet = confirm("本を作成します、よろしいですか？");
         if ( myRet == true )
         {
-            
-            var anchors = [];
+            var eachnum = 0;
             $('.cnt').each(function()
             {
-                anchors.push(
-                {
-                    name : $(this).children('.cnt-title').val(),
-                    url : $(this).children('.cnt-url').val()
-                });
+                $('.url-group').append('<input type="hidden" name="anchors['+eachnum+'][name]" value="'+$(this).children('.cnt-title').val()+'">');
+                $('.url-group').append('<input type="hidden" name="anchors['+eachnum+'][url]" value="'+$(this).children('.cnt-url').val()+'">');
+                eachnum++;
             });
 
-            if($('.adult input[name=is_adult]:checked').val() == 'false')
-                taggroup.push("R-18");
-
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-
-            $.ajax(
+            alert(taggroup);
+            $.each(taggroup,function(num,val)
             {
-                type : 'POST',
-                url : '/books/new',
-                dataType : 'json',
-                data : 
-                {
-                    'title' : $('#title').val(),
-                    'description' : $('#description').val(),
-                    'tags' : taggroup,
-                    'anchors' : anchors
-                },
-                //contentType : 'application/json'
-            })
-            
-            .done(function(res)
-            {
-                if(res.hasCreated)
-                {   
-                    location.href=res.redirectTo;
-                }
-                else
-                {
-                    alert("本の作成に失敗しました");
-                    taggroup = null;
-                    $('.check-link').empty();
-                    $('#input-item').toggle();
-                    $('#check').toggle();
-                }
+                $('.taggroup').append('<input name="tags['+num+']" value="'+val+'">');
             });
+            $('.form-horizontal').submit();
         }          
     
     });
     
 });
+            // $.ajax(
+            // {
+            //     type : 'POST',
+            //     url : '/books/new',
+            //     dataType : 'json',
+            //     data : 
+            //     {
+            //         'title' : $('#title').val(),
+            //         'description' : $('#description').val(),
+            //         'tags' : taggroup,
+            //         'anchors' : anchors
+            //     },
+            //     //contentType : 'application/json'
+            // })
+            
+            // .done(function(res)
+            // {
+            //     if(res.hasCreated)
+            //     {   
+            //         location.href=res.redirectTo;
+            //     }
+            //     else
+            //     {
+            //         alert("本の作成に失敗しました");
+            //         taggroup = null;
+            //         $('.check-link').empty();
+            //         $('#input-item').toggle();
+            //         $('#check').toggle();
+            //     }
+            // });

@@ -17,14 +17,18 @@ class Anchor extends Model
     public $incrementing = false;
 
     /**
-     * 行の生成後変更されないカラムの指定
-     */
-    public $guarded = ['id','url'];
-
-    /**
      * Indicates if the model should be timestamped.
      *
      * @var bool
      */
 //    public $timestamps   = false;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'url',
+    ];
 }

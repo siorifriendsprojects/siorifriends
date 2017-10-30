@@ -4,17 +4,17 @@
 
 <div class="container">
     <div class='col-xs-offset-1 col-xs-10' id='input-item'>
-        <form class="form-horizontal col-xs-offset-1 col-xs-10">
+        <form action={{ route('books.store') }} method="post" class="form-horizontal col-xs-offset-1 col-xs-10">
             {{ csrf_field() }}
                 <!-- タイトルのグループ -->
             <div class="form-group">
                 <label for="title">タイトル:</label>
-                <input type="text" id="title" class="form-control">
+                <input type="text" name="title" id="title" class="form-control">
             </div>
                 <!-- 概要のグループ -->
             <div class="form-group">
                 <label for="description">概要:</label>
-                <textarea id="description" class="form-control" style="resize : none;"></textarea>
+                <textarea id="description" name="description" class="form-control" style="resize : none;"></textarea>
             </div>
                 <!-- URL追加ページのグループ  -->
             <div class="form-group" >
@@ -30,9 +30,10 @@
                 <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
             </div>
                 <!-- タグのグループ -->
-            <div class="form-group">
+
+            <div class="form-group taggroup">   
                 <label for="tag">タグ:</label>
-                <input type="text" id="tags" class="tags form-control" />
+                <input type="text" id="tags" class="form-control" />
             </div>
                 <!-- 全体へ公開するか -->
             <div class="form-group text-center">
@@ -71,6 +72,7 @@
                 </div>
             </div>
         </form>
+        <button class="tes">test</button>
                 <!-- 確認ボタン -->
             <div class="text-center col-xs-12">
                 <button class="btn btn-default" id="confirmation">確認</button>
@@ -116,8 +118,10 @@
         </div>
 
         <div class="text-center">
+        <div style="display:inline-flex">
                 <button class="btn btn-default" id="revision">修正</button>
                 <button class="btn btn-default" id="create">作成</button>
+        </div>
         </div>
     </div>
 </div>

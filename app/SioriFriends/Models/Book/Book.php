@@ -26,6 +26,15 @@ class Book extends Model
 //    public $timestamps   = false;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'description', 'is_publishing', 'is_commentable'
+    ];
+
+    /**
      * 本の製作者を取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
