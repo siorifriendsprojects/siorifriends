@@ -13,10 +13,10 @@ use App\SioriFriends\Models\User\User;
 
 class BookFactory
 {
-    public static function create(BookSpec $bookSpec)
+    public static function create(User $author, BookSpec $bookSpec)
     {
         // 本の生成
-        $book = $bookSpec->author()->books()->create([
+        $book = $author->books()->create([
             'title'   => $bookSpec->title(),
             'description' => $bookSpec->description(),
             'is_publishing' => $bookSpec->isPublishing(),

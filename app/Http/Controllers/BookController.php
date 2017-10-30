@@ -55,12 +55,11 @@ class BookController extends Controller
     public function store(StoreBookPost $request)
     {
         try {
+            // request が本の仕様を満たしているかどうか
+            $bookSpec = new BookSpec($request);
             // login user model の取得
             $author = $this->users->findById(Auth::id());
-            // request が本の仕様を満たしているかどうか
-            $bookSpec = new BookSpec($author, $request);
-
-            $book = BookFactory::create($bookSpec);
+            $book = BookFactory::create($author, $bookSpec);
 
             //作成した本のページヘリダイレクトする
             $to = route('books.show', [ 'bookId' => $book->id ]);

@@ -22,8 +22,6 @@ use Illuminate\Support\Facades\Validator;
  */
 class BookSpec
 {
-    /** @var User */
-    private $author;
     /** @var string */
     private $title;
     /** @var string */
@@ -63,23 +61,16 @@ class BookSpec
      *
      * validationはcontroller がrequest を受け取るときに行う。
      *
-     * @param User $author 本を作成するユーザ
      * @param Request $request
      */
-    public function __construct(User $author, Request $request)
+    public function __construct(Request $request)
     {
-        $this->author = $author;
         $this->title = $request->input('title');
         $this->description = $request->input('description');
         $this->isPublishing = $request->input('isPublishing', true);
         $this->isCommentable = $request->input('isCommentable', true);
         $this->tags = $request->input('tags');
         $this->anchors = $request->input('anchors');
-    }
-
-    public function author()
-    {
-        return $this->author;
     }
 
     public function title()

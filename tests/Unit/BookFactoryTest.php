@@ -38,13 +38,13 @@ class BookFactoryTest extends TestCase
                 ['url' => 'http://qiita.com', 'name' => 'qiita'],
             ],
         ]);
-        $this->bookSpec = new BookSpec($this->user, $this->request);
+        $this->bookSpec = new BookSpec($this->request);
     }
 
     public function testCreate()
     {
         // test target.
-        $book = BookFactory::create($this->bookSpec);
+        $book = BookFactory::create($this->user, $this->bookSpec);
 
         // 本が作成されたか。
         $this->assertDatabaseHas('books', [
