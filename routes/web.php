@@ -33,9 +33,8 @@ Route::resource('/books', 'BookController', [
 Route::prefix('/users/{account}')->group(function() {
     Route::get('/', 'User\ProfileController@show')->name('overview');
 
-    Route::get('/follow','User\FollowController@showFollows');
-
-    Route::get('/follower','UserController@showFollower');
+    Route::get('/follows','User\FollowController');
+    Route::get('/followers','User\FollowerController');
 
     Route::get('/bookshelf','User\BookShelfController@index');
 
