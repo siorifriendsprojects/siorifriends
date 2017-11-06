@@ -71,7 +71,6 @@
                 </div>
             </div>
         </form>
-        <button class="tes">test</button>
                 <!-- 確認ボタン -->
             <div class="text-center col-xs-12">
                 <button class="btn btn-default" id="confirmation">確認</button>

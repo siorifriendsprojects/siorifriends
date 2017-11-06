@@ -1,6 +1,4 @@
-$('#tags').tagsInput({width:'auto'});
-$('#title').val("title");
-$('#description').val("description");
+$('#tags').tagsInput({width:'auto'})
 
 $(function()
 {   
@@ -86,8 +84,7 @@ $(function()
                 $('.url-group').append('<input type="hidden" name="anchors['+eachnum+'][url]" value="'+$(this).children('.cnt-url').val()+'">');
                 eachnum++;
             });
-            
-            alert(taggroup);
+
             $.each(taggroup,function(num,val)
             {
                 $('.taggroup').append('<input name="tags['+num+']" value="'+val+'">');
