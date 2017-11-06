@@ -29,6 +29,7 @@ class Tag extends Model
      * @var array
      */
     protected $fillable = [
-        'name'
+        'name',
+        Tag::CREATED_AT,
     ];
 }
