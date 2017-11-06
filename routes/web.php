@@ -11,31 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/tags',function(){
     return view('tags');
 });
 
-Route::prefix('/books')->group(function(){
-    Route::get('/',function(){
-        return view('books');
-    });
-    
-    Route::get('/new',function(){
-        return view('create');
-    });    
+Route::resource('/books', 'BookController', [
+    'parameters' => [
+        'book' => 'bookId'
+    ]
+]);
 
-    Route::post('/new','BookController@create');
-
-    Route::get('/{id}','BookController@show');    
-});
 
 Route::prefix('/users')->group(function() {
     Route::get('/',function(){
@@ -48,9 +37,7 @@ Route::prefix('/users')->group(function() {
 
     Route::get('/{account}/follower','UserController@showFollower');
 
-    Route::get('/{account}/bookshelf',function(){
-        return view("bookshelf");
-    });
+    Route::get('/{account}/bookshelf','User\BookShelfController@showBooks');
 
     Route::get('/{account}/favorite',function(){
         return view('favorite');

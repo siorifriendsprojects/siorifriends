@@ -2,7 +2,6 @@
 $(function($) {
 	WindowHeight = $(window).height();
 	$('.drawr').css('height', WindowHeight); //メニューをwindowの高さいっぱいにする
-	
 	$(document).ready(function() {
 		$('.hum-btn').click(function(){ //クリックしたら
 			$('.drawr').animate({width:'toggle'}); //animateで表示・非表示

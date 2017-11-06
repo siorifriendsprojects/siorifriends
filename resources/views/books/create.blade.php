@@ -4,15 +4,15 @@
 
 <div class="container">
     <div class='col-xs-offset-1 col-xs-10' id='input-item'>
-        <form action="/books/store" method="post" class="form-horizontal col-xs-offset-1 col-xs-10">
+        <form action={{ route('books.store') }} method="post" class="form-horizontal col-xs-offset-1 col-xs-10">
             {{ csrf_field() }}
                 <!-- タイトルのグループ -->
-            <div class="form-group">   
+            <div class="form-group">
                 <label for="title">タイトル:</label>
                 <input type="text" name="title" id="title" class="form-control">
             </div>
                 <!-- 概要のグループ -->
-            <div class="form-group">    
+            <div class="form-group">
                 <label for="description">概要:</label>
                 <textarea id="description" name="description" class="form-control" style="resize : none;"></textarea>
             </div>
@@ -30,6 +30,7 @@
                 <button type="button" class="btn btn-default btn-circle pull-right lines-empty" id="addcnt"><i class="glyphicon glyphicon-plus" ></i></button>
             </div>
                 <!-- タグのグループ -->
+
             <div class="form-group taggroup">   
                 <label for="tag">タグ:</label>
                 <input type="text" id="tags" class="form-control" />
@@ -103,7 +104,7 @@
         <div class="is-settings col-xs-offset-1 lines-empty">
             <div class="lines-empty">
                 <label class="check-cnt" name="publishing">全体公開</label>
-                <p class="check-lav" id="publishing"></p>            
+                <p class="check-lav" id="publishing"></p>
             </div>
             <div class="lines-empty">
                 <label class="check-cnt" name="adult">１８歳未満公開</label>
@@ -114,7 +115,7 @@
                 <p class="check-lav" id="comment"></p>
             </div>
         </div>
-        
+
         <div class="text-center">
         <div style="display:inline-flex">
                 <button class="btn btn-default" id="revision">修正</button>

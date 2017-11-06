@@ -26,6 +26,15 @@ class Book extends Model
 //    public $timestamps   = false;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = [
+        'title', 'description', 'is_publishing', 'is_commentable'
+    ];
+
+    /**
      * 本の製作者を取得する。
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
@@ -46,6 +55,19 @@ class Book extends Model
             ->belongsToMany(User::class, 'favorites')
             ->using(Favorite::class)
             ->withPivot(Favorite::CREATED_AT);
+    }
+
+    /**
+     * この本を引数で渡されたユーザがお気に入りしているかを返す
+     *
+     * @param User $user 
+     * @return bool お気に入りしていればtrueを返す。
+     */
+    public function isFavorite(User $user)
+    {
+        return $this->favorites()
+            ->where('id', $user->id)
+            ->exists();
     }
 
     /**
