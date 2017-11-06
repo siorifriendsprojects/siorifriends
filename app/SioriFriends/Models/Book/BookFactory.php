@@ -9,6 +9,7 @@
 namespace App\SioriFriends\Models\Book;
 
 
+use Carbon\Carbon;
 use App\SioriFriends\Models\User\User;
 
 class BookFactory
@@ -24,8 +25,12 @@ class BookFactory
         ]);
 
         // tag の追加
+        $now = Carbon::now();
         foreach ($bookSpec->tags() as $tagName) {
-            $tag = Tag::firstOrCreate([ 'name' => $tagName ]);
+            $tag = Tag::firstOrCreate([
+                'name' => $tagName,
+                Tag::CREATED_AT => $now,
+            ]);
             $book->addTag($tag);
         }
 
