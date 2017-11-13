@@ -35,15 +35,10 @@ Route::prefix('/users/{account}')->group(function() {
 
     Route::get('/follows','User\FollowController');
     Route::get('/followers','User\FollowerController');
-
     Route::get('/bookshelf','User\BookShelfController@index');
 
     Route::get('/favorite',function(){
         return view('favorite');
-    });
-
-    Route::get('/{account}/{bookId}',function(){
-        return view('book');
     });
 });
 
