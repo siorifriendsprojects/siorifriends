@@ -13,6 +13,7 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="{{ asset('js/jquery.tagsinput.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/util/selector.js') }}"></script>
      <!-- Styles -->
     <link href="{{ asset('css/default.css') }}" rel="stylesheet">
     <link href="{{ asset('css/hamburger.css') }}" rel="stylesheet">
