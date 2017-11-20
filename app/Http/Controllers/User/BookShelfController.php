@@ -29,7 +29,7 @@ class BookShelfController extends Controller
          try {
              $tmpBooks = $this->users->findByAccount($account)->books()->get();
              $books = [];
-             foreach($book as $tmpBooks){
+             foreach($tmpBooks as $book){
                  $books[] = [
                      'id' => $book->id,
                      'title' => $book->title,
