@@ -45,12 +45,13 @@
                     </div>
                 </div>   
                 <ul id="menu">
-                    @if(!Auth::guest())
+                    @if(Auth::check())
                         <li><a href="{{ route('books.create') }}">本作成</a></li>
                         <li><a href="{{ route('bookshelf', Auth::user() -> account) }}">本棚</a></li>
                         <li><a href="#">お気に入り</a></li>
+                    @else
+                        <li><a href="{{ route('login') }}">ログイン</a></li>
                     @endif
-                    <li><a href="{{ route('login') }}">ログイン</a></li>
                     <li><a href="#">設定</a></li>
                     <li><a href="#">ヘルプ</a></li>
                     @if (Auth::check())
