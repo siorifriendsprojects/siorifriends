@@ -1,0 +1,1 @@
+const selector = (elementName,eventName) => `[data-siori-${elementName}="${eventName}"]`;
