@@ -37,8 +37,7 @@ Route::prefix('/users')->group(function() {
 
     Route::get('/{account}/follower','UserController@showFollower');
 
-    Route::get('/{account}/bookshelf','User\BookShelfController@showBooks');
-
+    Route::get('/{account}/bookshelf','User\BookShelfController@showBooks')->name('bookshelf');
     Route::get('/{account}/favorite',function(){
         return view('favorite');
     });
