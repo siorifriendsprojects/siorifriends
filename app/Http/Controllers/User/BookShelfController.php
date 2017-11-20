@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\SioriFriends\Models\User\UserRepository;
 use App\SioriFriends\Models\User\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+use Illuminate\Support\Facades\Auth;
 
 class BookShelfController extends Controller
 {
