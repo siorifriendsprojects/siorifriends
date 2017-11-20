@@ -43,7 +43,9 @@ header.container-fluid{
 }
 
 .logo-btn{
-    padding-right: 0px;
+    padding-left: 0px;
+    padding-top: 0.5em;
+    background-color: #f0ffe8;
 }
 
 .back-btn{
