@@ -73,9 +73,9 @@
             </div>
         </form>
                 <!-- 確認ボタン -->
-            <div class="text-center col-xs-12">
-                <button class="btn btn-default" id="confirmation">確認</button>
-            </div>
+        <div class="text-center col-xs-12">
+            <button class="btn btn-default" id="confirmation">確認</button>
+        </div>
     </div>
     <!-- ここから確認画面  -->
     <div class="col-xs-offset-1 col-xs-10" id='check' style='display:none'>
@@ -124,5 +124,8 @@
         </div>
     </div>
 </div>
-<script src="{{ asset('js/create.js') }} "></script>
+@endsection
+
+@section('resources')
+    <script src="{{ asset('js/create.js') }} "></script>
 @endsection

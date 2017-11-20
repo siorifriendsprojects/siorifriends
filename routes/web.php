@@ -26,25 +26,15 @@ Route::resource('/books', 'BookController', [
 ]);
 
 
-Route::prefix('/users')->group(function() {
-    Route::get('/',function(){
-        return view('users');
-    });
+Route::prefix('/users/{account}')->group(function() {
+    Route::get('/', 'User\ProfileController@show')->name('overview');
 
-    Route::get('/{account}', 'User\ProfileController@show')->name('overview');
+    Route::get('/follows','User\FollowController');
+    Route::get('/followers','User\FollowerController');
+    Route::get('/bookshelf','User\BookShelfController@index');
 
-    Route::get('/{account}/follow','User\FollowController@showFollows');
-
-    Route::get('/{account}/follower','UserController@showFollower');
-
-    Route::get('/{account}/bookshelf','User\BookShelfController@showBooks');
-
-    Route::get('/{account}/favorite',function(){
+    Route::get('/favorite',function(){
         return view('favorite');
-    });
-
-    Route::get('/{account}/{bookId}',function(){
-        return view('book');
     });
 });
 

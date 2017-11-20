@@ -124,7 +124,7 @@ class User extends Authenticatable
       * @param Book $book
       * @return void
       */
-    public function removeFavorite(): void
+    public function removeFavorite(Book $book): void
     {
         $this->favorites()->detach($book->id);
     }

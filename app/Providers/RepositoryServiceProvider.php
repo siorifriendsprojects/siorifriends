@@ -32,7 +32,7 @@ class RepositoryServiceProvider extends ServiceProvider
         });
 
         $this->app->singleton(BookRepository::class, function($app) {
-            return new EloquentBookRepository();
+            return new EloquentBookRepository($app->make(UserRepository::class));
         });
     }
 }

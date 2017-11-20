@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\User;
 
+use App\SioriFriends\Models\Book\BookRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\SioriFriends\Models\User\UserRepository;
@@ -11,23 +12,23 @@ use Illuminate\Support\Facades\Auth;
 
 class BookShelfController extends Controller
 {
-    private $users;
+    private $books;
     
-    public function __construct(UserRepository $userRepository)
+    public function __construct(BookRepository $bookRepository)
     {
-        $this->users = $userRepository;
+        $this->books = $bookRepository;
     }    
 
     /**
-     * bookshelf page を返すメソッド。
+     * ユーザの一覧を表示する
      *
-     * @param string $account ユーザのアカウント
+     * @param string $account ユーザのアカウント名
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-     public function showBooks(string $account)
+     public function index(string $account)
      {
          try {
-             $tmpBooks = $this->users->findByAccount($account)->books()->get();
+             $tmpBooks = $this->books->findByUserAccount($account);
              $books = [];
              foreach($tmpBooks as $book){
                  $books[] = [
