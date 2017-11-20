@@ -27,7 +27,7 @@
                         <input type="text" class="form-control cnt-url">
                     </div>
                 </div>
-                <button type="button" class="btn btn-default btn-circle pull-right lines-empty"><i class="glyphicon glyphicon-plus" id="addcnt"></i></button>
+                <button type="button" class="btn btn-default btn-circle pull-right lines-empty" id="addcnt"><i class="glyphicon glyphicon-plus" ></i></button>
             </div>
                 <!-- タグのグループ -->
 

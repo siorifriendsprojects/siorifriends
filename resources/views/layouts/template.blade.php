@@ -39,11 +39,14 @@
                         </div>
                     </div>
                     <ul id="menu">
-                        <li><a href="#">本棚</a></li>
+                        <li><a href="{{ Request::root() }}/books/create">本作成</a></li>
+                        @if(!Auth::guest())
+                            <li><a href="{{ Request::root() }}/users/{{Auth::user()->account}}/bookshelf">本棚</a></li>
+                        @endif
                         <li><a href="#">お気に入り</a></li>
                         <li><a href="#">設定</a></li>
                         <li><a href="#">ヘルプ</a></li>
-                        <li><a href="#">ログアウト</a></li>
+                        <li><a href="{{ Request::root() }}{{ Auth::logout() }}">ログアウト</a></li>
                     </ul>
                 </nav>
             </div>
@@ -51,9 +54,7 @@
                 <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
             </div>
             <div class="col-xs-6 logo-btn" style="padding-left:0px;background-color:#f0ffe8;">
-                <button class="btn btn-ghost" style="padding-left:0px;">
-                    <img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive" />
-                </button>
+                <button class="btn btn-ghost" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
             </div>
             @if(Auth::guest())
                 <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
@@ -61,17 +62,15 @@
                         <a style="background-color:#f0ffe8;">sign up</a><br>
                         <a style="background-color:#f0ffe8;">sign in</a>
                     </div>
-              </div>
+                </div>
             @else
                 <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
                     <div class="row">
                         <div class="col-xs-4 icon-btn" style="">
                             <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-search"></span></button>
-                        </div>
+                        </div>  
                         <div class="col-xs-4 col-xs-offset-1 icon-btn">
                             <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-bell"></span></button>
-                        </div>
-                        <div class="col-xs-4">
                         </div>
                     </div>
                 </div>
