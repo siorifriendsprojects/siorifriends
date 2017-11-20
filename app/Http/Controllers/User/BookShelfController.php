@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\SioriFriends\Models\User\UserRepository;
 use App\SioriFriends\Models\User\User;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-
+use Illuminate\Support\Facades\Auth;
 
 class BookShelfController extends Controller
 {
@@ -28,8 +28,16 @@ class BookShelfController extends Controller
      public function index(string $account)
      {
          try {
-             $books = $this->books->findByUserAccount($account);
-             return view('bookshelf',[ 'books' => $books ]);
+             $tmpBooks = $this->books->findByUserAccount($account);
+             $books = [];
+             foreach($tmpBooks as $book){
+                 $books[] = [
+                     'id' => $book->id,
+                     'title' => $book->title,
+                     'isFavorite' => Auth::check() && $book->isFavorite(Auth::user())
+                 ];
+             }
+             return view('bookshelf',['books' => $books]);
          } catch (ModelNotFoundException $exception) {
              abort(404, 'User not found.');
          }
