@@ -44,11 +44,14 @@
                     </div>
                 </div>   
                 <ul id="menu">
-                    <li><a href="#">本棚</a></li>
+                    <li><a href="{{ Request::root() }}/books/create">本作成</a></li>
+                    @if(!Auth::guest())
+                        <li><a href="{{ Request::root() }}/users/{{Auth::user()->account}}/bookshelf">本棚</a></li>
+                    @endif
                     <li><a href="#">お気に入り</a></li>
                     <li><a href="#">設定</a></li>
                     <li><a href="#">ヘルプ</a></li>
-                    <li><a href="#">ログアウト</a></li>
+                    <li><a href="{{ Request::root() }}{{ Auth::logout() }}">ログアウト</a></li>
                 </ul>
             </nav>
         </div>
@@ -79,7 +82,6 @@
                 </div>
             </div>
         @endif
-       
     </div>
     </header>
     <main>
