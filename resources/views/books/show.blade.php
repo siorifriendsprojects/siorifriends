@@ -28,6 +28,7 @@
                     <input type="text" id="input-comm" class="form-control">
                     <button class="btn btn-primary lines-btn pull-right" id="comm-btn">投稿</button>
                 </div>
+            </div>
         </div>
     </div>
 @endsection

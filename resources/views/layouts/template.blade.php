@@ -61,7 +61,7 @@
             <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
         </div>
         <div class="col-xs-6 logo-btn">
-            <a href="{{ route('home') }}"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></a>
+            <a href="{{ route('home') }}"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive" /></a>
         </div>
         @if(Auth::guest())
             <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
