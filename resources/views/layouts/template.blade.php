@@ -52,7 +52,7 @@
                     <li><a href="#">お気に入り</a></li>
                     <li><a href="#">設定</a></li>
                     <li><a href="#">ヘルプ</a></li>
-                    <li><a href="{{ Request::root() }}{{ Auth::logout() }}">ログアウト</a></li>
+                    <li><a href="{{ route('logout') }}">ログアウト</a></li>
                 </ul>
             </nav>
         </div>
@@ -60,7 +60,7 @@
             <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
         </div>
         <div class="col-xs-6 logo-btn" style="padding-left:0px;background-color:#f0ffe8;">
-            <button class="btn btn-ghost" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive"></img></button>
+            <button class="btn btn-ghost" style="padding-left:0px;"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive" /></button>
         </div>
         @if(Auth::guest())
             <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
