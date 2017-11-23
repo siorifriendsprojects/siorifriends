@@ -25,3 +25,6 @@ Homestead.yaml
 npm-debug.log
 .laradock
 .DS_Store
+
+# npm
+package-lock.json
