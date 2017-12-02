@@ -31,7 +31,7 @@
 
             {{-- 本を削除するためのフォーム --}}
             <div class="col-xs-1 col-xs-offset-3">
-                <form class="col" action="{{ route('books.destroy', ['bookId' => $book->id]) }}" id="deleteForm" method="post">
+                <form id="deleteForm" action="{{ route('books.destroy', ['bookId' => $book->id]) }}" method="post">
                     {{ method_field('delete') }}
                     {{ csrf_field() }}
                     <button type="button" id="deleteButton" class="btn btn-danger">削除</button>
@@ -62,10 +62,12 @@ $(function() {
 
   // 削除ボタンを押した時に確認フォームを表示する
   $(Selector.deleteButton).on('click', function() {
+    $(this).prop('disabled', true);
     const confirmMsg = '本を削除します\nよろしいですか?';
     // 確認画面を表示して OK が押されたら、form を送信する
     const ok = confirm(confirmMsg);
     if (ok) $(Selector.deleteForm).submit();
+    $(this).prop('disabled', false);
   });
 });
 </script>
