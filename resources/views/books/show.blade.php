@@ -13,11 +13,14 @@
             </div>
 
             <div class="page text-left">
-                <ul class="list-group">
+                {{-- linkの一覧を表示 --}}
+                <div class="list-group">
                     @foreach($book->anchors as $anchor)
-                        <li class="list-group-item"><a href="{{ $anchor->url }}">{{ $anchor->pivot->name }}</a></li>
+                        <a href="{{ $anchor->url }}" class="list-group-item list-group-item-action" target="_blank" style="color: #03a9f4">
+                            {{ $anchor->pivot->name }}
+                        </a>
                     @endforeach
-                </ul>
+                </div>
             </div>
         </div>
     </div>
