@@ -31,4 +31,13 @@ class Anchor extends Model
     protected $fillable = [
         'url',
     ];
+
+    public function books()
+    {
+        return $this
+            ->belongsToMany(Book::class)
+            ->using(AnchorBook::class)
+            ->withPivot('name')
+            ->withTimestamps();
+    }
 }

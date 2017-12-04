@@ -32,4 +32,12 @@ class Tag extends Model
         'name',
         Tag::CREATED_AT,
     ];
+
+    public function books()
+    {
+        return $this
+            ->belongsToMany(Book::class)
+            ->using(BookTag::class)
+            ->withPivot(BookTag::CREATED_AT);
+    }
 }
