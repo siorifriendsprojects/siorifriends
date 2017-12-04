@@ -92,6 +92,7 @@
     <link rel="stylesheet" href="{{ asset('css/hamburger.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.tagsinput.css') }}">
 
+    <script src="{{ asset('js/util/selector.js') }}"></script>
     <script src="{{ asset('js/jquery.tagsinput.js') }}"></script>
     <script src="{{ asset('js/drawr.js') }}"></script>
     <script src="{{ asset('js/moretext.js') }}"></script>

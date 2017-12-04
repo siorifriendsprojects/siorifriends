@@ -20,8 +20,10 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::prefix('v1')->group(function() {
     Route::get('/users', 'UserController@index');
 
-    //TODO:認証が必要なAPIの例 何か変わりに書いたら削除して
-    Route::middleware(OnceAuth::class)->post('/authuser', function(Request $request){
-        return json_encode(Auth::user());
+    Route::middleware(OnceAuth::class)->prefix('/favorites')->group(function(){
+        Route::post('/create', 'FavoriteController@create');
+
+        Route::post('/destroy','FavoriteController@destroy');
     });
+
 });
