@@ -50,5 +50,8 @@
         </form>
         </div>
     </div>
+@endsection
+
+@section('resources')
     <script src="{{ asset('js/editprofile.js') }}"></script>
 @endsection
