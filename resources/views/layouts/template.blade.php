@@ -46,12 +46,14 @@
                         @else
                             <li><a href="{{ route('login') }}">ログイン</a></li>
                         @endif
-                        <li><a href="#">設定</a></li>
-                        <li><a href="#">ヘルプ</a></li>
+                            <li><a href="#">設定</a></li>
+                            <li><a href="#">ヘルプ</a></li>
                         @if (Auth::check())
-                            <li><a href="{{ route('logout') }}">ログアウト</a></li>
-                        @else
-
+                            <li><form action="{{ route('logout') }}" method="post" name="logoutform">
+                                {{ csrf_field() }}
+                                <input type="hidden">
+                                <a href="javascript:logoutform.submit()">ログアウト</a>
+                            </form></li>
                         @endif
                     </ul>
                 </nav>
