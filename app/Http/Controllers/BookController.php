@@ -79,7 +79,13 @@ class BookController extends Controller
     {
         try {
             $book = $this->books->findById($bookId);
-            return view('books.show', [ 'book' => $book ]);
+            // ログインしている、かつ、本の作者
+            $isMyBook = Auth::check() && $book->author->id === Auth::id();
+
+            return view('books.show', [
+                'book' => $book,
+                'isMyBook' => $isMyBook
+            ]);
         } catch(ModelNotFoundException $e) {
 //            throwException($e::class);
             abort(404, $e->getMessage());
@@ -117,6 +123,22 @@ class BookController extends Controller
      */
     public function destroy($bookId)
     {
-        //
+        try {
+            $book = $this->books->findById($bookId);
+            $author = $book->author;
+
+            // ゲストユーザの場合、または、本の作者ではない場合はエラー
+            if (Auth::guest() || $author->id !== Auth::id()) {
+                abort(403, 'You do not have access authority.');
+            }
+
+            $this->books->remove($book);
+
+            // ユーザの本の一覧へリダイレクト
+            $to = route('bookshelf', [ 'account' => $author->account ]);
+            return redirect($to);
+        } catch (ModelNotFoundException $e) {
+            abort(404, 'Not found this resource.');
+        }
     }
 }
