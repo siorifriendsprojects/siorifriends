@@ -5,7 +5,9 @@
     <div class="row">
         <div class="col-xs-5">
             <p>
-                <a href="{{ route('overview', ['account' => $book->author->account]) }}">{{ $book->author->account}}</a>
+                <a href="{{ route('overview', ['account' => $book->author->account]) }}">
+                   {{ '@' }}{{ $book->author->account }}
+                </a>
             </p>
         </div>
 
@@ -47,6 +49,7 @@
         <div class="col-xs-12">
             <p class="h4">
                 @foreach($book->tags as $tag)
+                    {{-- TODO:tagをクリックしたら、そのtagがついた本の一覧を表示する --}}
                     <span class="label label-default">{{ $tag->name }}</span>
                 @endforeach
             </p>
