@@ -1,5 +1,4 @@
 .ham-btn {
-  /* position: absolute; */
   position: fixed;
   background-color: inherit;
   cursor: pointer;
@@ -11,7 +10,6 @@
 .drawr {
   display: none;
   background-color: rgba(0,0,0,0.6);
-  /* position: absolute; */
   position: fixed;
   top: 0;
   left: 0;
@@ -22,8 +20,7 @@
 .hum-close-button{
   display: none;
   color: white;
-  /* top: 1em;
-  left: 1em; */
+
 }
 #menu,
 #menu li {
