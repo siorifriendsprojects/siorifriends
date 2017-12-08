@@ -58,31 +58,31 @@
                     </ul>
                 </nav>
             </div>
-        </div>
-        <div class="col-xs-2" style="height:50px;padding-right:0px;">
-            <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
-        </div>
-        <div class="col-xs-6 logo-btn">
-            <a href="{{ route('home') }}"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive" /></a>
-        </div>
-        @if(Auth::guest())
-            <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
-                <div class="row">
-                    <a style="background-color:#f0ffe8;" href="{{ route('login') }}">sign up</a><br>
-                    <a style="background-color:#f0ffe8;" href="{{ route('login') }}">sign in</a>
-                </div>
-            @else
-                <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
+            <div class="col-xs-2" style="height:50px;padding-right:0px;">
+                <img src="{{ asset('img/doraemon_face.jpg') }}" alt="どらちゃん" class="img-responsive img-icon" style="float:right;"/>
+            </div>
+            <div class="col-xs-6 logo-btn">
+                <a href="{{ route('home') }}"><img src="{{ asset('img/logo01.png')}}" alt="タイトルロゴ" class="img-responsive" /></a>
+            </div>
+            @if(Auth::guest())
+                <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
                     <div class="row">
-                        <div class="col-xs-4 icon-btn" style="">
-                            <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-search"></span></button>
-                        </div>  
-                        <div class="col-xs-4 col-xs-offset-1 icon-btn">
-                            <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-bell"></span></button>
+                        <a style="background-color:#f0ffe8;" href="{{ route('login') }}">sign up</a><br>
+                        <a style="background-color:#f0ffe8;" href="{{ route('login') }}">sign in</a>
+                    </div>
+                @else
+                    <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
+                        <div class="row">
+                            <div class="col-xs-4 icon-btn" style="">
+                                <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-search"></span></button>
+                            </div>  
+                            <div class="col-xs-4 col-xs-offset-1 icon-btn">
+                                <button class="btn btn-ghost" style="background-color:#f0ffe8;"><span class="glyphicon glyphicon-bell"></span></button>
+                            </div>
                         </div>
                     </div>
-                </div>
-            @endif
+                @endif
+            </div>
         </div>
     </header>
     <main>
