@@ -42,7 +42,7 @@
                         @if(Auth::check())
                             <li><a href="{{ route('books.create') }}">本作成</a></li>
                             <li><a href="{{ route('bookshelf', Auth::user() -> account) }}">本棚</a></li>
-                            <li><a href="#">お気に入り</a></li>
+                            <li><a href="{{ route('favorite', Auth::user() -> account) }}">お気に入り</a></li>
                         @else
                             <li><a href="{{ route('login') }}">ログイン</a></li>
                         @endif

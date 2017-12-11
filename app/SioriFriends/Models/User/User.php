@@ -171,7 +171,7 @@ class User extends Authenticatable
      * 栞フレンズ内で使用するAPITokenを返す
      */
     public function localToken(){
-        $apiToken = ApiToken::where('user_id',Auth::user()->account)->where('application_id','0000000000siorifriends0000000000');
+        $apiToken = ApiToken::where('user_id',Auth::id())->where('application_id','0000000000siorifriends0000000000');
 
         if ($apiToken->exists()){
             return $apiToken->first();
