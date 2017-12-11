@@ -4,6 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;
+use App\SioriFriends\Models\Api\ApiToken;
+use App\SioriFriends\Models\User\User;
+
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OnceAuth
 {
@@ -16,7 +20,13 @@ class OnceAuth
      */
     public function handle($request, Closure $next)
     {
-        Auth::once(["account" => $request->input("account"),"password" => $request->input("password")]);
-        return $next($request);
+        try{
+            $apiToken = ApiToken::where("token",$request->input("token"))->firstOrFail();
+            Auth::login(User::where(["id" => $apiToken->user_id])->firstOrFail());
+            return $next($request);
+        } catch(ModelNotFoundException $e) {
+            return response()->json(["error" => "Forbidden"],403);
+        }
+
     }
 }

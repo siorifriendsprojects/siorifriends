@@ -19,6 +19,8 @@ interface BookRepository
 
     public function findByUserAccount(string $account);
 
+    public function findFavoritesByUserAccount(string $account);
+
     public function fetchNewBooks(int $limit);
 
     public function add(Book $book);

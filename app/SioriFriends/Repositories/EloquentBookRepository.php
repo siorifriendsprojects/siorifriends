@@ -71,6 +71,19 @@ class EloquentBookRepository implements BookRepository
     }
 
     /**
+     * ユーザのアカウント名からそのユーザがお気に入りに登録している本の一覧を取得する。
+     *
+     * @param string $account
+     * @return mixed
+     * @throws ModelNotFoundException ユーザが見つからなかった場合。
+     */
+    public function findFavoritesByUserAccount(string $account)
+    {
+        $user = $this->users->findByAccount($account);
+        return $user->favorites;
+    }
+
+    /**
      *
      * 新着の本を limit 件取得する。
      *
