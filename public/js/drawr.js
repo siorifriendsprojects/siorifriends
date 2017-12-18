@@ -1,17 +1,13 @@
 //ドロワーメニュー
 $(function($) {
 	$(document).ready(function() {
-		$('.ham-btn').click(function(){ //クリックしたら
-			$('#drawrEvent').animate({width:'toggle'}); //animateで表示・非表示
-			// $(this).toggleClass('peke'); //toggleでクラス追加・削除
-			$(".glyphicon-align-justify").toggle();
-			$(".glyphicon-remove").toggle();
+		$('main').click(function() {
+			if ($('#drawrEvent').css('display') == 'block') {
+				hamMenuToggle();
+			}
 		});
-		$('[data-click]').click(function(){ //クリックしたら
-			$('#drawrEvent').animate({width:'toggle'}); //animateで表示・非表示
-			$(this).toggleClass('peke'); //toggleでクラス追加・削除
-			$(".glyphicon-align-justify").toggle();
-			$(".glyphicon-remove").toggle();
+		$('[data-ham-click]').click(function(){ //クリックしたら
+			hamMenuToggle();
 		});
 	});
 	// ページリサイズ時にも適用
@@ -38,3 +34,10 @@ $(function($) {
 		}
 	}).trigger('scroll');
 });
+
+function hamMenuToggle(){
+	$('#drawrEvent').animate({width:'toggle'}); //animateで表示・非表示
+	$(this).toggleClass('peke'); //toggleでクラス追加・削除
+	$(".glyphicon-align-justify").toggle();
+	$(".glyphicon-remove").toggle();
+}
