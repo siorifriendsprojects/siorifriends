@@ -19,7 +19,7 @@
     <header class="container-fluid">
         <div class="row">
             <div class="col-xs-1 icon-btn" >
-                <button class="btn ham-btn">
+                <button data-ham-click class="btn ham-btn">
                     <span  class="glyphicon glyphicon-align-justify"></span>
                     <span  class="glyphicon glyphicon-remove hum-close-button"></span>
                 </button>
@@ -85,7 +85,7 @@
             @endif
         </div>
     </header>
-    <main>
+    <main class="container">
         @yield('content')
     </main>
     <footer></footer>
