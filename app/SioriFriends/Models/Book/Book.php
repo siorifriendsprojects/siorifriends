@@ -6,10 +6,12 @@ use App\SioriFriends\Models\User\Favorite;
 use App\SioriFriends\Models\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Alsofronie\Uuid\Uuid32ModelTrait;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Book extends Model
 {
     use Uuid32ModelTrait;
+    use SoftDeletes;
 
     /**
      * Indicates if the IDs are auto-incrementing.
@@ -19,19 +21,33 @@ class Book extends Model
     public $incrementing = false;
 
     /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-//    public $timestamps   = false;
-
-    /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
     protected $fillable = [
         'title', 'description', 'is_publishing', 'is_commentable'
+    ];
+
+    /**
+     * 日付へキャストする属性
+     *
+     * @var array
+     */
+    protected $dates = [
+        self::CREATED_AT,
+        self::UPDATED_AT,
+        'deleted_at',
+    ];
+
+    /**
+     * ネイティブなタイプへキャストする属性
+     *
+     * @var array
+     */
+    protected $casts = [
+        'is_publishing' => 'boolean',
+        'is_commentable' => 'boolean',
     ];
 
     /**
