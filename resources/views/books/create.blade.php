@@ -41,24 +41,7 @@
     </div>
 
     <div class="row">
-        <div id="linkList" class="col-xs-12">
-
-            {{-- url title 一つ分 --}}
-            {{--<div class="row" data-type="link">--}}
-                {{--<div class="col-xs-12 form-group">--}}
-                    {{--<div class="input-group">--}}
-                        {{--<input type="text" class="form-control" placeholder="url" data-type="linkUrl">--}}
-                        {{--<div class="input-group-btn">--}}
-                            {{--<button class="btn btn-info active" data-button="preview">--}}
-                                {{--<span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>--}}
-                            {{--</button>--}}
-                        {{--</div>--}}
-                    {{--</div>--}}
-                    {{--<input type="text" class="form-control" placeholder="title" data-type="linkTitle">--}}
-                {{--</div>--}}
-            {{--</div>--}}
-
-        </div>
+        <div id="linkList" class="col-xs-12"></div>
     </div>
     <div class="row">
         <div class="col-xs-12 text-center">
@@ -227,6 +210,7 @@ $(() => {
   });
 
   $(Trigger.confirmButton).on('click', (e) => {
+    // form の値を取得
     const results = {
       title: $(Book.title).val(),
       description: $(Book.description).val(),
