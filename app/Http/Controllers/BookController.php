@@ -141,4 +141,16 @@ class BookController extends Controller
             abort(404, 'Not found this resource.');
         }
     }
+
+    public function search(Request $request){
+        $orderBy = isset($request->orderby) ? $request->orderby : "create_desc";
+        $page = isset($request->page) ? $request->page : 1;
+
+        if(isset($request->word)){
+            return $this->books->wordSearch($request->word,$orderBy,$page);
+        }else if(isset($request->tag)){
+            return $this->books->tagSearch($request->tag,$orderBy,$page);
+        }
+        return $this->books->wordSearch("",$orderBy,$page);
+    }
 }
