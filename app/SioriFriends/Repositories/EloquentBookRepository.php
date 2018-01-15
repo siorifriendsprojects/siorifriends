@@ -135,4 +135,85 @@ class EloquentBookRepository implements BookRepository
 
         $book->delete();
     }
+
+    public function wordSearch($word,$orderBy,$page){
+        $bookQuery = Book::where('title', 'like', "%{$word}%")->orWhere('description', 'like', "%{$word}%");
+
+        $bookQuery = $this->searchResultSort($bookQuery,$orderBy);
+
+        $tmpBooks = $bookQuery->paginate(2);
+
+        $tmpBooks->appends(['word' => $word, 'orderby' => $orderBy]);
+
+        $books = [];
+
+        foreach($tmpBooks as $book){
+            $books[] = $book;
+        }
+
+        return view("books.search",[
+                "books" => $books,
+                "nextLink" => $tmpBooks->nextPageUrl(),
+                "prevLink" => $tmpBooks->previousPageUrl(),
+                "isFirst" => ($page <= 1),
+                "isLast" => $tmpBooks->hasMorePages() == false,
+                "tagSearch" => false,
+                "orderby" => $orderBy
+        ]);
+    }
+
+    public function tagSearch($tag,$orderBy,$page){
+        $bookQuery = Book::WhereHas('tags', function ($query) use ($tag) {
+            $query->Where('name', $tag);
+        });
+
+        $bookQuery = $this->searchResultSort($bookQuery,$orderBy);
+
+        $tmpBooks = $bookQuery->paginate(10);
+
+        $tmpBooks->appends(['tag' => $tag, 'orderby' => $orderBy]);
+
+        $books = [];
+
+        foreach($tmpBooks as $book){
+            $books[] = $book;
+        }
+
+        return view("books.search",[
+            "books" => $books,
+            "nextLink" => $tmpBooks->nextPageUrl(),
+            "prevLink" => $tmpBooks->previousPageUrl(),
+            "isFirst" => ($page <= 1),
+            "isLast" => $tmpBooks->hasMorePages() == false,
+            "tagSearch" => true,
+            "orderby" => $orderBy
+        ]);
+    }
+
+    private function searchResultSort($bookQuery,$orderBy){
+        $sortedBooks = null;
+        switch($orderBy){
+            case "update_asc":
+                $sortedBooks = $bookQuery->orderBy("updated_at","asc");
+                break;
+            case "update_desc":
+                $sortedBooks = $bookQuery->orderBy("updated_at","desc");
+                break;
+            /*            case "comment_asc":
+                            break;
+                        case "comment_desc":
+                            break;*/
+            case "hot_asc":
+                break;
+            case "hot_desc":
+                break;
+            case "create_asc":
+                $sortedBooks = $bookQuery->orderBy("created_at","asc");
+                break;
+            default://case "create_desc":
+                $sortedBooks = $bookQuery->orderBy("created_at","desc");
+                break;
+        }
+        return $sortedBooks;
+    }
 }
