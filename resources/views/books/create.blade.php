@@ -21,12 +21,13 @@
                 <label for="addURL">リンクの追加:</label>
                 <div class="url-group">
                     <div class="lines-empty cnt" >
-                        <label for="title" class="h6">リンクタイトル</label>
-                        <input type="text" class="form-control cnt-title">
                         <label for="title" class="h6">URL</label>
                         <input type="text" class="form-control cnt-url">
+                        <label for="title" class="h6">リンクタイトル</label>
+                        <input type="text" class="form-control cnt-title">
                     </div>
                 </div>
+                <iframe src="" id="acquisition" frameborder="0" ></iframe>
                 <button type="button" class="btn btn-default btn-circle pull-right lines-empty" id="addcnt"><i class="glyphicon glyphicon-plus" ></i></button>
             </div>
                 <!-- タグのグループ -->
