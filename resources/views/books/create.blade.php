@@ -65,7 +65,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <input id="isPublished" type="checkbox" class="form-control" checked
+                    <input id="isPublishing" type="checkbox" class="form-control" checked
                            data-toggle="toggle"
                            data-onstyle="primary" data-offstyle="danger"
                            data-on="public" data-off="private"
@@ -112,7 +112,7 @@ const Book = {
   title: '#title',
   description: '#description',
   tags: '#tags',
-  isPublished: '#isPublished',
+  isPublishing: '#isPublishing',
   isCommentable: '#isCommentable',
   submitForm: "#submitForm"
 };
@@ -199,6 +199,13 @@ function initialize() {
   return initalState;
 }
 
+function mapToInputTag(name, value) {
+  return `<input type="hidden" name="${name}" value="${value}">`;
+}
+
+class SubmitParameter {
+  
+}
 
 /**
  * main
@@ -214,39 +221,58 @@ $(() => {
 
   $(Trigger.confirmButton).on('click', (e) => {
     // form の値を取得
-    const results = {
+    const parameters = {
       title: $(Book.title).val(),
       description: $(Book.description).val(),
-      isPublished: $(Book.isPublished).prop('checked'),
-      isCommentable: $(Book.isCommentable).prop('checked'),
-      tags: $(Book.tags).val(),
-      links: state.links.filter(link => link.url() !== "" && link.title() !== "")
+      is_publishing: $(Book.isPublishing).prop('checked'),
+      is_commentable: $(Book.isCommentable).prop('checked'),
     };
+    const tags = $(Book.tags).val();
+    const links = state.links.filter(link => link.url() !== "" && link.title() !== "");
 
-    console.log(results);
-    
-    const mapToInputTag = (name, value) => `<input type="hidden" name="${name}" value="${value}">`;
-    
-    const submitParameters = {
-      title:       mapToInputTag('title', results.title),
-      description: mapToInputTag('description', results.description),
-      isPublished: mapToInputTag('is_publishing', results.isPublished),
-      isCommentable: mapToInputTag('is_commentable', results.isCommentable),
-      tags: results.tags.map((tag, idx) => mapToInputTag(`tags[${idx}]`, tag)),
-      links: results.links.map((link, idx) => [
-        mapToInputTag(`anchors[${idx}][url]`, link.url()),
-        mapToInputTag(`anchors[${idx}][name]`, link.title())
-      ]).reduce((arr, link) => arr.concat(link), []) // 多次元配列を二次元へ変換
-    };
+    // validations.
+    if (parameters.title === '') {
+      alert('タイトルを入力してください。');
+      return;
+    }
 
-    console.log(submitParameters);
+    if (parameters.description === '') {
+      alert('概要を入力してください。');
+      return;
+    }
 
+    if (tags.length < 1) {
+      alert("tag を入力してください");
+      return;
+    }
+    if (10 < tags.length) {
+      alert("tag は10個までです");
+      return;
+    }
+
+    if (links.length < 1) {
+      alert("link を入力してください");
+      return;
+    }
+    if (30 < links.length) {
+      alert("link は30個までです");
+      return;
+    }
+
+    // input[type=hidden] に変換
+    const elements = $.map(parameters, (value, key) => mapToInputTag(key, value))
+      .concat(tags.map(tag => mapToInputTag('tags[]', tag))) // tag の配列をつなげる
+      .concat(links.map((link, idx) => [                     // link の配列をつなげる
+          mapToInputTag(`anchors[${idx}][url]`, link.url()),
+          mapToInputTag(`anchors[${idx}][name]`, link.title())
+        ]).reduce((arr, link) => arr.concat(link), [])
+      ).map(element => $(element));
+
+
+    // form にパラメータを追加して送信
     const submitForm = $(Book.submitForm);
-    $.each(submitParameters, (__, element) => {
-      if ($.isArray(element)) element.forEach(el => submitForm.append($(el)));
-      else submitForm.append($(element));
-    });
-    {{--  submitForm.submit();  --}}
+    elements.forEach(element => submitForm.append(element))
+    submitForm.submit();
   });
 });
 
