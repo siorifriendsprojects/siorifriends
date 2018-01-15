@@ -79,8 +79,7 @@
         <div class="col-xs-12">
             <p class="h4">
                 @foreach($book->tags as $tag)
-                    {{-- TODO:tagをクリックしたら、そのtagがついた本の一覧を表示する --}}
-                    <span class="label label-default">{{ $tag->name }}</span>
+                    <span class="label label-default" onclick="location.href='{{route("search")."?tag="}}{{$tag->name}}'">{{ $tag->name }}</span>
                 @endforeach
             </p>
         </div>
