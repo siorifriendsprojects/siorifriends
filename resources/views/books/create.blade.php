@@ -100,6 +100,9 @@
             <button id="confirmBtn" type="button" class="btn btn-primary btn-lg btn-block">確認する</button>
         </div>
     </div>
+    <form id="submitForm" action="/books" method="post">
+        {{ csrf_field() }}
+    </form>
 </div>
 @endsection
 
@@ -111,6 +114,7 @@ const Book = {
   tags: '#tags',
   isPublished: '#isPublished',
   isCommentable: '#isCommentable',
+  submitForm: "#submitForm"
 };
 
 const Trigger = {
@@ -188,7 +192,6 @@ function initialize() {
   const link = new Link();
   $('#linkList').append(link.render());
 
-
   const initalState = {
     links: [link],
   };
@@ -214,12 +217,36 @@ $(() => {
     const results = {
       title: $(Book.title).val(),
       description: $(Book.description).val(),
-      tags: $(Book.tags).val(),
       isPublished: $(Book.isPublished).prop('checked'),
       isCommentable: $(Book.isCommentable).prop('checked'),
-      links: state.links.map(link => [link.url(), link.title()]),
+      tags: $(Book.tags).val(),
+      links: state.links.filter(link => link.url() !== "" && link.title() !== "")
     };
+
     console.log(results);
+    
+    const mapToInputTag = (name, value) => `<input type="hidden" name="${name}" value="${value}">`;
+    
+    const submitParameters = {
+      title:       mapToInputTag('title', results.title),
+      description: mapToInputTag('description', results.description),
+      isPublished: mapToInputTag('is_publishing', results.isPublished),
+      isCommentable: mapToInputTag('is_commentable', results.isCommentable),
+      tags: results.tags.map((tag, idx) => mapToInputTag(`tags[${idx}]`, tag)),
+      links: results.links.map((link, idx) => [
+        mapToInputTag(`anchors[${idx}][url]`, link.url()),
+        mapToInputTag(`anchors[${idx}][name]`, link.title())
+      ]).reduce((arr, link) => arr.concat(link), []) // 多次元配列を二次元へ変換
+    };
+
+    console.log(submitParameters);
+
+    const submitForm = $(Book.submitForm);
+    $.each(submitParameters, (__, element) => {
+      if ($.isArray(element)) element.forEach(el => submitForm.append($(el)));
+      else submitForm.append($(element));
+    });
+    {{--  submitForm.submit();  --}}
   });
 });
 
