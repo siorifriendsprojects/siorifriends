@@ -74,8 +74,8 @@
                 <div class="col-xs-3" id="sn-icon" style="padding-left:0px;">
                     <div class="row">
                         <div class="col-xs-4 icon-btn" style="">
-                            <button class="btn btn-ghost" class="siori-bgc"><span class="glyphicon glyphicon-search"></span></button>
-                        </div>  
+                            <button class="btn btn-ghost" class="siori-bgc" onclick="location.href='{{route("search")}}'"><span class="glyphicon glyphicon-search"></span></button>
+                        </div>
                         <div class="col-xs-4 col-xs-offset-1 icon-btn">
                             <button class="btn btn-ghost" class="siori-bgc"><span class="glyphicon glyphicon-bell"></span></button>
                         </div>

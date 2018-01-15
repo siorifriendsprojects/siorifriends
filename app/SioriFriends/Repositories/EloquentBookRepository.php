@@ -138,7 +138,8 @@ class EloquentBookRepository implements BookRepository
                 "isFirst" => ($page <= 1),
                 "isLast" => $tmpBooks->hasMorePages() == false,
                 "tagSearch" => false,
-                "orderby" => $orderBy
+                "orderby" => $orderBy,
+                "key" => $word
         ]);
     }
 
@@ -166,7 +167,8 @@ class EloquentBookRepository implements BookRepository
             "isFirst" => ($page <= 1),
             "isLast" => $tmpBooks->hasMorePages() == false,
             "tagSearch" => true,
-            "orderby" => $orderBy
+            "orderby" => $orderBy,
+            "key" => $tag
         ]);
     }
 

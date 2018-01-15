@@ -15,7 +15,7 @@
             <form action="{{ route("search") }}" method="get">
                 <div class="col-xs-12 lines-empty">
                     <div class="input-group">
-                            <input type="text" class="form-control" data-siori-textbox="searchkey" name="word" placeholder="検索検索ぅ">
+                            <input type="text" class="form-control" data-siori-textbox="searchkey" name="word" placeholder="検索検索ぅ" value="{{$key}}">
                             <span class="input-group-btn">
                                 <span class="glyphicon glyphicon-search"></span>
                                 <button class="btn btn-default" type="submit">検索</button>
