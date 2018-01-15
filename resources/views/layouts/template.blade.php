@@ -7,8 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name') }}</title>
-
+    <title>@yield('title'){{ config('app.name') }}</title>
     {{-- bundle した css と js --}}
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     {{--<script src="{{ asset('js/manifest.js') }}"></script>--}}
