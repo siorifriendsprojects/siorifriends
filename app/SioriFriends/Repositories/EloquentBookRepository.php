@@ -141,7 +141,7 @@ class EloquentBookRepository implements BookRepository
 
         $bookQuery = $this->searchResultSort($bookQuery,$orderBy);
 
-        $tmpBooks = $bookQuery->paginate(2);
+        $tmpBooks = $bookQuery->paginate(10);
 
         $tmpBooks->appends(['word' => $word, 'orderby' => $orderBy]);
 
