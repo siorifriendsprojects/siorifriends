@@ -199,14 +199,15 @@ class EloquentBookRepository implements BookRepository
             case "update_desc":
                 $sortedBooks = $bookQuery->orderBy("updated_at","desc");
                 break;
-            /*            case "comment_asc":
-                            break;
-                        case "comment_desc":
-                            break;*/
+            /* TODO: ここの並び順の実装はまだです
+            case "comment_asc":
+                break;
+            case "comment_desc":
+                break;
             case "hot_asc":
                 break;
             case "hot_desc":
-                break;
+                break;*/
             case "create_asc":
                 $sortedBooks = $bookQuery->orderBy("created_at","asc");
                 break;
