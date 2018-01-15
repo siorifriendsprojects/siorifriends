@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-xs-5">
+        <div class="col-xs-4">
             <p>
                 <a href="{{ route('overview', ['account' => $book->author->account]) }}">
                    {{ '@' }}{{ $book->author->account }}
@@ -11,10 +11,33 @@
             </p>
         </div>
 
-        <div class="col-xs-5">
+        <div class="col-xs-4">
             <p>作成日 : {{ $book->created_at->format('Y-m-d H:i') }}</p>
         </div>
-
+        @if(Auth::check())
+            <div class="col-xs-2 text-right">
+        @else
+            <div class="col-xs-4 text-right">
+        @endif
+                <div class="dropdown">
+                    <button class="btn btn-default dropdown-toggle" type="button"
+                        data-toggle="dropdown" aria-expanded="false">
+                        <span class="glyphicon glyphicon-share-alt"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl() }}"
+                        target="_blank" data-siori-link-click>Facebook</a></li>
+                       <li><a href="https://line.me/R/msg/text/?{{ Request::fullUrl() }}"
+                        target="_blank" data-siori-link-click>LINE</a></li>
+                        <li><a href="https://twitter.com/share?url={{ Request::fullUrl() }}"
+                        target="_blank" data-siori-link-click>Twitter</a></li>
+                        <li><script src="http://slackbutton.herokuapp.com/widget.js" type="text/javascript"></script>                        
+                        <a class="slack-button-widget" data-source="http://slackbutton.herokuapp.com/embed"
+                        href="http://slackbutton.herokuapp.com/post/new" target="_blank" data-siori-link-click>
+                            Slack</a></li>
+                    </ul>
+                </div> 
+            </div>
         {{-- ログイン状態、かつ、自分の本の場合に表示する --}}
         @if ($isMyBook)
             {{-- menu button --}}
@@ -119,6 +142,14 @@ $(function() {
         deleteForm.submit();
     }
   });
+
+    //SNS共有ボタンを押した後新規ウィンドウで開き、画面中央に表示する
+    $("[data-siori-link-click]").on("click", function() {
+        const sw = ( screen.width - 640 ) / 2;
+        const sh = ( screen.height - 480 ) / 2;
+        window.open(this.href,"shareWindow","width=640,height=480" + ",left=" + sw + ",top=" + sh);
+        return false;
+    })
 });
 </script>
 @endsection
