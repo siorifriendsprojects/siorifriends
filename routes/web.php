@@ -19,12 +19,13 @@ Route::get('/tags',function(){
     return view('tags');
 });
 
+Route::get('/books/search','BookController@search')->name('search');
+
 Route::resource('/books', 'BookController', [
     'parameters' => [
         'book' => 'bookId'
     ]
 ]);
-
 
 Route::prefix('/users/{account}')->group(function() {
     Route::get('/', 'User\ProfileController@show')->name('overview');
@@ -38,10 +39,6 @@ Route::prefix('/users/{account}')->group(function() {
 
 Route::get('/notifications',function(){
     return view('notify');
-});
-
-Route::get('/search',function(){
-    return view('search');
 });
 
 Route::get('/settings',function(){
