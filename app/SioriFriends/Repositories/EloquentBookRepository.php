@@ -88,7 +88,7 @@ class EloquentBookRepository implements BookRepository
      * 新着の本を limit 件取得する。
      *
      * @param int $limit 取得する本の数
-     * @return Illuminate\Database\Eloquent\Builder 取得した本
+     * @return \Illuminate\Database\Eloquent\Builder 取得した本
      *
      */
     public function fetchNewBooks(int $limit)
@@ -113,26 +113,6 @@ class EloquentBookRepository implements BookRepository
      */
     public function remove(Book $book)
     {
-        $tags = $book->tags;
-        foreach($tags as $tag) {
-            // tag とのリレーションを解除
-            $book->removeTag($tag);
-            // このtag を使用している本が一つもなければ、tagも削除する
-            if ($tag->books()->count() < 1) {
-                $tag->delete();
-            }
-        }
-
-        $anchors = $book->anchors;
-        foreach($anchors as $anchor) {
-            // anchor とのリレーションを解除
-            $book->removeAnchor($anchor);
-            // このanchor を使用している本が一つもなければ、anchorも削除する
-            if ($anchor->books()->count() < 1) {
-                $anchor->delete();
-            }
-        }
-
         $book->delete();
     }
 }
