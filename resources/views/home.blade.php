@@ -4,15 +4,17 @@
     <div class="row">
         <div class="col-xs-10 col-xs-offset-1">
             <!-- 検索フォーム -->
-            <div class="col-xs-12 lines-empty">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="検索検索ぅ">
-                    <span class="input-group-btn">
-                        <span class="glyphicon glyphicon-search"></span>
-                        <button class="btn btn-default" type="submit">検索</button>
-                    </span>
+            <form action="{{ route("search") }}" method="get">
+                <div class="col-xs-12 lines-empty">
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="word" placeholder="検索検索ぅ">
+                        <span class="input-group-btn">
+                            <span class="glyphicon glyphicon-search"></span>
+                            <button class="btn btn-default" type="submit">検索</button>
+                        </span>
+                    </div>
                 </div>
-            </div>
+            </form>
             <!-- 新着ランキング -->
             <div class="col-xs-12 ranking-list">
                 <div class="text-center" style="border: 1px solid black">新着</div>
