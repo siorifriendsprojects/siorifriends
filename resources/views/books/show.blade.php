@@ -19,6 +19,7 @@
         @else
             <div class="col-xs-4 text-right">
         @endif
+        {{-- 共有ボタンに関する項目 --}}
                 <div class="dropdown">
                     <button class="btn btn-default dropdown-toggle" type="button"
                         data-toggle="dropdown" aria-expanded="false">
@@ -27,17 +28,19 @@
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="https://www.facebook.com/sharer/sharer.php?u={{ Request::fullUrl() }}"
                         target="_blank" data-siori-link-click>Facebook</a></li>
-                       <li><a href="https://line.me/R/msg/text/?{{ Request::fullUrl() }}"
+                        <li><a href="https://line.me/R/msg/text/?{{ Request::fullUrl() }}"
                         target="_blank" data-siori-link-click>LINE</a></li>
-                        <li><a href="https://twitter.com/share?url={{ Request::fullUrl() }}"
-                        target="_blank" data-siori-link-click>Twitter</a></li>
-                        <li><script src="http://slackbutton.herokuapp.com/widget.js" type="text/javascript"></script>                        
+                        <li>                        
                         <a class="slack-button-widget" data-source="http://slackbutton.herokuapp.com/embed"
-                        href="http://slackbutton.herokuapp.com/post/new" target="_blank" data-siori-link-click>
+                        href="http://slackbutton.herokuapp.com/post/new" data-url="{{ $book->title }} / {{ config('app.name') }} {{ Request::fullUrl() }}"
+                        target="_blank" data-siori-link-click>
                             Slack</a></li>
+                        <li><a href="https://twitter.com/share?url={{ Request::fullUrl() }}&amp;text={{ $book->title }} / {{ config('app.name') }}"
+                        target="_blank" data-siori-link-click>Twitter</a></li>
                     </ul>
                 </div> 
             </div>
+
         {{-- ログイン状態、かつ、自分の本の場合に表示する --}}
         @if ($isMyBook)
             {{-- menu button --}}
@@ -143,7 +146,7 @@ $(function() {
     }
   });
 
-    //SNS共有ボタンを押した後新規ウィンドウで開き、画面中央に表示する
+    //SNS共有ボタンを押した後、新規ウィンドウで開き、画面中央に表示する
     $("[data-siori-link-click]").on("click", function() {
         const sw = ( screen.width - 640 ) / 2;
         const sh = ( screen.height - 480 ) / 2;
@@ -152,4 +155,5 @@ $(function() {
     })
 });
 </script>
+<script src="http://slackbutton.herokuapp.com/widget.js" type="text/javascript"></script>
 @endsection
