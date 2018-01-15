@@ -15,6 +15,7 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 <body>
+<div style="overflow:hidden">
     <header class="container-fluid">
         <div class="row">
             <div class="col-xs-1 icon-btn" >
@@ -88,6 +89,7 @@
         @yield('content')
     </main>
     <footer></footer>
+</div>
 </body>
     <link rel="stylesheet" href="{{ asset('css/default.css') }}">
     <link rel="stylesheet" href="{{ asset('css/hamburger.css') }}">
