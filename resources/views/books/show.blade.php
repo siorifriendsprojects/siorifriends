@@ -155,5 +155,6 @@ $(function() {
     })
 });
 </script>
+{{-- Slackで共有するためのスクリプト --}}
 <script src="http://slackbutton.herokuapp.com/widget.js" type="text/javascript"></script>
 @endsection
