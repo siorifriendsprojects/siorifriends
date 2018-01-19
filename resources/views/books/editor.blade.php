@@ -12,13 +12,13 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <input id="title" type="text" class="form-control" placeholder="タイトル">
+            <input id="title" type="text" class="form-control" placeholder="タイトル" value="{{ isset($book) ? $book->title : "" }}">
         </div>
     </div>
 
     <div class="row">
         <div class="col-xs-12">
-            <textarea id="description" class="form-control" rows="3" placeholder="概要" style="resize: vertical"></textarea>
+            <textarea id="description" class="form-control" rows="3" placeholder="概要" style="resize: vertical">{{ isset($book) ? $book->title : "" }}</textarea>
         </div>
     </div>
 
@@ -30,7 +30,13 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <select id="tags" class="form-control" multiple data-role="tagsinput"></select>
+            <select id="tags" class="form-control" multiple data-role="tagsinput">
+                @if(isset($book))
+                  @foreach($book->tags as $tag)
+                    <option selected value="{{ $tag->name }}">{{ $tag->name }}</opotion>
+                  @endforeach
+                @endif
+            </select>
         </div>
     </div>
 
@@ -65,7 +71,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <input id="isPublishing" type="checkbox" class="form-control" checked
+                    <input id="isPublishing" type="checkbox" class="form-control"
+                           {{ isset($book) ? ($book->is_publishing ? "checked" : "") : "checked" }}
                            data-toggle="toggle"
                            data-onstyle="primary" data-offstyle="danger"
                            data-on="public" data-off="private"
@@ -84,7 +91,8 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <input id="isCommentable" type="checkbox" class="form-control" checked
+                    <input id="isCommentable" type="checkbox" class="form-control"
+                           {{ isset($book) ? ($book->is_commentable ? "checked" : "") : "checked" }}
                            data-toggle="toggle"
                            data-onstyle="primary" data-offstyle="danger"
                            data-on="許可" data-off="禁止"
@@ -100,7 +108,7 @@
             <button id="confirmBtn" type="button" class="btn btn-primary btn-lg btn-block">確認する</button>
         </div>
     </div>
-    <form id="submitForm" action="/books" method="post">
+    <form id="submitForm" action="/books" method="{{ isset($book) ? "put" : "post" }}">
         {{ csrf_field() }}
     </form>
 </div>
@@ -157,8 +165,12 @@ class Link {
     };
   }
 
-  constructor() {
+  constructor(url = "", title = "") {
     this.jqueryObject = $(Link.ELEMENT);
+    console.log(this.jqueryObject.find(Link.Selector.url));
+    console.log(this.jqueryObject.find(Link.Selector.title));
+    this.jqueryObject.find(Link.Selector.url).val(url);
+    this.jqueryObject.find(Link.Selector.title).val(title);
 
     // click したら新しいタブを開く
     this.jqueryObject
@@ -188,12 +200,19 @@ function initialize() {
     maxTags: 10,
   });
 
+  const links = [];
+@if(isset($book))
+  @foreach($book->anchors as $anchor)
+    links.push(new Link("{{ $anchor->url }}", "{{ $anchor->pivot->name }}"));
+  @endforeach
+@endif
   // link field のひとつ目を追加
-  const link = new Link();
-  $('#linkList').append(link.render());
+  links.push(new Link());
+  links.forEach(link => $('#linkList').append(link.render()));
+  {{--  $('#linkList').append(links[links.length - 1].render());  --}}
 
   const initalState = {
-    links: [link],
+    links: links,
   };
 
   return initalState;

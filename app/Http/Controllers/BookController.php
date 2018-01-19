@@ -100,6 +100,18 @@ class BookController extends Controller
      */
     public function edit($bookId)
     {
+        try {
+            $book = $this->books->findById($bookId);
+            // ログインしている、かつ、本の作者
+            $isMyBook = Auth::check() && $book->author->id === Auth::id();
+
+            return view('books.editor', [
+                'book' => $book,
+            ]);
+        } catch(ModelNotFoundException $e) {
+//            throwException($e::class);
+            abort(404, $e->getMessage());
+        }
     }
 
     /**
