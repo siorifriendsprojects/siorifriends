@@ -105,7 +105,9 @@
 
     <div class="row">
         <div class="col-xs-12 text-center">
-            <button id="confirmBtn" type="button" class="btn btn-primary btn-lg btn-block">確認する</button>
+            <button id="confirmBtn" type="button" class="btn btn-primary btn-lg btn-block">
+                {{ isset($book) ? "更新する" : "作成する" }}
+            </button>
         </div>
     </div>
     <form id="submitForm"
@@ -228,10 +230,6 @@ function mapToInputTag(name, value) {
   return `<input type="hidden" name="${name}" value="${value}">`;
 }
 
-class SubmitParameter {
-  
-}
-
 /**
  * main
  */
@@ -245,15 +243,20 @@ $(() => {
   });
 
   // 
-  $(Link.Selector.url).on('blur', (e) => {
+  $('#linkList').on('blur', Link.Selector.url, (e) => {
+    const url = e.target;
     $.ajax({
       type: "POST",
       url: "/acquisition.php",
       dataType: "text",
-      data: { 'src' : $(e.target).val() },
+      data: { 'url' : $(url).val() },
     }).done(title => {
       console.log(title);
-      $(Link.Selector.title).val(title);
+      console.log($(url).parents('[data-type=link]').find(Link.Selector.title));
+      $(url)
+        .parents('[data-type=link]')
+        .find(Link.Selector.title)
+        .val(title);
     });
   });
 
