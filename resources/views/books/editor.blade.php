@@ -244,6 +244,19 @@ $(() => {
     $('#linkList').append(link.render());
   });
 
+  // 
+  $(Link.Selector.url).on('blur', (e) => {
+    $.ajax({
+      type: "POST",
+      url: "/acquisition.php",
+      dataType: "text",
+      data: { 'src' : $(e.target).val() },
+    }).done(title => {
+      console.log(title);
+      $(Link.Selector.title).val(title);
+    });
+  });
+
   $(Trigger.confirmButton).on('click', (e) => {
     // form の値を取得
     const parameters = {
