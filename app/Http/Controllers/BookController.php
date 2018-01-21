@@ -129,47 +129,51 @@ class BookController extends Controller
      */
     public function update(StoreBookPost $request, string $bookId)
     {
-        // ログインしている、かつ、本の作者
-        $book = $this->books->findById($bookId);
-        $isMyBook = Auth::check() && $book->author->id === Auth::id();
-        if ($isMyBook) {
-            //更新処理
-            $spec = new BookSpec($request);
-            $book->title = $spec->title();
-            $book->description = $spec->description();
-            $book->is_publishing = $spec->isPublishing();
-            $book->is_commentable = $spec->isCommentable();
+        try {
 
-            // remove tag
-            foreach($book->tags as $tag) {
-                $book->removeTag($tag);
+            // ログインしている、かつ、本の作者
+            $book = $this->books->findById($bookId);
+            $isMyBook = Auth::check() && $book->author->id === Auth::id();
+            if ($isMyBook) {
+                //更新処理
+                $spec = new BookSpec($request);
+                $book->title = $spec->title();
+                $book->description = $spec->description();
+                $book->is_publishing = $spec->isPublishing();
+                $book->is_commentable = $spec->isCommentable();
+
+                // remove tag
+                foreach($book->tags as $tag) {
+                    $book->removeTag($tag);
+                }
+
+                $now = Carbon::now();
+                foreach($spec->tags() as $tagName) {
+                    $tag = Tag::firstOrCreate([
+                        'name' => $tagName,
+                        Tag::CREATED_AT => $now,
+                    ]);
+                    $book->addTag($tag);
+                }
+
+                // remove anchor
+                foreach($book->anchors as $anchor) {
+                    $book->removeAnchor($anchor);
+                }
+                // anchor の追加
+                foreach ($spec->anchors() as $hash) {
+                    $anchor = Anchor::firstOrCreate( ['url' => $hash['url'] ]);
+                    $book->addAnchor($anchor, $hash['name']);
+                }
+                $book->save();
             }
 
-            $now = Carbon::now();
-            foreach($spec->tags() as $tagName) {
-                $tag = Tag::firstOrCreate([
-                    'name' => $tagName,
-                    Tag::CREATED_AT => $now,
-                ]);
-                $book->addTag($tag);
-            }
-
-            // remove anchor
-            foreach($book->anchors as $anchor) {
-                $book->removeAnchor($anchor);
-            }
-                    // anchor の追加
-            foreach ($spec->anchors() as $hash) {
-                $anchor = Anchor::firstOrCreate( ['url' => $hash['url'] ]);
-                $book->addAnchor($anchor, $hash['name']);
-            }
-
-            $book->save();
+            //本のページヘリダイレクトする
+            $to = route('books.show', [ 'bookId' => $bookId ]);
+            return redirect($to);
+        } catch(ModelNotFoundException $e) {
+            abort(404, $e->getMessage());
         }
-
-        //本のページヘリダイレクトする
-        $to = route('books.show', [ 'bookId' => $bookId ]);
-        return redirect($to);
     }
 
     /**
