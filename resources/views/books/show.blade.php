@@ -109,15 +109,16 @@
         </div>
     </div>
 
-
-    <div class="comment">
-        <div class="comm-li col-xs-offset-1"></div>
-        <div class="form-group">
-            <label for="comment-lav" class="left-block control-label">comment</label>
-            <input type="text" id="input-comm" class="form-control">
-            <button class="btn btn-primary lines-btn pull-right" id="comm-btn">投稿</button>
+    @if($book->is_commentable)
+        <div class="comment">
+            <div class="comm-li col-xs-offset-1"></div>
+            <div class="form-group">
+                <label for="comment-lav" class="left-block control-label">comment</label>
+                <input type="text" id="input-comm" class="form-control">
+                <button class="btn btn-primary lines-btn pull-right" id="comm-btn">投稿</button>
+            </div>
         </div>
-    </div>
+    @endif
 </div>
 @endsection
 
