@@ -108,7 +108,13 @@
             <button id="confirmBtn" type="button" class="btn btn-primary btn-lg btn-block">確認する</button>
         </div>
     </div>
-    <form id="submitForm" action="/books" method="{{ isset($book) ? "put" : "post" }}">
+    <form id="submitForm"
+          {{--  更新の場合はpathにidを追加する  --}}
+          action="/books{{ isset($book) ? "/" . $book->id : "" }}"
+          method="post">
+        @if(isset($book))
+            {{ method_field('PUT') }}
+        @endif
         {{ csrf_field() }}
     </form>
 </div>
