@@ -7,10 +7,43 @@ $(function()
 
     $('#addcnt').on('click',function()
     {
-        $('.cnt').last().clone().appendTo('.url-group');
-        $('.cnt-title').last().val('');
-        $('.cnt-url').last().val('');
+        if($('.cnt-title').val() != "" && $('.cnt-url').val() != "")
+        {
+            $('.cnt').last().clone().appendTo('.url-group');
+            $('.cnt-title').last().val('');
+            $('.cnt-url').last().val('');
+        }
     });
+
+    $('.url-group').on("blur",".cnt-url",function()
+    {
+        var src = "";
+        if($(this).val().match(/^(https?|ftp)(:\/\/[-_.!~*\'()a-zA-Z0-9;\/?:\@&=+\$,%#]+)$/)) //https?://+   
+        {
+            var src = $(this).val();
+            $('#acquisition').attr("src","");
+            $('#acquisition').attr("src",src);
+        }
+        
+
+        let cnturl = $(this);
+
+        $.ajax({
+            type : "POST",
+            url : "/acquisition.php",
+            dataType : "text",
+            data : { 'src' : src },
+            success : function(data)
+            {
+                console.log(cnturl.siblings('.cnt-title').val(data));
+            },
+        });
+
+    });
+
+
+
+
     $('#confirmation').on('click',function()
     {
         if(($('#title').val() && $('#description').val()) !== "")

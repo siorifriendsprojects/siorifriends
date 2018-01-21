@@ -71,11 +71,24 @@ class EloquentBookRepository implements BookRepository
     }
 
     /**
+     * ユーザのアカウント名からそのユーザがお気に入りに登録している本の一覧を取得する。
+     *
+     * @param string $account
+     * @return mixed
+     * @throws ModelNotFoundException ユーザが見つからなかった場合。
+     */
+    public function findFavoritesByUserAccount(string $account)
+    {
+        $user = $this->users->findByAccount($account);
+        return $user->favorites;
+    }
+
+    /**
      *
      * 新着の本を limit 件取得する。
      *
      * @param int $limit 取得する本の数
-     * @return Illuminate\Database\Eloquent\Builder 取得した本
+     * @return \Illuminate\Database\Eloquent\Builder 取得した本
      *
      */
     public function fetchNewBooks(int $limit)
@@ -101,5 +114,89 @@ class EloquentBookRepository implements BookRepository
     public function remove(Book $book)
     {
         $book->delete();
+    }
+
+    public function wordSearch($word,$orderBy,$page){
+        $bookQuery = Book::where('title', 'like', "%{$word}%")->orWhere('description', 'like', "%{$word}%");
+
+        $bookQuery = $this->searchResultSort($bookQuery,$orderBy);
+
+        $tmpBooks = $bookQuery->paginate(10);
+
+        $tmpBooks->appends(['word' => $word, 'orderby' => $orderBy]);
+
+        $books = [];
+
+        foreach($tmpBooks as $book){
+            $books[] = $book;
+        }
+
+        return view("books.search",[
+                "books" => $books,
+                "nextLink" => $tmpBooks->nextPageUrl(),
+                "prevLink" => $tmpBooks->previousPageUrl(),
+                "isFirst" => ($page <= 1),
+                "isLast" => $tmpBooks->hasMorePages() == false,
+                "tagSearch" => false,
+                "orderby" => $orderBy,
+                "key" => $word
+        ]);
+    }
+
+    public function tagSearch($tag,$orderBy,$page){
+        $bookQuery = Book::WhereHas('tags', function ($query) use ($tag) {
+            $query->Where('name', $tag);
+        });
+
+        $bookQuery = $this->searchResultSort($bookQuery,$orderBy);
+
+        $tmpBooks = $bookQuery->paginate(10);
+
+        $tmpBooks->appends(['tag' => $tag, 'orderby' => $orderBy]);
+
+        $books = [];
+
+        foreach($tmpBooks as $book){
+            $books[] = $book;
+        }
+
+        return view("books.search",[
+            "books" => $books,
+            "nextLink" => $tmpBooks->nextPageUrl(),
+            "prevLink" => $tmpBooks->previousPageUrl(),
+            "isFirst" => ($page <= 1),
+            "isLast" => $tmpBooks->hasMorePages() == false,
+            "tagSearch" => true,
+            "orderby" => $orderBy,
+            "key" => $tag
+        ]);
+    }
+
+    private function searchResultSort($bookQuery,$orderBy){
+        $sortedBooks = null;
+        switch($orderBy){
+            case "update_asc":
+                $sortedBooks = $bookQuery->orderBy("updated_at","asc");
+                break;
+            case "update_desc":
+                $sortedBooks = $bookQuery->orderBy("updated_at","desc");
+                break;
+            /* TODO: ここの並び順の実装はまだです
+            case "comment_asc":
+                break;
+            case "comment_desc":
+                break;
+            case "hot_asc":
+                break;
+            case "hot_desc":
+                break;*/
+            case "create_asc":
+                $sortedBooks = $bookQuery->orderBy("created_at","asc");
+                break;
+            default://case "create_desc":
+                $sortedBooks = $bookQuery->orderBy("created_at","desc");
+                break;
+        }
+        return $sortedBooks;
     }
 }

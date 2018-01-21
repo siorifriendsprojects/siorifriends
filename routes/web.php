@@ -19,12 +19,13 @@ Route::get('/tags',function(){
     return view('tags');
 });
 
+Route::get('/books/search','BookController@search')->name('search');
+
 Route::resource('/books', 'BookController', [
     'parameters' => [
         'book' => 'bookId'
     ]
 ]);
-
 
 Route::prefix('/users/{account}')->group(function() {
     Route::get('/', 'User\ProfileController@show')->name('overview');
@@ -32,19 +33,12 @@ Route::prefix('/users/{account}')->group(function() {
     Route::get('/follows','User\FollowController');
     Route::get('/followers','User\FollowerController');
     Route::get('/bookshelf','User\BookShelfController@index')->name('bookshelf');
-
-    Route::get('/favorite',function(){
-        return view('favorite');
-    });
+    Route::get('/favorite','FavoriteController@show')->name('favorite');
 });
 
 
 Route::get('/notifications',function(){
     return view('notify');
-});
-
-Route::get('/search',function(){
-    return view('search');
 });
 
 Route::get('/settings',function(){
@@ -61,4 +55,8 @@ Route::get('/privacy',function(){
 
 Route::get('/help',function(){
     return view('help');
+});
+
+Route::get('/logined',function(){
+    return view('logined');
 });

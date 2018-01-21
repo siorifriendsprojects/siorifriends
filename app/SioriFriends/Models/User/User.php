@@ -2,6 +2,7 @@
 
 namespace App\SioriFriends\Models\User;
 
+use App\SioriFriends\Models\Api\ApiToken;
 use App\SioriFriends\Models\Book\Book;
 use App\SioriFriends\Models\User\Follow;
 use Carbon\Carbon;
@@ -165,4 +166,26 @@ class User extends Authenticatable
             ->where('id', $user->id)
             ->exists();
     }
+
+    /**
+     * 栞フレンズ内で使用するAPITokenを返す
+     */
+    public function localToken(){
+        $apiToken = ApiToken::where('user_id',Auth::id())->where('application_id','0000000000siorifriends0000000000');
+
+        if ($apiToken->exists()){
+            return $apiToken->first();
+        }else{
+            $apiToken = new ApiToken();
+            $apiToken->user_id = Auth::id();
+            $apiToken->application_id = '0000000000siorifriends0000000000';
+            $apiToken->token = hash('sha256',(Auth::user()->account).'0000000000siorifriends0000000000');
+            $apiToken->expire = date("Y-m-d H:i:s",time() + (14 * 24 * 60 * 60));
+
+            $apiToken->save();
+
+            return $apiToken;
+        }
+    }
+
 }

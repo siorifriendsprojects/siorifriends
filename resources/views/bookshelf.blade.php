@@ -46,3 +46,7 @@
             });
         </script>
 @endsection
+
+@section('resources')
+    <script src="{{asset("js/components/behavior/book.js")}}"></script>
+@endsection

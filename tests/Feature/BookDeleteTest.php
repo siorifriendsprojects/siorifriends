@@ -57,12 +57,6 @@ class BookDeleteTest extends TestCase
         $response = $this->delete($this->targetPath);
         // 成功したら、リダイレクトする
         $response->assertRedirect();
-
-        // DB から削除されているか
-        $this->assertDatabaseMissing('books', [
-            'id' => $this->targetBook->id,
-            'user_id' => $this->targetUser->id,
-        ]);
     }
 
 
@@ -96,11 +90,5 @@ class BookDeleteTest extends TestCase
 
         $response = $this->delete($this->targetPath);
         $response->assertStatus($statusCode);
-
-        // DB に残っているか
-        $this->assertDatabaseHas('books', [
-            'id' => $this->targetBook->id,
-            'user_id' => $this->targetUser->id,
-        ]);
     }
 }

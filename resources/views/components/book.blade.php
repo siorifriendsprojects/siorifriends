@@ -1,4 +1,4 @@
-<div class="col-xs-3 obj">
+<div data-siori-component="book" class="col-xs-3 obj">
     <div class="col-xs-12">
         <div class="book_shadow">
             <div class="book">
@@ -14,9 +14,9 @@
         <div class="userback">
             <div class="is_favo">
             @if($isFavorite)
-                <span class="glyphicon glyphicon-star bookuserID"></span>
+                <span data-siori-button="favorite" class="glyphicon glyphicon-star bookuserID"></span>
             @else
-                <span class="glyphicon glyphicon-star-empty bookuserID"></span>   
+                <span data-siori-button="favorite" class="glyphicon glyphicon-star-empty bookuserID"></span>
             @endif
             </div>
         </div>
