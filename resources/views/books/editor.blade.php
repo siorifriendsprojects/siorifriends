@@ -6,7 +6,7 @@
     {{--.row*2>.col-xs-12>.row*2>.col-xs-12--}}
     <div class="row">
         <div class="col-xs-12">
-            <h1>本作成フォーム</h1>
+            <h1>本{{ isset($book) ? "編集" : "作成" }}フォーム</h1>
         </div>
     </div>
 
