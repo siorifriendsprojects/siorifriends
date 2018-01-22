@@ -18,7 +18,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <textarea id="description" class="form-control" rows="3" placeholder="概要" style="resize: vertical">{{ isset($book) ? $book->title : "" }}</textarea>
+            <textarea id="description" class="form-control" rows="3" placeholder="概要" style="resize: vertical">{{ isset($book) ? $book->description : "" }}</textarea>
         </div>
     </div>
 
