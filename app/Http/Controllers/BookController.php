@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBookPost;
 use App\SioriFriends\Models\Book\Book;
+use App\SioriFriends\Models\Book\Tag;
+use App\SioriFriends\Models\Book\Anchor;
 use App\SioriFriends\Models\Book\BookFactory;
 use App\SioriFriends\Models\Book\BookRepository;
 use App\SioriFriends\Models\Book\BookSpec;
@@ -11,6 +13,7 @@ use App\SioriFriends\Models\User\UserRepository;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
 
 class BookController extends Controller
 {
@@ -43,7 +46,7 @@ class BookController extends Controller
      */
     public function create()
     {
-        return view('books.create');
+        return view('books.editor');
     }
 
     /**
@@ -100,19 +103,77 @@ class BookController extends Controller
      */
     public function edit($bookId)
     {
-        //
+        try {
+            $book = $this->books->findById($bookId);
+            // ログインしている、かつ、本の作者
+            $isMyBook = Auth::check() && $book->author->id === Auth::id();
+            if (!$isMyBook) {
+                return $this->show($bookId);
+            }
+
+            return view('books.editor', [
+                'book' => $book,
+            ]);
+        } catch(ModelNotFoundException $e) {
+//            throwException($e::class);
+            abort(404, $e->getMessage());
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  string  $bookId
+     * @param  \App\Http\Requests\StoreBookPost  $request
+     * @param string $bookId
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $bookId)
+    public function update(StoreBookPost $request, string $bookId)
     {
-        //
+        try {
+
+            // ログインしている、かつ、本の作者
+            $book = $this->books->findById($bookId);
+            $isMyBook = Auth::check() && $book->author->id === Auth::id();
+            if ($isMyBook) {
+                //更新処理
+                $spec = new BookSpec($request);
+                $book->title = $spec->title();
+                $book->description = $spec->description();
+                $book->is_publishing = $spec->isPublishing();
+                $book->is_commentable = $spec->isCommentable();
+
+                // remove tag
+                foreach($book->tags as $tag) {
+                    $book->removeTag($tag);
+                }
+
+                $now = Carbon::now();
+                foreach($spec->tags() as $tagName) {
+                    $tag = Tag::firstOrCreate([
+                        'name' => $tagName,
+                        Tag::CREATED_AT => $now,
+                    ]);
+                    $book->addTag($tag);
+                }
+
+                // remove anchor
+                foreach($book->anchors as $anchor) {
+                    $book->removeAnchor($anchor);
+                }
+                // anchor の追加
+                foreach ($spec->anchors() as $hash) {
+                    $anchor = Anchor::firstOrCreate( ['url' => $hash['url'] ]);
+                    $book->addAnchor($anchor, $hash['name']);
+                }
+                $book->save();
+            }
+
+            //本のページヘリダイレクトする
+            $to = route('books.show', [ 'bookId' => $bookId ]);
+            return redirect($to);
+        } catch(ModelNotFoundException $e) {
+            abort(404, $e->getMessage());
+        }
     }
 
     /**
