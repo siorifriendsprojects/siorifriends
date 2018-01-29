@@ -128,7 +128,12 @@ class EloquentBookRepository implements BookRepository
         $books = [];
 
         foreach($tmpBooks as $book){
-            $books[] = $book;
+            $books[] = [
+                'id' => $book->id,
+                'title' => $book->title,
+                'description' => $book->description,
+                'icon_path' => $book->author->profile->icon_path
+            ];
         }
 
         return view("books.search",[
@@ -157,7 +162,12 @@ class EloquentBookRepository implements BookRepository
         $books = [];
 
         foreach($tmpBooks as $book){
-            $books[] = $book;
+            $books[] = [
+                'id' => $book->id,
+                'title' => $book->title,
+                'description' => $book->description,
+                'icon_path' => $book->author->profile->icon_path
+            ];
         }
 
         return view("books.search",[

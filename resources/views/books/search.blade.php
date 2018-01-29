@@ -41,7 +41,8 @@
                     [
                             'id' => $book["id"],
                             'title' => $book["title"],
-                            'description' => $book["description"]
+                            'description' => $book["description"],
+                            'icon_path' => $book["icon_path"]
                     ])
                     @endcomponent
                 @endforeach
