@@ -45,8 +45,8 @@ class BookSpec
         return [
             'title' => 'required|string',
             'description' => 'required|string',
-            'isPublishing' => 'sometimes|required|boolean',
-            'isCommentable' => 'sometimes|required|boolean',
+            'is_publishing' => 'required|string',
+            'is_commentable' => 'required|string',
             'tags' => 'required|array|min:1|max:10',
             'tags.*' => 'required|string',
             'anchors' => 'required|array|min:1|max:30',
@@ -67,8 +67,8 @@ class BookSpec
     {
         $this->title = $request->input('title');
         $this->description = $request->input('description');
-        $this->isPublishing = $request->input('isPublishing', true);
-        $this->isCommentable = $request->input('isCommentable', true);
+        $this->isPublishing = $request->input('is_publishing') === 'true';
+        $this->isCommentable = $request->input('is_commentable') === 'true';
         $this->tags = $request->input('tags');
         $this->anchors = $request->input('anchors');
     }
