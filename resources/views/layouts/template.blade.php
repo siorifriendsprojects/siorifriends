@@ -26,7 +26,7 @@
             <nav id="drawrEvent" class="drawr">
                 <div class="row">
                     <div class="col-xs-offset-5">
-                        <img src="{{ asset('img/mamoru_face.png')}}" alt="しおり" class="img-circle img-responsive img-icon" />
+                        <img src="{{ Auth::guest() ? asset('img/mamoru_face.png') : Auth::user()->profile->icon_path }}" alt="しおり" class="img-circle img-responsive img-icon" />
                     </div>
                     <div class="col-xs-12" style="color:white;text-align:center;">
                     @if(Auth::guest())
@@ -46,7 +46,7 @@
                     @else
                         <li><a href="{{ route('login') }}">ログイン</a></li>
                     @endif
-                        <li><a href="#">設定</a></li>
+                        <li><a href="{{ route('settings') }}">設定</a></li>
                         <li><a href="#">ヘルプ</a></li>
                     @if (Auth::check())
                         <li><form action="{{ route('logout') }}" method="post" name="logoutform">

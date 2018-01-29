@@ -25,6 +25,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home',['newBooks' => $this->books->fetchNewBooks(5)->get()]);
+        $newBooks = [];
+        foreach($this->books->fetchNewBooks(5)->get() as $book){
+            $newBooks[] = [
+                'id' => $book->id,
+                'title' => $book->title,
+                'description' => $book->description,
+                'icon_path' => $book->author->profile->icon_path
+            ];
+        }
+
+        return view('home',['newBooks' => $newBooks]);
     }
 }

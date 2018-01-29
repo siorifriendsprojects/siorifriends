@@ -44,9 +44,11 @@ Route::get('/notifications',function(){
     return view('notify');
 });
 
-Route::get('/settings',function(){
-    return view('settings');
-});
+Route::middleware("auth")->get('/settings',function(){
+    return view('user.settings');
+})->name("settings");
+
+Route::post('/settings','User\ProfileController@update');
 
 Route::get('/terms',function(){
     return view('terms');

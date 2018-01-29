@@ -24,6 +24,7 @@
                     @component("components.frontcover",
                     [
                             'id' => $book["id"],
+                            'icon_path' => $book["icon_path"],
                             'title' => $book["title"],
                             'description' => $book["description"]
                     ])
@@ -40,6 +41,7 @@
                     @component("components.frontcover",
                     [
                             'id' => $book["id"],
+                            'icon_path' => $book["icon_path"],
                             'title' => $book["title"],
                             'description' => $book["description"]
                     ])
