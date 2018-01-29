@@ -214,4 +214,11 @@ class BookController extends Controller
         }
         return $this->books->wordSearch("",$orderBy,$page);
     }
+
+
+    public function addComment(Request $request, string $bookId){
+        $this->books->findById($bookId)->addComment(Auth::user(),$request["body"]);
+        
+        return redirect(route("books.show",$bookId));
+    }
 }
