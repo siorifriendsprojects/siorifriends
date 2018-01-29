@@ -55,7 +55,13 @@ class User extends Authenticatable
      */
     public function profile()
     {
-        return $this->hasOne(Profile::class);
+        return $this
+            ->hasOne(Profile::class)
+            ->withDefault([
+                'user_id' => $this->id,
+                'intro' => '',
+                'icon_path' => '/img/icons/default.png',
+            ]);
     }
 
     /**
