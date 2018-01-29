@@ -66,7 +66,7 @@
             @if(Auth::guest())
                 <div class="col-xs-3" id="sn-icon" style="height: 50px;padding-top: 0.3em;">
                     <div class="row">
-                        <a class="siori-bgc" href="{{ route('login') }}">sign up</a><br>
+                        <a class="siori-bgc" href="{{ route('register') }}">sign up</a><br>
                         <a class="siori-bgc" href="{{ route('login') }}">sign in</a>
                     </div>
                 </div>
