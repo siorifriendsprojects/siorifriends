@@ -109,15 +109,34 @@
         </div>
     </div>
 
+    {{-- コメントの一覧を表示 --}}
     @if($book->is_commentable)
-        <div class="comment">
-            <div class="comm-li col-xs-offset-1"></div>
-            <div class="form-group">
-                <label for="comment-lav" class="left-block control-label">comment</label>
-                <input type="text" id="input-comm" class="form-control">
-                <button class="btn btn-primary lines-btn pull-right" id="comm-btn">投稿</button>
-            </div>
+    <?php $i = 1; ?>
+    <hr />
+        <div class="row">
+            <div class="col-xs-12">
+                    <ul class="list-group">
+                @foreach($book->comments->sortBy("created_at") as $comment)
+                        <li class="list-group-item">
+                            <p class="h4"><?php echo $i++; ?> . {{ $comment->body }}</p>
+                            <p><a href="/users/{{ $comment->commentUser->account }}">{{ "@".$comment->commentUser->account }}</a>  :  {{ $comment->created_at }}</p>
+                        </li>
+                @endforeach
+                    </ul>
+            </div>    
         </div>
+            <div class="row">
+                <div class="comment">
+                <form action="{{ route('addComment', ['bookId' => $book->id]) }}" method="post">
+                    {{ csrf_field() }}
+                    <div class="form-group">
+                        <label for="comment-lav" class="left-block control-label">comment</label>
+                        <input type="text" id="input-comm" class="form-control" name="body" />
+                        <button class="btn btn-primary lines-btn pull-right" id="comm-btn">投稿</button>
+                    </div>
+                </form>
+                </div>
+            </div>
     @endif
 </div>
 @endsection

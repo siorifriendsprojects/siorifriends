@@ -21,11 +21,14 @@ Route::get('/tags',function(){
 
 Route::get('/books/search','BookController@search')->name('search');
 
+Route::post('/books/{bookId}/comment/create','BookController@addComment')->name('addComment');
+
 Route::resource('/books', 'BookController', [
     'parameters' => [
         'book' => 'bookId'
     ]
 ]);
+
 
 Route::prefix('/users/{account}')->group(function() {
     Route::get('/', 'User\ProfileController@show')->name('overview');
