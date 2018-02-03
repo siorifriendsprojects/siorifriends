@@ -12,6 +12,26 @@
 .row-50{ margin-left:-25px;  margin-right:-25px}
 .row-50 >div{ padding-right:25px;  padding-left:25px}
 
+
+body{
+    background-color : #f0ffe8;
+}
+
+.siori-bgc{
+    background-color:  #f0ffe8;
+}
+
+hr{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+hr.my-hr{
+    margin-top: 0px;
+    margin-bottom: 5px;
+    border-top: 1px solid gray;
+}
+
 .bg-white{
     background-color: white;
 }
@@ -27,7 +47,8 @@ header.container-fluid{
 }
 
 .logo-btn{
-    padding-right: 0px;
+    padding: 0.5em 0;
+    background-color: #f0ffe8;
 }
 
 .back-btn{
@@ -62,9 +83,187 @@ header.container-fluid{
     bottom: 0;
 }
 
-/* overflow:hidden、heightは必ず指定する */
-.textOverflowTest4 {
+/* overflow:hidden、heightは必ず指定する 
+.textOverflow {
     overflow: hidden;
     height: 60px;
-    background: #eee;
+}
+*/
+
+/* ここから門地が作成したcss */
+
+
+  div.obj{
+    position : relative;
+    height : 300px;
+    width : 110px;
+    top : 4em;
+    margin-bottom : 15px;
+}
+
+div.book{
+    position : relative;
+    left : -1em;
+    height : 250px;
+    width : 90px;
+    background-color : #ffffaf;
+    bottom:0;
+    text-align : center;
+    border-bottom-color : #000;
+}
+
+div.shadow{
+    position : relative;
+    top : 50em;
+    height : 4px;
+    width : 150px;
+    background-color : #000000;
+    opacity : 0.55;
+}
+
+div.booktitle_space{
+    position : relative;
+    top : 1em;
+    height: 230px;
+    word-break: break-all; 
+}
+
+body span.booktitle{
+
+    text-align : justify;
+    writing-mode : vertical-rl ;
+    -webkit-writing-mode : vertical-rl ; 
+    font-size : 1.5em;
+    color : #000;
+}
+
+div.userback{
+    position :relative;
+    top : 0.1em;
+    left : -2em;
+    height : 3em;
+    width : 120px;
+    background-color : #ddffcc;
+}
+
+body span.bookuserID{
+        position : relative;
+        top : 10px;
+        left : 3em;
+        background-color : #fff;
+        padding : 0.3em 0.7em 0.3em 0.7em;
+        border-radius : 1em;
+}
+
+/* 丸いボタンの追加 */
+.btn-circle {
+width: 30px;
+height: 30px;
+text-align: center;
+padding: 6px 0;
+font-size: 12px;
+line-height: 1.428571429;
+border-radius: 15px;
+}
+.btn-circle.btn-lg {
+width: 50px;
+height: 50px;
+padding: 10px 16px;
+font-size: 18px;
+line-height: 1.33;
+border-radius: 25px;
+}
+.btn-circle.btn-xl {
+width: 70px;
+height: 70px;
+padding: 10px 16px;
+font-size: 24px;
+line-height: 1.33;
+border-radius: 35px;
+}
+.sign
+{
+    position: absolute;
+    padding-right: 0px;
+}
+
+.ranking-list
+{
+    margin-top: 15px;
+}
+
+.lines-empty {
+    margin-top : 20px;
+}
+.lines-btn {
+    margin-top : 10px;
+}
+
+/* font-size  */
+.check-lav {
+    font-size : 1.5em;
+    margin-top : 0;
+    margin-bottom : 0; 
+    word-break: break-all; 
+}
+
+.check-cnt {
+    font-size : 1em;
+    margin-top : 0;
+    margin-bottom : 0; 
+}
+.check-url {
+    font-size : 1em;
+}
+
+    /* table設定 */
+
+table.third {
+  width: 100%;
+  max-width: 100%;
+}
+@media only screen and (max-width: 450px) {
+  table.third tr {
+    display: block;
+    margin-bottom: 2em;
+    list-style:none;
   }
+}
+table.third tr th {
+  padding: 7px,0,0,0;
+  background: #b4e09d;
+  color: #fff;
+  box-sizing: border-box;
+
+}
+@media only screen and (max-width: 450px) {
+  table.third tr th {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+table.third tr td {
+  padding: 3px;
+  border: 1px solid #777;
+  word-break: break-all;  
+
+}
+@media only screen and (max-width: 450px) {
+  table.third tr td {
+    display: list-item;
+    border: 0;
+    margin-left: 0.5em;
+    word-break: break-all;
+  }
+}
+
+.btn-ghost {
+    background: transparent;
+    border-radius: 0;
+}
+
+/* ここから斎藤が作成CSS */
+div.pr{
+    word-wrap:break-word;
+}

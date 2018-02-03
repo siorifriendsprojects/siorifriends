@@ -1,13 +1,30 @@
+# vendor directory
 /node_modules
+/vendor
+
+# public directory
 /public/hot
 /public/storage
+/public/fonts/vendor
+/public/js/manifest.js
+/public/js/vendor.js
+/public/js/app.js
+/public/css/app.css
+
 /storage/*.key
-/vendor
+
+# environment files
+.env
+.env.testing
+
+# other
 /.idea
 /.vagrant
 Homestead.json
 Homestead.yaml
 npm-debug.log
-.env
-/.laradock
+.laradock
+.DS_Store
 
+# npm
+package-lock.json

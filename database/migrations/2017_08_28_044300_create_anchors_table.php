@@ -16,9 +16,8 @@ class CreateAnchorsTable extends Migration
         Schema::create('anchors', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->string('url')->unique();
-            $table->string('default_name');
             $table->boolean('is_broken')->default(false);
-            $table->timestamps();
+            $table->timestampsTz();
         });
     }
 

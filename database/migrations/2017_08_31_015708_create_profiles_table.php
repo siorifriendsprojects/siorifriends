@@ -16,15 +16,17 @@ class CreateProfilesTable extends Migration
         Schema::create('profiles', function (Blueprint $table) {
             $table->char('id', 32)->primary();
             $table->char('user_id', 32);
-            $table->foreign('user_id')->references('id')->on('users');
             $table->string('icon_path');
-            $table->string('intro');
+            $table->text('intro');
             $table->date('birthday');
-            $table->string('sex');
-            $table->string('twitter')->nullable();
-            $table->string('facebook')->nullable();
-            $table->string('instagram')->nullable();
+            $table->string('gender');
+            $table->string('twitter')->default('');
+            $table->string('facebook')->default('');
+            $table->string('instagram')->default('');
 //            $table->timestamps();
+
+            // constraint
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

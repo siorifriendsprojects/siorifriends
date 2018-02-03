@@ -11,6 +11,10 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap-sass');
+    require('bootstrap-tagsinput/dist/bootstrap-tagsinput.css');
+    require('bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js');
+    require('bootstrap-toggle/css/bootstrap-toggle.min.css');
+    require('bootstrap-toggle/js/bootstrap-toggle.min.js');
 } catch (e) {}
 
 /**

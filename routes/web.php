@@ -11,22 +11,57 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/tags',function(){
+    return view('tags');
+});
+
+Route::get('/books/search','BookController@search')->name('search');
+
+Route::post('/books/{bookId}/comment/create','BookController@addComment')->name('addComment');
+
+Route::resource('/books', 'BookController', [
+    'parameters' => [
+        'book' => 'bookId'
+    ]
+]);
 
 
+Route::prefix('/users/{account}')->group(function() {
+    Route::get('/', 'User\ProfileController@show')->name('overview');
 
-/*
-ここのまとまりより下には/{id}/から始まらないルーティングを追加しないでください。
-理由->/{id}/のルーティングが優先されて機能しないため
-*/
-Route::get('/{id}','UserController@show');
+    Route::get('/follows','User\FollowController');
+    Route::get('/followers','User\FollowerController');
+    Route::get('/bookshelf','User\BookShelfController@index')->name('bookshelf');
+    Route::get('/favorite','FavoriteController@show')->name('favorite');
+});
 
-Route::get('/{id}/follow','UserController@showFollow');
 
-Route::get('/{id}/follower','UserController@showFollower');
+Route::get('/notifications',function(){
+    return view('notify');
+});
+
+Route::middleware("auth")->get('/settings',function(){
+    return view('user.settings');
+})->name("settings");
+
+Route::post('/settings','User\ProfileController@update');
+
+Route::get('/terms',function(){
+    return view('terms');
+});
+
+Route::get('/privacy',function(){
+    return view('privacy');
+});
+
+Route::get('/help',function(){
+    return view('help');
+});
+
+Route::get('/logined',function(){
+    return view('logined');
+});

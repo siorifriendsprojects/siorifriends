@@ -3,13 +3,17 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use \App\User;
-use \App\Follow;
-use Alsofronie\Uuid\Uuid32ModelTrait;
+use App\SioriFriends\Models\User\User;
+use App\SioriFriends\Models\User\Follow;
 
 class UserController extends Controller
 {
-
+  
+    public function index()
+    {
+        return User::all()->toJson();
+    }
+  
     /**
      * Display the specified resource.
      *
@@ -31,13 +35,10 @@ class UserController extends Controller
      {
         try{
             $user = User::where('account','=',$id)->firstOrFail();
-            $followUser = User::whereIn('id', Follow::select('follow_id')->where('user_id','=',$user->id)->get()->toArray() );
-
-            return view('follow',['user' => $user,'followUsers' => $followUser->get()]);            
+            return view('follow',['user' => $user,'followUsers' => $user->follows()->get()]);
         }catch(Exception $e) {
             return $e->getMessage();
         }
-//        return $followUser->get()->toArray();
      }
 
      /**
@@ -48,7 +49,12 @@ class UserController extends Controller
      */
      public function showFollower($id)
      {
-        return view('follower');        
+        try{
+            $user = User::where('account','=',$id)->firstOrFail();
+            return view('follower',['user' => $user,'followers' => $user->followers()->get()]);
+        }catch(Exception $e) {
+            return $e->getMessage();
+        }
      }
 
 }
