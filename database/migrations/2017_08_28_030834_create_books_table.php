@@ -21,7 +21,7 @@ class CreateBooksTable extends Migration
             $table->boolean('is_publishing')->default(true);
             $table->boolean('is_commentable')->default(true);
             $table->timestampsTz();
-            $table->softDeletesTz();
+            $table->softDeletes();
 
             // constraint
             $table->foreign('user_id')->references('id')->on('users');

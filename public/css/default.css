@@ -83,7 +83,7 @@ header.container-fluid{
     bottom: 0;
 }
 
-/* overflow:hidden、heightは必ず指定する 
+/* overflow:hidden、heightは必ず指定する
 .textOverflow {
     overflow: hidden;
     height: 60px;
@@ -125,14 +125,14 @@ div.booktitle_space{
     position : relative;
     top : 1em;
     height: 230px;
-    word-break: break-all; 
+    word-break: break-all;
 }
 
 body span.booktitle{
 
     text-align : justify;
     writing-mode : vertical-rl ;
-    -webkit-writing-mode : vertical-rl ; 
+    -webkit-writing-mode : vertical-rl ;
     font-size : 1.5em;
     color : #000;
 }
@@ -203,14 +203,14 @@ border-radius: 35px;
 .check-lav {
     font-size : 1.5em;
     margin-top : 0;
-    margin-bottom : 0; 
-    word-break: break-all; 
+    margin-bottom : 0;
+    word-break: break-all;
 }
 
 .check-cnt {
     font-size : 1em;
     margin-top : 0;
-    margin-bottom : 0; 
+    margin-bottom : 0;
 }
 .check-url {
     font-size : 1em;
@@ -246,7 +246,7 @@ table.third tr th {
 table.third tr td {
   padding: 3px;
   border: 1px solid #777;
-  word-break: break-all;  
+  word-break: break-all;
 
 }
 @media only screen and (max-width: 450px) {
@@ -266,4 +266,16 @@ table.third tr td {
 /* ここから斎藤が作成CSS */
 div.pr{
     word-wrap:break-word;
+}
+div.sns-in{
+border:thin solid #ccc;
+border-radius:3px;
+font-size:18px;
+
+float:left;
+margin-top: 10px;
+margin-right: 15px;
+width:75px;
+text-align: center;
+
 }

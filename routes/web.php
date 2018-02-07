@@ -15,6 +15,15 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Auth::routes();
 
+//Twitter
+Route::get('login/twitter', 'Auth\LoginController@getTwitterAuth');
+Route::get('home', 'Auth\loginController@getTwitterAuthCallback');
+
+//Google
+Route::get('login/google','Auth\LoginController@getGoogleAuth');
+Route::get('home','Auth\LoginController@getGoogleAuthCallback');
+
+
 Route::get('/tags',function(){
     return view('tags');
 });
