@@ -62,25 +62,26 @@
             <h3>オプション</h3>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-12 text-center">
-            <div class="row">
-                <div class="col-xs-12">
-                    <p>外部に公開するかどうか</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <input id="isPublishing" type="checkbox" class="form-control"
-                           {{ isset($book) ? ($book->is_publishing ? "checked" : "") : "checked" }}
-                           data-toggle="toggle"
-                           data-onstyle="primary" data-offstyle="danger"
-                           data-on="public" data-off="private"
-                           data-width="100">
-                </div>
-            </div>
-        </div>
-    </div>
+    <input type="hidden" name="is_publishing" value="true">
+    {{--<div class="row">--}}
+        {{--<div class="col-xs-12 text-center">--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-xs-12">--}}
+                    {{--<p>外部に公開するかどうか</p>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            {{--<div class="row">--}}
+                {{--<div class="col-xs-12">--}}
+                    {{--<input id="isPublishing" type="checkbox" class="form-control"--}}
+                           {{--{{ isset($book) ? ($book->is_publishing ? "checked" : "") : "checked" }}--}}
+                           {{--data-toggle="toggle"--}}
+                           {{--data-onstyle="primary" data-offstyle="danger"--}}
+                           {{--data-on="public" data-off="private"--}}
+                           {{--data-width="100">--}}
+                {{--</div>--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
 
     <div class="row">
         <div class="col-xs-12 text-center checkbox form-group">
