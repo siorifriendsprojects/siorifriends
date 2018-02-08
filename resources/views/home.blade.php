@@ -32,23 +32,23 @@
                 @endforeach
             </div>
             <a href="{{route("search")."?orderby=create_desc"}}" class="col-xs-5 col-xs-offset-7">→もっと見る</a>
-            <!-- 人気ランキング -->
-            <div class="col-xs-12 ranking-list">
-                <div class="text-center" style="border: 1px solid black">人気</div>
-            </div>
-            <div>
-                @foreach($newBooks as $book)
-                    @component("components.frontcover",
-                    [
-                            'id' => $book["id"],
-                            'icon_path' => $book["icon_path"],
-                            'title' => $book["title"],
-                            'description' => $book["description"]
-                    ])
-                    @endcomponent
-                 @endforeach
-            </div>
-            <a href="#" class="col-xs-5 col-xs-offset-7">→もっと見る</a>
+            {{--<!-- 人気ランキング -->--}}
+            {{--<div class="col-xs-12 ranking-list">--}}
+                {{--<div class="text-center" style="border: 1px solid black">人気</div>--}}
+            {{--</div>--}}
+            {{--<div>--}}
+                {{--@foreach($newBooks as $book)--}}
+                    {{--@component("components.frontcover",--}}
+                    {{--[--}}
+                            {{--'id' => $book["id"],--}}
+                            {{--'icon_path' => $book["icon_path"],--}}
+                            {{--'title' => $book["title"],--}}
+                            {{--'description' => $book["description"]--}}
+                    {{--])--}}
+                    {{--@endcomponent--}}
+                 {{--@endforeach--}}
+            {{--</div>--}}
+            {{--<a href="#" class="col-xs-5 col-xs-offset-7">→もっと見る</a>--}}
         </div>
     </div>
 @endsection
