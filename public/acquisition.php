@@ -6,4 +6,4 @@ if(!isset($url)) {
 $html = file_get_contents($url);
 $html = mb_convert_encoding($html, mb_internal_encoding(), "auto" );
 $isMatched = preg_match( "/<title>(.*?)<\/title>/i", $html, $matches);
-echo $isMatched ? $matches[1] : "";
+echo $isMatched ? $matches[1] : "not found";
